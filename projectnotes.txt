@@ -1,7 +1,0 @@
--Change font on the search page
--Center the important things and change them to make them stand out
--Should we call it post? 
--Make a good logo
--Do a usability test
--Always make the first thing the user sees the most important or relevant
--
