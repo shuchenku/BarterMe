@@ -1,0 +1,3 @@
+-Make a home page.
+-Link to another page
+-Have it able to search for something.
