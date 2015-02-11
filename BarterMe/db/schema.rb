@@ -34,6 +34,14 @@ ActiveRecord::Schema.define(version: 20150211204523) do
     t.integer  "item1_id"
     t.integer  "item2_id"
     t.boolean  "accepted"
+end
+
+  create_table "users", force: true do |t|
+    t.string   "user_id"
+    t.string   "user_name"
+    t.string   "email"
+    t.string   "phone"
+    t.integer  "reliability"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
