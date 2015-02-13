@@ -34,7 +34,9 @@ ActiveRecord::Schema.define(version: 20150211204523) do
     t.integer  "item1_id"
     t.integer  "item2_id"
     t.boolean  "accepted"
-end
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "user_id"
@@ -42,6 +44,11 @@ end
     t.string   "email"
     t.string   "phone"
     t.integer  "reliability"
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zip"
+    t.string   "looking_for"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
