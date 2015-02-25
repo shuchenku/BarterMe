@@ -1,9 +1,17 @@
 <h1>Listing products</h1>
+ <td class="form-group">
+    <%= form_tag items_path, class: "form-inline", method: :get do %>
+    <%= text_field_tag :query, params[:query], class: "form-control" %>    
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+    <% if params[:query].present? %>    
+    <%= link_to "clear", items_path%>
+    <% end %>
+  </td>
 <table>
   <% @items.each do |item| %>
-<tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-  <td>
-    <%= image_tag(item.image_url, class: 'list_image') %>
+  <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+    <td>
+      <%= image_tag(item.image_url, class: 'list_image') %>
   </td>
   <td class="list_description">
     <dl>
@@ -11,6 +19,7 @@
       <dd><%= truncate(strip_tags(item.description), length: 80) %></dd>
     </dl>
   </td>
+  <td
   <td class="list_actions">
     <%= link_to 'Show', item %><br/>
     <%= link_to 'Edit', edit_item_path(item) %><br/>
@@ -23,3 +32,5 @@
 <br />
 
 <%= link_to 'New Item', new_item_path %>
+
+<% end %>
