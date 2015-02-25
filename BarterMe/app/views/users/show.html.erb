@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong> user:</strong>
-  <%= @user. user_id %>
+  <strong>User ID:</strong>
+  <%= @user.user_id %>
 </p>
 
 <p>
@@ -23,6 +23,31 @@
 <p>
   <strong>Reliability:</strong>
   <%= @user.reliability %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @user.address %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @user.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @user.state %>
+</p>
+
+<p>
+  <strong>Zip:</strong>
+  <%= @user.zip %>
+</p>
+
+<p>
+  <strong>Looking for:</strong>
+  <%= @user.looking_for %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
