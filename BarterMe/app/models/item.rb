@@ -1,3 +1,3 @@
 class Item < ActiveRecord::Base
-searchkick
+searchkick word_start: [:name]
 end
