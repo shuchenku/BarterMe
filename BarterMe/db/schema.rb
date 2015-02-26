@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20150211204523) do
     t.string   "location"
     t.integer  "quantity"
     t.integer  "post_date"
+    t.integer  "test2"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

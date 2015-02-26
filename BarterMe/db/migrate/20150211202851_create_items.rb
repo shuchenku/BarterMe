@@ -10,6 +10,7 @@ class CreateItems < ActiveRecord::Migration
       t.string :location
       t.integer :quantity
       t.integer :post_date
+      t.integer :test2
 
       t.timestamps
     end
