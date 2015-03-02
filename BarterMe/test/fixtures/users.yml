@@ -13,3 +13,12 @@ two:
   email: MyString
   phone: MyString
   reliability: 1
+
+#inserted by phill from AWDR
+one:
+  name: dave
+  password_digest: <%= BCrypt::Password.create('secret') %>
+
+two:
+  name: susannah
+  password_digest: <%= BCrypt::Password.create('secret') 
