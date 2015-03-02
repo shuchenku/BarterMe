@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: coolpants
+  name: MyString
   description: MyText
   image_url: MyString
   user_id: 1
@@ -11,13 +11,4 @@ one:
   quantity: 1
   post_date: 1
 
-two:
-  name: coolpants
-  description: MyText
-  image_url: MyString
-  user_id: 1
-  product_key: 1
-  type_id: 1
-  location: MyString
-  quantity: 1
-  post_date: 1
+
