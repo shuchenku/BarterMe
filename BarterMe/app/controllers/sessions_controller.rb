@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
   		session[:email] = user.email
   		redirect_to admin_url
   	else
-  		redirect_to login_url, alert: "Invalid /email/password combination"
+  		redirect_to session_url, alert: "Invalid /email/password combination"
   	end
   end
 
