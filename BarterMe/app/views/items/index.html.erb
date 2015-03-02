@@ -11,7 +11,7 @@
   <% @items.each do |item| %>
   <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
     <td>
-      <%= image_tag(item.image_url, class: 'list_image') %>
+      <%= image_tag(item.image_url) %>
   </td>
   <td class="list_description">
     <dl>
@@ -32,5 +32,5 @@
 <br />
 
 <%= link_to 'New Item', new_item_path %>
-
+<%= paginate @items %>
 <% end %>
