@@ -2,10 +2,10 @@
 
 one:
   email: dave@gmail.com
-  Password: secret
+  password: secret
   password_digest: <%= BCrypt::Password.create('secret') %>
 
 two:
   email: susannah@gmail.com
-  Password: secret
+  password: secret
   password_digest: <%= BCrypt::Password.create('secret') %>
