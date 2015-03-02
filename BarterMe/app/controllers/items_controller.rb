@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+
+  skip_before_action :authorized
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
  def index
@@ -33,7 +35,10 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
+    user = User.find_by_email(params[:email])
+    # item_params[:user_id] = user.user_id
     @item = Item.new(item_params)
+    @item.user_id = user.user_id
 
     respond_to do |format|
       if @item.save
