@@ -3,9 +3,9 @@ class ItemsController < ApplicationController
 
  def index
     if params[:query].present?
-      @items = Item.search(params[:query], page: params[:page])
+      @items = Item.search(params[:query], operator: :or,  page: params[:page], per_page: 10)
     else
-      @items = Item.all
+      @items = Item.order("name").page(params[:page])
     end
  end
 

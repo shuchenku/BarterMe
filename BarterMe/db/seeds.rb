@@ -42,7 +42,7 @@ Item.delete_all
 		description: Faker::Lorem.paragraph,
 		image_url: Faker::Internet.url('barterme.com'),
 		user_id: tmp_users[n],
-		product_key: Faker::Number.number(10),
+		product_key: Faker::Number.number(8),
 		type_id: Faker::Number.number(3),
 		location: tmp_location[n],
 		quantity: rand(5))
