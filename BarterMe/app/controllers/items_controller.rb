@@ -36,7 +36,6 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     user = User.find_by_email(params[:email])
-    # item_params[:user_id] = user.user_id
     @item = Item.new(item_params)
     @item.user_id = user.user_id
 

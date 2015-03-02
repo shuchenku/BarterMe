@@ -9,7 +9,6 @@ one:
   type_id: 1
   location: MyString
   quantity: 1
-  post_date: 1
 
 two:
   name: coolpants
@@ -19,5 +18,9 @@ two:
   product_key: 1
   type_id: 1
   location: MyString
+<<<<<<< HEAD:test/fixtures/items.yml
+  quantity: 1
+=======
   quantity: 1
   post_date: 1
+>>>>>>> e1cd876231d5335b85ff307a43f45bb2833b6d2e:BarterMe/test/fixtures/items.yml
