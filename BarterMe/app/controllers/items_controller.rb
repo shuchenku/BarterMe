@@ -33,8 +33,9 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
-    user = User.find_by_email(params[:email])
+    
     @item = Item.new(item_params)
+    user = User.find_by_email(params[:email])
     @item.user_id = user.user_id
 
     respond_to do |format|
