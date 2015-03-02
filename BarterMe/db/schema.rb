@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150211204523) do
+ActiveRecord::Schema.define(version: 20150302021456) do
 
   create_table "items", force: true do |t|
+    t.integer  "user_id"
     t.string   "name"
     t.text     "description"
     t.string   "image_url"
-    t.integer  "user_id"
     t.integer  "product_key"
     t.integer  "type_id"
     t.string   "location"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 20150211204523) do
     t.integer  "item_id"
   end
 
+  add_index "items", ["user_id"], name: "index_items_on_user_id"
+
   create_table "offers", force: true do |t|
     t.integer  "offer_id"
     t.integer  "user1_id"
@@ -38,6 +40,11 @@ ActiveRecord::Schema.define(version: 20150211204523) do
     t.boolean  "accepted"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "offers_users", force: true do |t|
+    t.integer "offers_id"
+    t.integer "users_id"
   end
 
   create_table "users", force: true do |t|
