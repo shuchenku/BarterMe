@@ -9,6 +9,7 @@ one:
   type_id: 1
   location: MyString
   quantity: 1
+  post_date: 1
 
 two:
   name: coolpants

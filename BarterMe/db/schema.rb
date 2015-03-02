@@ -14,10 +14,10 @@
 ActiveRecord::Schema.define(version: 20150302045001) do
 
   create_table "items", force: true do |t|
-    t.integer  "user_id"
     t.string   "name"
     t.text     "description"
     t.string   "image_url"
+    t.integer  "user_id"
     t.integer  "product_key"
     t.integer  "type_id"
     t.string   "location"
@@ -26,10 +26,7 @@ ActiveRecord::Schema.define(version: 20150302045001) do
     t.integer  "test2"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "item_id"
   end
-
-  add_index "items", ["user_id"], name: "index_items_on_user_id"
 
   create_table "offers", force: true do |t|
     t.integer  "offer_id"
