@@ -26,6 +26,8 @@ gem 'jbuilder', '~> 1.2'
 # Added for BarterMe
 gem 'elasticsearch'
 gem 'faker'
+
+gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'kaminari'
 # gem 'pg'
 group :doc do

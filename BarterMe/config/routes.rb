@@ -1,10 +1,22 @@
 BarterMe::Application.routes.draw do
+  get 'admin' => 'admin#index'
+  controller :sessions do
+    get 'login' => :new
+    post 'login' => :create
+    delete 'login' => :destroy
+
+
+  # get "sessions/new"
+  get "sessions/create"
+  get "sessions/destroy"
   resources :offers
 
   resources :users
 
 
   resources :items
+
+end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
