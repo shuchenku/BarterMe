@@ -7,6 +7,7 @@ BarterMe::Application.routes.draw do
     get 'login' => :new
     post 'login' => :create
     delete 'logout' => :destroy
+  end
 
 
   # get "sessions/new"
@@ -72,4 +73,3 @@ end
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-end

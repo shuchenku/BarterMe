@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   
   def admin_priviledge
     unless admin?
-      redirect_to items_url, notice:  "Must be admin to view"
+      redirect_to login_url, notice:  "Must be admin to view"
     end
   end
 end
