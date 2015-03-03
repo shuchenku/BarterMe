@@ -9,7 +9,11 @@ class SessionsController < ApplicationController
   	user = User.find_by(email: params[:email])
   	if user and user.authenticate(params[:password])
   		log_in user
-  		redirect_to admin_url
+          if admin?
+            redirect_to admin_url
+          else
+            redirect_to items_url
+          end
   	else
   		redirect_to login_url, alert: "Invalid /email/password combination"
   	end

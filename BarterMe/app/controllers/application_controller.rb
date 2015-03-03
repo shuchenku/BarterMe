@@ -13,4 +13,10 @@ class ApplicationController < ActionController::Base
       redirect_to login_url, notice: "Please log in"
     end
   end
+  
+  def admin_priviledge
+    unless admin?
+      redirect_to items_url, notice:  "Must be admin to view"
+    end
+  end
 end

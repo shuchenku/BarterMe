@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
-  skip_before_action :authorize
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authorize, only: [:index, :show]
 
  def index
     if params[:query].present?

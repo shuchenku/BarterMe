@@ -12,6 +12,10 @@ module SessionsHelper
     !current_user.nil?
   end
 
+  def admin?
+    return true if current_user.id == 408
+  end
+
   def log_out
     session[:user_id] = nil
     redirect_to login_url, notice: "Logged out"
