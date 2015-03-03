@@ -1,5 +1,8 @@
 BarterMe::Application.routes.draw do
   get 'admin' => 'admin#index'
+
+  get 'logout' => 'sessions#destroy'
+
   controller :sessions do
     get 'login' => :new
     post 'login' => :create
@@ -10,10 +13,7 @@ BarterMe::Application.routes.draw do
   get "sessions/create"
   get "sessions/destroy"
   resources :offers
-
   resources :users
-
-
   resources :items
 
 end
