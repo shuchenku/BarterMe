@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include SessionsHelper
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   
@@ -8,7 +9,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def authorize
-    unless User.find_by(id: session[:user_id])
+    unless logged_in?
       redirect_to login_url, notice: "Please log in"
     end
   end
