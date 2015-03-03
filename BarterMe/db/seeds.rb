@@ -68,10 +68,10 @@ Item.delete_all
 	Item.create(name: Faker::Commerce.product_name,
 		description: Faker::Lorem.paragraph,
 		image_url: Faker::Internet.url('barterme.com'),
-		user_id: Faker::Number.number(200),
+		user_id: Faker::Number.number(8),
 		product_key: Faker::Number.number(8),
 		type_id: Faker::Number.number(3),
 		location: Faker::Address.street_address,
-		quantity: rand(5))
+		quantity: rand(4)+1)
 end
 

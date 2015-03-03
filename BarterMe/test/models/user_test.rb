@@ -9,7 +9,7 @@ class UserTest < ActiveSupport::TestCase
 
   test "can create a new user" do
     user = User.new
-    assert_instance_of User, product
+    assert_instance_of User
   end
 
   test "has two new users in database" do
@@ -22,9 +22,9 @@ class UserTest < ActiveSupport::TestCase
     assert user.invalid?
     assert user2.invalid?
     
-    user3 = Item.new(name: "User user",
+    user3 = User.new(user_name: "User user",
                       description: "user u",
-                      email: "user@user.com"
+                      email: "user@user.com",
     				          phone: "11111111",
     				          reliability: rand(10))
     assert user3.valid? 
@@ -33,9 +33,9 @@ class UserTest < ActiveSupport::TestCase
     
   test "Can add and delete users from database" do
     assert_equal User.count, 2
-    user3 = Item.new(name: "User user",
+    user3 = User.new(user_name: "User user",
                     description: "user u",
-                       email: "user@user.com"
+                       email: "user@user.com",
     				           phone: "11111111",
     				reliability: rand(10))
     user.save
