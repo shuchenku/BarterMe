@@ -27,6 +27,10 @@ gem 'jbuilder', '~> 1.2'
 gem 'elasticsearch'
 gem 'faker'
 
+#http://www.gotealeaf.com/blog/integrating-rails-and-bootstrap-part-1
+gem 'bootstrap-sass', '~> 3.2.0'
+gem 'autoprefixer-rails'
+
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'kaminari'
 # gem 'pg'
@@ -40,6 +44,7 @@ end
 group :test, :production do
 gem 'pg'
 end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 # Use unicorn as the app server

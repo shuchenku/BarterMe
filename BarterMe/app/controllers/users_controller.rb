@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+  skip_before_action :authorize, only: [:new, :create]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -29,7 +29,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User #{@user.user_id} was successfully created.' }
+        log_in @user
+        format.html { redirect_to users_url, notice: "User #{@user.user_name} was successfully created." }
         format.json { render action: 'show', status: :created, location: @user }
       else
         format.html { render action: 'new' }
@@ -43,7 +44,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User #{@user.user_id} was successfully updated.' }
+        format.html { redirect_to @user, notice: "User #{@user.user_name} was successfully updated." }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }

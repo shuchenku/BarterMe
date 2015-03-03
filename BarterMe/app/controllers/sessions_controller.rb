@@ -1,22 +1,25 @@
 class SessionsController < ApplicationController
-  
-  skip_before_action :authorized
+  require 'sessions_helper'
+  skip_before_action :authorize
 
   def new
   end
 
   def create
-  	user = User.find_by_email(params[:email])
+  	user = User.find_by(email: params[:email])
   	if user and user.authenticate(params[:password])
-  		session[:email] = user.email
-  		redirect_to admin_url
+  		log_in user
+          if admin?
+            redirect_to admin_url
+          else
+            redirect_to items_url
+          end
   	else
-  		redirect_to session_url, alert: "Invalid /email/password combination"
+  		redirect_to login_url, alert: "Invalid /email/password combination"
   	end
   end
 
   def destroy
-    session[:user_email] = nil
-    redirect_to item_url, notice: "Logged out"
+    log_out
   end
 end

@@ -1,5 +1,8 @@
 class AdminController < ApplicationController
+  before_action :admin_priviledge
+  
   def index
-  	@admin_test = "everything is awesome."
+    @total_users = User.count
+    @total_items = Item.count
   end
 end

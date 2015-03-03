@@ -1,8 +1,7 @@
 class ItemsController < ApplicationController
 
-  skip_before_action :authorized
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-
+  skip_before_action :authorize, only: [:index, :show]
  def index
     if params[:query].present?
       @items = Item.search(params[:query], operator: :or,  page: params[:page], per_page: 10)
@@ -10,12 +9,6 @@ class ItemsController < ApplicationController
       @items = Item.order("name").page(params[:page])
     end
  end
-
-  # GET /items
-  # GET /items.json
- # def index
-  #  @items = Item.all
-  #end
 
   # GET /items/1
   # GET /items/1.json
@@ -37,8 +30,8 @@ class ItemsController < ApplicationController
   def create
     
     @item = Item.new(item_params)
-    user = User.find_by_email(params[:email])
-    @item.user_id = user.user_id
+    user = User.find_by(id: session[:user_id])
+    @item.user_id = user.id
 
     respond_to do |format|
       if @item.save
@@ -83,6 +76,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:name, :description, :image_url, :user_id, :product_key, :type_id, :location, :quantity, :post_date)
+      params.require(:item).permit(:name, :description, :image_url, :user_id, :product_key, :type_id, :location, :quantity)
     end
 end
