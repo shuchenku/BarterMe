@@ -8,55 +8,55 @@
 require 'fileutils'
 require 'faker'
 
-def create_file(path, extension)
-  dir = File.dirname(path)
+#def create_file(path, extension)
+ # dir = File.dirname(path)
 
-  unless File.directory?(dir)
-    FileUtils.mkdir_p(dir)
-  end
+ # unless File.directory?(dir)
+  #  FileUtils.mkdir_p(dir)
+  #end
 
-  path << ".#{extension}"
-  File.new(path, 'w')
-end
+#  path << ".#{extension}"
+#  File.new(path, 'w')
+#end
 
-User.delete_all
+#User.delete_all
 #...
 
-create_file('leaked','txt')
+#create_file('leaked','txt')
 
-tmp_users = Hash.new
-tmp_location = Hash.new
-to_file = ''
+#tmp_users = Hash.new
+#tmp_location = Hash.new
+#to_file = ''
 
-200.times do |n|
-	user_name = Faker::Name.name
-	user_id = n
-	password = Faker::Internet.password(4)
-	city = Faker::Address.city
-	state = Faker::Address.state
-	email = Faker::Internet.email(user_name)
-	tmp_location[n] = city<<', '<<state
+#200.times do |n|
+#	user_name = Faker::Name.name
+#	user_id = n
+#	password = Faker::Internet.password(4)
+#	city = Faker::Address.city
+#	state = Faker::Address.state
+#	email = Faker::Internet.email(user_name)
+#	tmp_location[n] = city<<', '<<state
 
-	tmp_users[n] = user_id
-	User.create(user_id: user_id,
-		user_name: user_name,
-		password: password,
-		password_confirmation: password,
-		email: email,
-		phone: Faker::PhoneNumber.cell_phone,
-		reliability: rand(10),
-		address: Faker::Address.street_address,
-		city: city,
-		state: state,
-		zip: Faker::Address.zip)
+#	tmp_users[n] = user_id
+#	User.create(user_id: user_id,
+#		user_name: user_name,
+#		password: password,
+#		password_confirmation: password,
+#		email: email,
+#		phone: Faker::PhoneNumber.cell_phone,
+#		reliability: rand(10),
+#		address: Faker::Address.street_address,
+#		city: city,
+#		state: state,
+#		zip: Faker::Address.zip)
 
-	tmp_str = "Email: "+email+", Password: "+password+"\n"
-	to_file = to_file+tmp_str
-end
+#	tmp_str = "Email: "+email+", Password: "+password+"\n"
+#	to_file = to_file+tmp_str
+#end
 
-leaked = open('leaked.txt', 'w')
-leaked.write(to_file)
-leaked.close
+#leaked = open('leaked.txt', 'w')
+#leaked.write(to_file)
+#leaked.close
 
 
 
