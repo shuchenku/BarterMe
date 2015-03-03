@@ -30,9 +30,10 @@ gem 'faker'
 #http://www.gotealeaf.com/blog/integrating-rails-and-bootstrap-part-1
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
-
+gem 'rails-admin'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'kaminari'
+
 # gem 'pg'
 group :doc do
 # bundle exec rake doc:rails generates the API under doc/api.

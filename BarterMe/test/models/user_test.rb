@@ -9,7 +9,7 @@ class UserTest < ActiveSupport::TestCase
 
   test "can create a new user" do
     user = User.new
-    assert_instance_of User
+    assert_instance_of User, product
   end
 
   test "has two new users in database" do
