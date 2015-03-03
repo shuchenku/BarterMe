@@ -35,6 +35,10 @@
     <%= f.password_field :password_confirmation, size: 40 %>
   </div>
 
+  <div class = "field">
+    <%= f.label :user_id, 'Admin?:' %>
+    <%= f.number_field :user_id, size: 40 %>
+
   <div class="actions">
     <%= f.submit %>
   </div>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Case</title>
+  <title>Barter Me</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
@@ -17,7 +17,9 @@
       <ul class="nav navbar-nav">
 	<% if logged_in? %>
 	<li><a href="/logout">Log out</a></li>
+	<% if admin? %>
 	<li><a href="/admin">Admin</a></li>
+	<% end %>
 	<li><a href="/users">Users</a></li>
 	<li><a href="/items">Items</a></li> 
 	<li><a href="/offers">Offers</a></li>
@@ -41,19 +43,19 @@
 <div class="container">
   <div class="jumbotron">
     <h1>Barter Me!</h1>      
-    <p>Your Description goes here!</p>      
-    <a href="#" class="btn btn-info btn-lg"><span class="glyphicon glyphicon-search"></span> Search</a>
+    <p>In Development</p>      
+
   </div>
 
   <div class="row">
-    <div class="col-md-3">
-      <p>Something goes here</p>
+   <div class="col-md-3">
+      <p>Categories</p>
     </div>
     <div class="col-md-3"> 
-      <p>And another thing goes here</p>
+      <p>Local Users</p>
     </div>
     <div class="col-md-3"> 
-      <p>And something else here</p>
+      <p>Updates</p>
     </div>
     <div class="col-md-3">
       <ul class="nav nav-pills nav-stacked">

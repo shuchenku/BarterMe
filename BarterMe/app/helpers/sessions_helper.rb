@@ -13,7 +13,7 @@ module SessionsHelper
   end
 
   def admin?
-    return true if current_user.id == 408
+    return true if current_user.user_id == '1'
   end
 
   def log_out
