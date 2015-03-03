@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
 
-  skip_before_action :authorized
+  skip_before_action :authorize
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
  def index
@@ -10,12 +10,6 @@ class ItemsController < ApplicationController
       @items = Item.order("name").page(params[:page])
     end
  end
-
-  # GET /items
-  # GET /items.json
- # def index
-  #  @items = Item.all
-  #end
 
   # GET /items/1
   # GET /items/1.json
@@ -37,8 +31,8 @@ class ItemsController < ApplicationController
   def create
     
     @item = Item.new(item_params)
-    user = User.find_by_email(params[:email])
-    @item.user_id = user.user_id
+    user = User.find_by(id: session[:user_id])
+    @item.user_id = user.id
 
     respond_to do |format|
       if @item.save
