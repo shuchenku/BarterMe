@@ -3,6 +3,7 @@ require 'pry'
 require 'pry-byebug'
 
 class UserTest < ActiveSupport::TestCase
+<<<<<<< HEAD
   # test "the truth" do
   #   assert true
   # end
@@ -54,4 +55,6 @@ class UserTest < ActiveSupport::TestCase
     assert person.errors[:reliability].any?
   end
   
+=======
+>>>>>>> 3c2a1ee5166e4a4742d8c473ed546c1a9306e332
 end

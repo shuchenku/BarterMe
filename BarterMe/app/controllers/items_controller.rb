@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
-  skip_before_action :authorize
   before_action :set_item, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authorize, only: [:index, :show]
 
  def index
     if params[:query].present?
@@ -13,8 +13,7 @@ class ItemsController < ApplicationController
 
   # GET /items/1
   # GET /items/1.json
-  def show
-    
+  def show  
   end
 
   # GET /items/new
@@ -62,6 +61,10 @@ class ItemsController < ApplicationController
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy
+    begin
+      @item.destroy
+      flash[:notice] = "Item #{@item.name} deleted"
+    end
     @item.destroy
     respond_to do |format|
       format.html { redirect_to items_url }
@@ -77,6 +80,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:name, :description, :image_url, :user_id, :product_key, :type_id, :location, :quantity, :post_date)
+      params.require(:item).permit(:name, :description, :image_url, :user_id, :product_key, :type_id, :location, :quantity)
     end
 end

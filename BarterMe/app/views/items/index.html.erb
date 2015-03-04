@@ -21,10 +21,20 @@
   </td>
   <td
   <td class="list_actions">
+    <% if logged_in? && admin? %>
     <%= link_to 'Show', item %><br/>
     <%= link_to 'Edit', edit_item_path(item) %><br/>
     <%= link_to 'Destroy', item, method: :delete,
-	data: { confirm: 'Are you sure?' } %>
+	data: { confirm: 'Are you sure?' } %> <br/>
+    
+    <% elsif logged_in? %>
+     <%= link_to 'Show', item %><br/>
+    <%= link_to 'Edit', edit_item_path(item) %><br/>
+    
+    <% else %>
+    <%= link_to 'Show', item %><br/>
+    <% end %>
+
   </td>
 </tr>
 <% end %>
