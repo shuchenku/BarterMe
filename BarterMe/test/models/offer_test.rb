@@ -20,7 +20,7 @@ class OfferTest < ActiveSupport::TestCase
   test "will not barter with oneself" do
   	dumboffer = offers(:two)
   	assert dumboffer.invalid?
-  	assert_equal ["must inquire an item"], new_offer.errors[:user2_id]
+  	assert_equal ["must barter with someone else"], new_offer.errors[:user2_id]
   end
 
   test "will not give away stuff" do
@@ -33,7 +33,7 @@ class OfferTest < ActiveSupport::TestCase
   	assert_equal ["must inquire an item"],new_offer.errors[:item2_id]
   end
 
-   test "will not beg for stuff" do
+   test "will not ask for stuff" do
   	new_offer = Offer.new( offer_id: 3,
 						user1_id: 3,
   						user2_id: 4,
