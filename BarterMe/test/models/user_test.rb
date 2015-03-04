@@ -24,7 +24,7 @@ class UserTest < ActiveSupport::TestCase
     
     user3 = Item.new(name: "User user",
                       description: "user u",
-                      email: "user@user.com"
+                      email: "user@user.com",
     				          phone: "11111111",
     				          reliability: rand(10))
     assert user3.valid? 
@@ -35,7 +35,7 @@ class UserTest < ActiveSupport::TestCase
     assert_equal User.count, 2
     user3 = Item.new(name: "User user",
                     description: "user u",
-                       email: "user@user.com"
+                       email: "user@user.com",
     				           phone: "11111111",
     				reliability: rand(10))
     user.save
