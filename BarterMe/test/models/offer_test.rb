@@ -3,6 +3,7 @@ require 'pry'
 require 'pry-byebug'
 
 class OfferTest < ActiveSupport::TestCase
+
   # test "the truth" do
   #   assert true
   # end
@@ -25,7 +26,6 @@ class OfferTest < ActiveSupport::TestCase
     
   end
 
-
   test "one offer must have two users" do
 
   	
@@ -34,6 +34,12 @@ class OfferTest < ActiveSupport::TestCase
 
   	assert_not offer1.save
   	assert offer2.save
+  end
+
+  test "can't barter with yourself" do
+    dumboffer = Offer.new(:user1_id => @user1.id,:user2_id => @user1.id, :item1_id => @item1.id, :item2_id => @item2.id)
+    assert dumboffer.invalid?
+    assert_equal ["don't barter with yourself"], dumboffer.errors[:user2_id]
   end
 
   test "one offer must have two items" do 
