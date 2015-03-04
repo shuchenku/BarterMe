@@ -15,4 +15,14 @@ class Offer < ActiveRecord::Base
 
 	 validates_presence_of :item2_id
 	 validates_associated :item2
+
+	 validate :cant_make_an_offer_to_yourself
+
+	def cant_make_an_offer_to_yourself
+		if self[:user1_id] == self[:user2_id]
+      		errors.add(:user2_id, "don't barter with yourself")
+    	end
+  	end
+ 	
+	has_many :items
 end
