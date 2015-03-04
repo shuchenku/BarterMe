@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
 
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   skip_before_action :authorize, only: [:index, :show]
+
  def index
     if params[:query].present?
       @items = Item.search(params[:query], operator: :or,  page: params[:page], per_page: 10)
@@ -12,8 +13,7 @@ class ItemsController < ApplicationController
 
   # GET /items/1
   # GET /items/1.json
-  def show
-    
+  def show  
   end
 
   # GET /items/new
@@ -61,6 +61,10 @@ class ItemsController < ApplicationController
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy
+    begin
+      @item.destroy
+      flash[:notice] = "Item #{@item.name} deleted"
+    end
     @item.destroy
     respond_to do |format|
       format.html { redirect_to items_url }
