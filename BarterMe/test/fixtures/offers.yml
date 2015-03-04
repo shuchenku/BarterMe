@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  offer_id: 1
+  user1_id: 1
+  user2_id: 2
+  item1_id: 1
+  item2_id: 2
+  accepted: false
+
+two:
+  offer_id: 2
+  user1_id: 1
+  user2_id: 1
+  item1_id: 1
+  item2_id: 2
+  accepted: false
