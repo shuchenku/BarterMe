@@ -25,30 +25,27 @@ class UsersControllerTest < ActionController::TestCase
     assert_redirected_to users_path
   end
 
-    assert_redirected_to user_path(assigns(:user))
-  end
-
   test "should show user" do
     get :show, id: @user
     assert_response :success
   end
-
+  
   test "should get edit" do
     get :edit, id: @user
     assert_response :success
   end
-
+  
   test "should update user" do
-    patch :update, id: @user, user: { user_name: @user.user_name, email: @user.email, password: 'secret',
-    password_confirmation: 'secret' } assert_redirected_to users_path
+    patch :update, id: @user, user: { user_name: @user.user_name, email: @user.email, password: 'secret', password_confirmation: 'secret' }
+    assert_redirected_to user_path(assigns(:user))
   end
-
+  
 
   test "should destroy user" do
     assert_difference('User.count', -1) do
       delete :destroy, id: @user
     end
-
+    
     assert_redirected_to users_path
   end
 end

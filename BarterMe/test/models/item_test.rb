@@ -20,8 +20,8 @@ class ItemTest < ActiveSupport::TestCase
     product3 = Item.new(name: "My Item",
                         description: "test item",
                         image_url: "test.jpg",
-                        quantity: 5,
-                        post_date: 4444)
+                        quantity: 5)
+                      
     assert product3.valid?
   end
 
@@ -30,8 +30,8 @@ class ItemTest < ActiveSupport::TestCase
     product3 = Item.new(name: "My Item",
                         description: "test item",
                         image_url: "test.jpg",
-                        quantity: 5,
-                        post_date: 4444)
+                        quantity: 5)
+                       
     product3.save
     assert_equal Item.count, 3
     product3.destroy
@@ -45,14 +45,12 @@ class ItemTest < ActiveSupport::TestCase
     assert product.errors[:description].any?
     assert product.errors[:quantity].any?
     assert product.errors[:image_url].any?
-    assert product.errors[:post_date].any?
   end
 
   test "product quantity must be greater than 0" do
     product = Item.new(name: "My Item",
                        description: "test item",
-                       image_url: "test.jpg",
-                       post_date: 4444)
+                       image_url: "test.jpg")
 
     product.quantity = 0
     assert product.invalid?
