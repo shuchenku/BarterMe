@@ -61,13 +61,17 @@ require 'faker'
 
 
 Item.delete_all
-#...
 
 200.times do |n|
+
+  product = Faker::Commerce.product_name
+  tmp = product.split(" ")
+  url = "http://loremflickr.com/100/100/"+tmp[tmp.length-1]+'/all?random='+n.to_s
+
   Item.new
-	Item.create(name: Faker::Commerce.product_name,
+	Item.create(name: product,
 		description: Faker::Lorem.paragraph,
-		image_url: Faker::Internet.url('barterme.com'),
+		image_url: url,
 		user_id: Faker::Number.number(8),
 		product_key: Faker::Number.number(8),
 		type_id: Faker::Number.number(3),
