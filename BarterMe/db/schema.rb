@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 20150302045001) do
   add_index "items", ["user_id"], name: "index_items_on_user_id"
 
   create_table "offers", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "item_id"
     t.integer  "offer_id"
     t.integer  "user1_id"
     t.integer  "user2_id"
@@ -41,6 +43,9 @@ ActiveRecord::Schema.define(version: 20150302045001) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "offers", ["item_id"], name: "index_offers_on_item_id"
+  add_index "offers", ["user_id"], name: "index_offers_on_user_id"
 
   create_table "offers_users", force: true do |t|
     t.integer "offers_id"

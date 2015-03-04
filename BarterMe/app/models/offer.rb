@@ -7,5 +7,12 @@ class Offer < ActiveRecord::Base
 	 validates_presence_of :user2
 	 validates_associated :user2
 
-	 has_many :items
+	 # items
+	 belongs_to :item1, class_name: "Item", foreign_key: "item1_id"	 
+	 belongs_to :item2, class_name: "Item", foreign_key: "item2_id" 
+	 validates_presence_of :item1
+	 validates_associated :item1
+
+	 validates_presence_of :item2
+	 validates_associated :item2
 end
