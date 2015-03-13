@@ -4,6 +4,7 @@ BarterMe::Application.routes.draw do
   resources :categories
 
   get 'admin' => 'admin#index'
+  get 'myitems' => 'items#my_items'
 
   get 'logout' => 'sessions#destroy'
 
