@@ -1,6 +1,7 @@
 BarterMe::Application.routes.draw do
-  resources :homepages
-
+  
+  root 'welcome#index'
+  
   resources :categories
 
   get 'admin' => 'admin#index'
