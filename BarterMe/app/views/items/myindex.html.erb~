@@ -1,4 +1,4 @@
-<h1>Listing products</h1>
+<h1>My Items</h1>
  <td class="form-group">
     <%= form_tag items_path, class: "form-inline", method: :get do %>
     <%= text_field_tag :query, params[:query], class: "form-control" %>    
@@ -7,10 +7,9 @@
     <%= link_to "clear", items_path%>
     <% end %>
   </td>
-
-<td>
 <table>
   <% @items.each do |item| %>
+  <% if item.user_id == @current_user.id %>
   <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
     <td>
       <%= image_tag(item.image_url) %>
@@ -23,22 +22,13 @@
   </td>
   <td
   <td class="list_actions">
-    <% if logged_in? && admin? %>
     <%= link_to 'Show', item %><br/>
     <%= link_to 'Edit', edit_item_path(item) %><br/>
     <%= link_to 'Destroy', item, method: :delete,
 	data: { confirm: 'Are you sure?' } %> <br/>
-    
-    <% elsif logged_in? %>
-     <%= link_to 'Show', item %><br/>
-    <%= link_to 'Edit', edit_item_path(item) %><br/>
-    
-    <% else %>
-    <%= link_to 'Show', item %><br/>
-    <% end %>
-
   </td>
 </tr>
+<% end %>
 <% end %>
 </table>
 <br />
