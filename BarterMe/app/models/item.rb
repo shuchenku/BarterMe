@@ -1,4 +1,8 @@
 class Item < ActiveRecord::Base
+
+  has_many :line_items
+  before_destroy :ensure_not_referenced_by_any_line_item
+
   validates :name, :description, :image_url, :quantity, presence: true
   validates :quantity, numericality: {greater_than: 0}
   validates_uniqueness_of :name, scope: :user_id
@@ -21,6 +25,18 @@ class Item < ActiveRecord::Base
 
   def self.mine?(user)
     @items  = Item.where(:user_id => user.id)
+  end
+
+  private
+
+  # ensure that there are no line items referencing this product???????????
+  def ensure_not_referenced_by_any_line_item
+    if line_items.empty?
+      return true
+    else
+      errors.add(:base, 'Line Items present')
+      return false
+    end
   end
 
 end

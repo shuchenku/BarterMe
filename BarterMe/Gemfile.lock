@@ -30,6 +30,12 @@ GEM
       execjs
       json
     bcrypt-ruby (3.0.1)
+    better_errors (2.1.1)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+      rack (>= 0.9.0)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     bootstrap-sass (3.2.0.2)
       sass (~> 3.2)
     builder (3.1.4)
@@ -46,6 +52,7 @@ GEM
       execjs
     coffee-script-source (1.9.1)
     columnize (0.9.0)
+    debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
     elasticsearch (1.0.6)
       elasticsearch-api (= 1.0.6)
@@ -154,6 +161,8 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails
   bcrypt-ruby (~> 3.0.0)
+  better_errors (~> 2.1.1)
+  binding_of_caller (~> 0.7.2)
   bootstrap-sass (~> 3.2.0)
   coffee-rails (~> 4.0.0)
   elasticsearch

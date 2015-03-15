@@ -1,5 +1,7 @@
 BarterMe::Application.routes.draw do
   
+  resources :line_items
+
   resources :carts
 
   root 'welcome#index'
@@ -10,6 +12,8 @@ BarterMe::Application.routes.draw do
   get 'myitems' => 'items#my_items'
 
   get 'logout' => 'sessions#destroy'
+
+  get 'carts' => 'carts#show'
 
   controller :sessions do
     get 'login' => :new
