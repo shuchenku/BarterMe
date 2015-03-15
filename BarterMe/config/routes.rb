@@ -1,5 +1,7 @@
 BarterMe::Application.routes.draw do
   
+  resources :carts
+
   root 'welcome#index'
   
   resources :categories
