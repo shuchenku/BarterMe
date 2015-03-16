@@ -10,10 +10,13 @@ BarterMe::Application.routes.draw do
 
   get 'admin' => 'admin#index'
   get 'myitems' => 'items#my_items'
+  post 'myitems' => 'items#my_items'
 
   get 'logout' => 'sessions#destroy'
 
   get 'carts' => 'carts#show'
+
+  post 'offers/new' => 'offers#new'
 
   controller :sessions do
     get 'login' => :new

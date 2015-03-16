@@ -31,7 +31,13 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to @line_item.cart,
+        if item.user_id == session[:user_id]
+          redirect_path = 'offer/new'
+        else
+          redirect_path = @line_item.cart
+        end
+        format.html { 
+          redirect_to redirect_path,
           notice: 'Item added to your cart.' }
         format.json { render action: 'show', status: :created, location: @line_item }
       else

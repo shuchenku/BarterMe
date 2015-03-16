@@ -20,13 +20,16 @@ def create_file(path, extension)
 end
 
 User.delete_all
+Item.delete_all
 
 create_file('leaked','txt')
 
 tmp_location = Hash.new
 to_file = ''
 
-200.times do |n|
+
+
+100.times do |n|
 	user_name = Faker::Name.name
 	password = Faker::Internet.password(4)
 	city = Faker::Address.city
@@ -34,7 +37,7 @@ to_file = ''
 	email = Faker::Internet.email(user_name)
 	tmp_location[n] = city<<', '<<state
 
-	User.create(user_name: user_name,
+	cur_user = User.create(user_name: user_name,
 		password: password,
 		password_confirmation: password,
 		email: email,
@@ -47,29 +50,25 @@ to_file = ''
 
 	tmp_str = "Email: "+email+", Password: "+password+"\n"
 	to_file = to_file+tmp_str
+
+	3.times do |n|
+
+		product = Faker::Commerce.product_name
+		url = "http://placehold.it/150&text="+product
+
+		Item.new
+			Item.create(name: product,
+				description: Faker::Lorem.paragraph,
+				image_url: url,
+				user_id: cur_user.id,
+				product_key: Faker::Number.number(8),
+				type_id: Faker::Number.number(3),
+				location: Faker::Address.street_address,
+				quantity: rand(4)+1)
+		end
 end
 
 leaked = open('leaked.txt', 'w')
 leaked.write(to_file)
 leaked.close
-
-
-
-Item.delete_all
-
-200.times do |n|
-
-	product = Faker::Commerce.product_name
-	url = "http://placehold.it/150&text="+product
-
-  Item.new
-	Item.create(name: product,
-		description: Faker::Lorem.paragraph,
-		image_url: url,
-		user_id: Faker::Number.number(8),
-		product_key: Faker::Number.number(8),
-		type_id: Faker::Number.number(3),
-		location: Faker::Address.street_address,
-		quantity: rand(4)+1)
-end
 

@@ -5,12 +5,11 @@
 <h2>Your Problematic Cart</h2>
 <ul>
 <% @cart.line_items.each do |item| %>
-	<li><%= link_to item.item.name, item_path(item) %> &times; <%= item.quantity %></li> 
+	<li><%= link_to item.item.name, item_path(item) %> &times; <%= item.quantity %> <%= button_to 'Make an offer', '/myitems' %></li> 
 <% end %> 
 </ul>
 <%= button_to 'Empty cart', @cart, method: :delete,
     data: { confirm: 'Are you sure?' } %>
-
 
 <%= link_to 'Edit', edit_cart_path(@cart) %>
 <!-- <%= link_to 'Back', carts_path %> -->
