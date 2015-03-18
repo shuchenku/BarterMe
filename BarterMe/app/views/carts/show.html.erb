@@ -5,7 +5,7 @@
 <h2>Your Problematic Cart</h2>
 <ul>
 <% @cart.line_items.each do |item| %>
-	<li><%= link_to item.item.name, item_path(item) %> &times; <%= item.quantity %> <%= button_to 'Make an offer', '/myitems' %></li> 
+	<li><%= link_to item.item.name, item_path(item) %> &times; <%= item.quantity %> <%= button_to 'Make an offer' , new_offer_path(item1_id: item.item.id, user1_id: item.item.user_id) %></li> 
 <% end %> 
 </ul>
 <%= button_to 'Empty cart', @cart, method: :delete,

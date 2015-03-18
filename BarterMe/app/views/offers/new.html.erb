@@ -1,6 +1,38 @@
 <h1>New offer</h1>
 
-Offer generated here!
+<% this_offer = Offer.create(user1_id: params[:user1_id], item1_id: params[:item1_id]) %>
+
+<%  user = User.find_by(id: session[:user_id])
+   	@items = Item.mine? user %>
+
+   	<%= @items.size %>
+   	<% item_ids = [] %>
+
+<table>
+  <% @items.each do |item| %>
+  <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+    <td>
+      <%= image_tag(item.image_url) %>
+  </td>
+  <td class="list_description">
+  	<%= check_box_tag 'item_ids[]', item.id -%>
+    <dl>
+      <dd><%= truncate(strip_tags(item.description), length: 80) %></dd>
+    </dl>
+  </td>
+  <td
+  <td class="list_actions">
+    <%= link_to 'Show', item %><br/>
+    <%= link_to 'Edit', edit_item_path(item) %><br/>
+    <%= link_to 'Destroy', item, method: :delete,
+	data: { confirm: 'Are you sure?' } %> <br/>
+  </td>
+</tr>
+<% end %>
+</table>
+
+  <%= button_to 'Offer this', 'new',
+    data: { confirm: 'Cannot save offer yet. Redirecting ...' } %>
 
 
 <%= link_to 'Back', offers_path %>

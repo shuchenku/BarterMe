@@ -32,7 +32,7 @@
     <% elsif logged_in? %>
      <%= link_to 'Show', item %><br/>
     <%= link_to 'Edit', edit_item_path(item) %><br/>
-    <%= button_to 'Add to Cart', line_items_path(item_id: item) %>
+    <%= button_to 'Add to Cart' ,line_items_path(item_id: item) %>
     <% else %>
     <%= link_to 'Show', item %><br/>
     <% end %>
