@@ -5,4 +5,5 @@ class AdminController < ApplicationController
     @total_users = User.count
     @total_items = Item.count
   end
+
 end

@@ -18,7 +18,7 @@ class OffersControllerTest < ActionController::TestCase
 
   test "should create offer" do
     assert_difference('Offer.count') do
-      post :create, offer: { accepted: @offer.accepted, item1_id: @offer.item1_id, item2_id: @offer.item2_id, offer_id: @offer.offer_id, user1_id: @offer.user1_id, user2_id: @offer.user2_id }
+      post :create, offer: { accepted: @offer.accepted, item1_id: @offer.item1_id.to_i, item2_id: @offer.item2_id.to_i, user1_id: @offer.user1_id, user2_id: @offer.user2_id }
     end
 
     assert_redirected_to offer_path(assigns(:offer))
@@ -35,7 +35,7 @@ class OffersControllerTest < ActionController::TestCase
   end
 
   test "should update offer" do
-    patch :update, id: @offer, offer: { accepted: @offer.accepted, item1_id: @offer.item1_id, item2_id: @offer.item2_id, offer_id: @offer.offer_id, user1_id: @offer.user1_id, user2_id: @offer.user2_id }
+    patch :update, id: @offer, offer: { accepted: @offer.accepted, item1_id: @offer.item1_id.to_i, item2_id: @offer.item2_id.to_i, user1_id: @offer.user1_id, user2_id: @offer.user2_id }
     assert_redirected_to offer_path(assigns(:offer))
   end
 

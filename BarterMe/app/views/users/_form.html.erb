@@ -38,8 +38,8 @@
   <% begin %>
   <% if admin? %>
     <div class = "field">
-      <%= f.label :user_id, 'Admin?:' %>
-      <%= f.number_field :user_id, size: 40 %>
+      <%= f.label :admin, 'Admin?:' %>
+      <%= f.select(:admin, options_for_select([['Yes', true], ['No',false]], @user.admin)) %>
     </div>
   <% end %>
   <% rescue %>

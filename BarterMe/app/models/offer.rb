@@ -9,13 +9,20 @@ class Offer < ActiveRecord::Base
 	 validates_associated :user2
 
 	 # items
-	 belongs_to :item1, class_name: "Item", foreign_key: "item1_id"	 
-	 belongs_to :item2, class_name: "Item", foreign_key: "item2_id" 
-	 validates_presence_of :item1_id
-	 validates_associated :item1
+	 # belongs_to :item1, class_name: "Item", foreign_key: "item1_id"	 
+	 # belongs_to :item2, class_name: "Item", foreign_key: "item2_id" 
+	 # validates_presence_of :item1_id
+	 # validates_associated :item1
 
-	 validates_presence_of :item2_id
-	 validates_associated :item2
+	 # validates_presence_of :item2_id
+	 # validates_associated :item2
+	 validate :must_have_two_items
+
+	 def must_have_two_items
+	 	if self[:item1_id].nil? || self[:item2_id].nil? 
+	 		errors.add(:base, "Neither item can be nil when make an offer")
+	 	end
+	 end
 
 	 validate :cant_make_an_offer_to_yourself
 

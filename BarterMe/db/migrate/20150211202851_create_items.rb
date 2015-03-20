@@ -1,7 +1,6 @@
 class CreateItems < ActiveRecord::Migration
   def change
     create_table :items do |t|
-      t.belongs_to :user, index:true
       t.string :name
       t.text :description
       t.string :image_url
@@ -15,6 +14,6 @@ class CreateItems < ActiveRecord::Migration
 
       t.timestamps
     end
-    add_column :items, :item_id, :integer
+    remove_columns(:items, :test2, :product_key,:post_date, :type_id)
   end
 end

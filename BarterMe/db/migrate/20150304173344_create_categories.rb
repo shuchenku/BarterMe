@@ -8,5 +8,6 @@ class CreateCategories < ActiveRecord::Migration
 
       t.timestamps
     end
+    remove_columns(:categories, :similar_category)
   end
 end

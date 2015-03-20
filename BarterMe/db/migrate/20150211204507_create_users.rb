@@ -15,5 +15,7 @@ class CreateUsers < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_column :users, :admin, :boolean
+    remove_columns(:users, :user_id)
   end
 end
