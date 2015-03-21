@@ -3,10 +3,10 @@
 <table>
   <thead>
     <tr>
-      <th>User1</th>
-      <th>User2</th>
-      <th>Item1</th>
-      <th>Item2</th>
+      <th>Proposee</th>
+      <th>Proposer</th>
+      <th>Offered item</th>
+      <th>Desired item</th>
       <th>Accepted</th>
       <th></th>
       <th></th>
@@ -17,10 +17,16 @@
   <tbody>
     <% @offers.each do |offer| %>
       <tr>
-        <td><%= offer.user1_id %></td>
-        <td><%= offer.user2_id %></td>
-        <td><%= offer.item1_id %></td>
-        <td><%= offer.item2_id %></td>
+        <% user1 = User.find(offer.user1_id) %>
+        <% user2 = User.find(offer.user2_id) %>
+        <% item1 = Item.find(offer.item1_id) %>
+        <% item2 = Item.find(offer.item2_id) %>
+
+
+        <td><%= user1.user_name %></td>
+        <td><%= user2.user_name %></td>
+        <td><%= item1.name %></td>
+        <td><%= item2.name %></td>
         <td><%= offer.accepted %></td>
         <td><%= link_to 'Show', offer %></td>
         <td><%= link_to 'Edit', edit_offer_path(offer) %></td>
