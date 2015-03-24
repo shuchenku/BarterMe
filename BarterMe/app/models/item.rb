@@ -22,15 +22,28 @@ class Item < ActiveRecord::Base
     self[:category2] == self[:category1] || self[:category3] == self[:category2] || self[:category3] == self[:category1]
   end
   
-
+  def self.advsearch(params)
+    if params 
+      if params[:match_all] == "1" #implement the AND logic
+        find(:all, :conditions => ['name LIKE ? AND description LIKE ? AND quantity LIKE?',"%#{params[:name]}%", "%#{params[:description]}%", "%#{params[:quantity]}%"])
+      else
+        params.each do |k, v|
+          params[k] = "++" if params[k] == "" #by default, if a field is left blank, we can change from the ignore syntax "" to a filler, so that blank fields do not generate all results.
+        end
+        find(:all, :conditions => ['name LIKE ? OR description LIKE ? OR quantity LIKE?',"%#{params[:name]}%", "%#{params[:description]}%", "%#{params[:quantity]}%"])
+      end
+    else
+      find(:all) 
+    end
+  end
   def self.mine?(user)
     @items  = Item.where(:user_id => user.id)
   end
 
-  private
+ private
 
-  # ensure that there are no line items referencing this product???????????
-  def ensure_not_referenced_by_any_line_item
+ # ensure that there are no line items referencing this product???????????
+ def ensure_not_referenced_by_any_line_item
     if line_items.empty?
       return true
     else

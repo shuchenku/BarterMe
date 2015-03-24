@@ -9,8 +9,8 @@ BarterMe::Application.routes.draw do
   resources :categories
 
   get 'admin' => 'admin#index'
+
   get 'myitems' => 'items#my_items'
-  #post 'myitems' => 'items#my_items'
 
   get 'logout' => 'sessions#destroy'
 
@@ -32,7 +32,10 @@ BarterMe::Application.routes.draw do
   resources :users
   
   resources :items do
-  get 'myitems' => 'items#my_items'
+    get 'myitems' => 'items#my_items'
+    collection do
+      get 'search'
+    end
   #post 'myitems' => 'items#my_items'
   end
   

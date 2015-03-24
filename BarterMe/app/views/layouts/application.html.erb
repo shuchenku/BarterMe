@@ -12,7 +12,7 @@
   <%= csrf_meta_tags %>
 </head>
 	<nav class="navbar navbar-default">
-  <div class="container-fluid">
+  <div class="container">
     <div class="navbar-header">
       <a class="navbar-brand" href="/"> <span class="glyphicon glyphicon-home"></span> Barter Me</a>
     </div>
@@ -41,7 +41,9 @@
     </div>
   </div>
 </nav>
+<div class="container">
 <%= yield %>
+</div>
 
 </body>
 </html>
