@@ -1,41 +1,42 @@
-<h1>Listing offers</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Proposee</th>
-      <th>Proposer</th>
-      <th>Offered item</th>
-      <th>Desired item</th>
-      <th>Accepted</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @offers.each do |offer| %>
-      <tr>
-        <% user1 = User.find(offer.user1_id) %>
-        <% user2 = User.find(offer.user2_id) %>
-        <% item1 = Item.find(offer.item1_id) %>
-        <% item2 = Item.find(offer.item2_id) %>
-
-
-        <td><%= user1.user_name %></td>
-        <td><%= user2.user_name %></td>
-        <td><%= item1.name %></td>
-        <td><%= item2.name %></td>
-        <td><%= offer.accepted %></td>
-        <td><%= link_to 'Show', offer %></td>
-        <td><%= link_to 'Edit', edit_offer_path(offer) %></td>
-        <td><%= link_to 'Destroy', offer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<h1>Your Offers</h1>
+ <td class="form-group">
+    <%= form_tag items_path, class: "form-inline", method: :get do %>
+    <%= text_field_tag :query, params[:query], class: "form-control" %>    
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+    <% if params[:query].present? %>    
+    <%= link_to "clear", items_path%>
     <% end %>
-  </tbody>
-</table>
+  </td>
 
-<br>
+<td>
+  <table>
+    <thead>
+      <tr>
+	<th>User1</th>
+	<th>User2</th>
+	<th>Item1</th>
+	<th>Item2</th>
+	<th>Accepted?</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @offers.each do |offer| %>
+    <% user1 = User.find(offer.user1_id) %>
+    <% user2 = User.find(offer.user2_id) %>
+    <% item1 = Item.find(offer.item1_id) %>
+    <% item2 = Item.find(offer.item2_id) %>
+    <tr>
+      <td><%= user1.user_name %></td>
+      <td><%= user2.user_name %></td>
+      <td><%= item1.name %></td>
+      <td><%= item2.name %></td>
+      <td><%= offer.accepted %></td>
+    </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <br>
 
 <%= link_to 'New Offer', new_offer_path %>
+<% end %>

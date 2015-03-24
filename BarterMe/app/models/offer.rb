@@ -41,6 +41,10 @@ class Offer < ActiveRecord::Base
 	 	end
 	 end
 
+         def self.mine?(user)
+           @offers = Offer.where('user1_id = ? OR user2_id = ?', user.id, user.id)
+         end
+
 	 def verify_item2
 	 	check_availabity(self[:item2_id])
 	 end
