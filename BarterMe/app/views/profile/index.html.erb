@@ -1,14 +1,22 @@
 <h1>My Profile</h1>
 
+<% user = @user %>
 <% if notice %>
 <p id = "notice"><%= notice%>
   </p>
 <% end %>
 
+
+<div class="row">
+ <p style="right:80px"><%= user.user_name %> </p>
+  <div class="col-md-4">
+    <%= image_tag "person.jpg" %>
+  </div>
+</div>
+
 <table>
   <thead>
     <tr>
-      <th>User name</th>
       <th>Email</th>
       <th>Phone</th>
       <th>Reliability</th>
@@ -17,9 +25,6 @@
       <th>State</th>
       <th>Zip</th>
       <th>Looking for</th>
-      <th></th>
-      <th></th>
-      <th></th>
     </tr>
   </thead>
 
