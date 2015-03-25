@@ -24,6 +24,26 @@ class Offer < ActiveRecord::Base
 	 	end
 	 end
 
+	 # validate :item_id_must_be_valid
+	 # def item_id_must_be_valid
+	 # 	 if !(self[:item1_id].nil? || self[:item2_id].nil? )
+	 # 	 	if !(check_item_id(self[:item1_id]) && check_item_id(self[:item2_id]))
+	 # 	 		errors.add(:base, "Both items in an offer should have valid id")
+	 # 	 	end
+	 # 	 end
+	 # end
+
+	 # def check_item_id(idString) 
+	 # 	split = idString.split(',')
+	 # 	split.each do |id|
+	 # 		if Item.where(:id => id.strip.to_i).blank?
+	 # 			return false
+	 # 		end
+	 # 	end
+	 # 	return true
+	 # end
+
+
 	 validate :cant_make_an_offer_to_yourself
 
 	def cant_make_an_offer_to_yourself
