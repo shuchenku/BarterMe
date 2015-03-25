@@ -36,6 +36,7 @@ class Item < ActiveRecord::Base
       find(:all) 
     end
   end
+  
   def self.mine?(user)
     @items  = Item.where(:user_id => user.id)
   end
