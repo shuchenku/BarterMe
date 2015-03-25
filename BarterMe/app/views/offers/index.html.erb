@@ -15,24 +15,32 @@
 <table class="table table-striped">
     <thead>
       <tr>
-	<th>User1</th>
-	<th>User2</th>
-	<th>Item1</th>
-	<th>Item2</th>
+	<th>Proposee</th>
+	<th>Proposer</th>
+	<th>Items desired</th>
+	<th>Items offered</th>
 	<th>Accepted?</th>
       </tr>
     </thead>
     <tbody>
     <% @offers.each do |offer| %>
+    <% item1_ids = offer.item1_id.split(",") %>
+    <% item2_ids = offer.item2_id.split(",") %>
     <% user1 = User.find(offer.user1_id) %>
     <% user2 = User.find(offer.user2_id) %>
-    <% item1 = Item.find(offer.item1_id) %>
-    <% item2 = Item.find(offer.item2_id) %>
+    <% item1 = Item.find(item1_ids) %>
+    <% item2 = Item.find(item2_ids) %>
     <tr>
+
+    <% item1_names = [] %>
+    <% item2_names = [] %>
+    <% item1.each { |i| item1_names << i.name } %>
+    <% item2.each { |i| item2_names << i.name } %>
+
       <td><%= user1.user_name %></td>
       <td><%= user2.user_name %></td>
-      <td><%= item1.name %></td>
-      <td><%= item2.name %></td>
+      <td><%= item1_names.join(", ") %></td>
+      <td><%= item2_names.join(", ") %></td>
       <td><%= offer.accepted %></td>
     </tr>
     <% end %>
