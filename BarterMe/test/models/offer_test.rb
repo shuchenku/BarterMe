@@ -43,7 +43,7 @@ class OfferTest < ActiveSupport::TestCase
   end
 
   test "one offer must have two items" do 
-  	offer1 = Offer.new(:user1_id => @user1.id,:user2_id => @user2.id, :item1_id => @item1.id.to_s)
+  	offer1 = Offer.new(:user1_id => @user1.id,:user2_id => @user2.id, :item1_id => @item1.id.to_s, :item2_id => 'none selected')
   	offer2 = Offer.new(:user1_id => @user1.id,:user2_id => @user2.id,:item1_id => @item1.id.to_s,:item2_id => @item2.id.to_s)
 
   	assert offer1.invalid?

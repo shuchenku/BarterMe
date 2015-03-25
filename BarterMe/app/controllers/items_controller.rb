@@ -11,6 +11,10 @@ class ItemsController < ApplicationController
     end
  end
  
+ def search
+   @items = Item.advsearch params
+ end
+
  def my_items
    user = User.find_by(id: session[:user_id])
    @items = Item.mine? user

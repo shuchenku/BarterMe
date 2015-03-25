@@ -1,38 +1,44 @@
+
+
 <h1>New offer</h1>
 
-<% this_offer = Offer.create(user1_id: params[:user1_id], item1_id: params[:item1_id]) %>
-
 <%  user = User.find_by(id: session[:user_id])
-   	@items = Item.mine? user %>
+@items = Item.mine? user %>
 
-   	<%= @items.size %>
-   	<% item_ids = [] %>
+<% user1 = params[:user1_id] %>
+<% item1 = params[:item1_id] %>
 
+<%= form_for(@offer) do |f| %>
+
+<%= f.hidden_field :user1_id, :value => user1 %>
+<%= f.hidden_field :item1_id, :value => item1 %>
+<%= f.hidden_field :user2_id, :value => user.id %>
+<%= f.hidden_field :accepted, :value => false %>
 <table>
+
   <% @items.each do |item| %>
   <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
     <td>
       <%= image_tag(item.image_url) %>
-  </td>
-  <td class="list_description">
-  	<%= check_box_tag 'item_ids[]', item.id -%>
-    <dl>
+    </td>
+    <td class="form-group">
+     <%= check_box_tag 'item2_ids[]', item.id %>
+     <dl>
+      <dd><%= item.name %></dd>
       <dd><%= truncate(strip_tags(item.description), length: 80) %></dd>
     </dl>
   </td>
-  <td
-  <td class="list_actions">
-    <%= link_to 'Show', item %><br/>
-    <%= link_to 'Edit', edit_item_path(item) %><br/>
-    <%= link_to 'Destroy', item, method: :delete,
-	data: { confirm: 'Are you sure?' } %> <br/>
-  </td>
+  <td>
 </tr>
 <% end %>
 </table>
+<div class="actions">
+  <%= f.submit %>
+</div>
+<% end %>
 
-  <%= button_to 'Offer this', 'new',
-    data: { confirm: 'Cannot save offer yet. Redirecting ...' } %>
+  <%# button_to 'Offer this', :,
+  data: { confirm: 'Cannot save offer yet. Redirecting ...' } %>
 
 
-<%= link_to 'Back', offers_path %>
+  <%= link_to 'Back', '/'%>

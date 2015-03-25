@@ -9,8 +9,8 @@ BarterMe::Application.routes.draw do
   resources :categories
 
   get 'admin' => 'admin#index'
+
   get 'myitems' => 'items#my_items'
-  post 'myitems' => 'items#my_items'
 
   get 'logout' => 'sessions#destroy'
 
@@ -30,8 +30,15 @@ BarterMe::Application.routes.draw do
   get "sessions/destroy"
   resources :offers
   resources :users
-  resources :items
-
+  
+  resources :items do
+    get 'myitems' => 'items#my_items'
+    collection do
+      get 'search'
+    end
+  #post 'myitems' => 'items#my_items'
+  end
+  
 end
 
   # The priority is based upon order of creation: first created -> highest priority.
