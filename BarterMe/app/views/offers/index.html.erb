@@ -1,4 +1,6 @@
 <h1>Your Offers</h1>
+<div class="row">
+    <div class="col-md-12" style="padding-bottom:10px; border-bottom: 1px solid #ccc">
  <td class="form-group">
     <%= form_tag items_path, class: "form-inline", method: :get do %>
     <%= text_field_tag :query, params[:query], class: "form-control" %>    
@@ -8,8 +10,9 @@
     <% end %>
   </td>
 
-<td>
-  <table>
+ <div class="row">
+    <div class="col-md-10" style="padding-top:10px; border-bottom: 1px solid #ccc">
+<table class="table table-striped">
     <thead>
       <tr>
 	<th>User1</th>
@@ -38,5 +41,4 @@
 
   <br>
 
-<%= link_to 'New Offer', new_offer_path %>
 <% end %>

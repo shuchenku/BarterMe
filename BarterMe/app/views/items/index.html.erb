@@ -1,4 +1,7 @@
 <h1>Listing products</h1>
+
+<div class="row">
+    <div class="col-md-12" style="padding-bottom:10px; border-bottom: 1px solid #ccc">
  <td class="form-group">
     <%= form_tag items_path, class: "form-inline", method: :get do %>
     <%= text_field_tag :query, params[:query], class: "form-control" %>    
@@ -10,8 +13,13 @@
 
  <%= link_to 'Advanced Search', search_items_path %>
 
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-10" style="padding-top:10px; border-bottom: 1px solid #ccc">
 <td>
-<table>
+<table class="table table-striped">
   <% @items.each do |item| %>
   <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
     <td>
@@ -20,30 +28,32 @@
   <td class="list_description">
     <dl>
       <dt><%= item.name %></dt>
-      <dd><%= truncate(strip_tags(item.description), length: 80) %></dd>
+      <dd><%= truncate(strip_tags(item.description), length: 200) %></dd>
     </dl>
   </td>
   <td
   <td class="list_actions">
     <% if logged_in? && admin? %>
-    <%= link_to 'Show', item %><br/>
+    <a class="btn btn-default" href="#" role="button">item</a>
     <%= link_to 'Edit', edit_item_path(item) %><br/>
     <%= link_to 'Destroy', item, method: :delete,
 	data: { confirm: 'Are you sure?' } %> <br/>
     
     <% elsif logged_in? %>
-     <%= link_to 'Show', item %><br/>
-    <%= link_to 'Edit', edit_item_path(item) %><br/>
+  <%= link_to 'Show', item, class: 'btn btn-primary btn-md' %><br/>
+  <%= link_to 'Edit', edit_item_path(item), class: 'btn btn-primary btn-md' %>
     <%= button_to 'Add to Cart' ,line_items_path(item_id: item) %>
     <% else %>
     <%= link_to 'Show', item %><br/>
     <% end %>
 
   </td>
-</tr>
-<% end %>
+  </tr>
+  <% end %>
 </table>
-<br />
+<br/>
+    </div>
+</div>
 
 <%= link_to 'New Item', new_item_path %>
 <%= paginate @items %>
