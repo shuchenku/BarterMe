@@ -12,6 +12,9 @@
   <div class="col-md-4">
     <%= image_tag "person.jpg" %>
   </div>
+  <div class="col-md-7">
+    <%= render 'items' %>
+  </div>
 </div>
 <div class="row">
   <h2> About </h2>
@@ -19,6 +22,7 @@
 </div>
 
 <div class="row">
+  <div class="col-md-4">
   <div class="jumbotron" style>
   <% user = @user %>
   <h2> Public Information </h2>
@@ -26,8 +30,9 @@
   <p> reliability: <%= user.reliability %> </p>
   <p> address: <%= user.address %> </p>
   <p> reliability: <%= user.reliability %> </p>
-</div>
-
+  </div>
+  </div>
+  
 	<% if admin? %>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
