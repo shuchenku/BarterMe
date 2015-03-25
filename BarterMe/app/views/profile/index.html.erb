@@ -1,53 +1,38 @@
-<h1>My Profile</h1>
-
+<h1> MY PROFILE </h1>
 <% user = @user %>
+
+
 <% if notice %>
 <p id = "notice"><%= notice%>
   </p>
 <% end %>
 
-
 <div class="row">
- <p style="right:80px"><%= user.user_name %> </p>
+ <p style="right:80px"></p>
   <div class="col-md-4">
     <%= image_tag "person.jpg" %>
   </div>
 </div>
+<div class="row">
+  <h2> About </h2>
+  <p> hi, I'm <%= user.user_name %> </p>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Email</th>
-      <th>Phone</th>
-      <th>Reliability</th>
-      <th>Address</th>
-      <th>City</th>
-      <th>State</th>
-      <th>Zip</th>
-      <th>Looking for</th>
-    </tr>
-  </thead>
-
-  <tbody>
-   <% user = @user %>
-      <tr>
-        <td><%= user.user_name %></td>
-        <td><%= user.email %></td>
-        <td><%= user.phone %></td>
-        <td><%= user.reliability %></td>
-        <td><%= user.address %></td>
-        <td><%= user.city %></td>
-        <td><%= user.state %></td>
-        <td><%= user.zip %></td>
-        <td><%= user.looking_for %></td>
+<div class="row">
+  <div class="jumbotron" style>
+  <% user = @user %>
+  <h2> Public Information </h2>
+  <p> Email: <%= user.email %> </p>
+  <p> reliability: <%= user.reliability %> </p>
+  <p> address: <%= user.address %> </p>
+  <p> reliability: <%= user.reliability %> </p>
+</div>
 
 	<% if admin? %>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
 	<% end %>
-      </tr>
-  </tbody>
-</table>
+
 
 <br>
