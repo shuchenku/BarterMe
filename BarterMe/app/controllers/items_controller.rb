@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authorize, only: [:index, :show]
+  skip_before_action :authorize, only: [:index, :show, :search]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_items
  def index
     if params[:query].present?
