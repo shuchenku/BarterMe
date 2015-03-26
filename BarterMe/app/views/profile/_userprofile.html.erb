@@ -1,11 +1,3 @@
-<h1> MY PROFILE </h1>
-<% user = @user %>
-
-
-<% if notice %>
-<p id = "notice"><%= notice%>
-  </p>
-<% end %>
 
 <div class="row">
  <p style="right:80px"></p>
@@ -32,12 +24,3 @@
   <p> reliability: <%= user.reliability %> </p>
   </div>
   </div>
-  
-	<% if admin? %>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-	<% end %>
-
-
-<br>

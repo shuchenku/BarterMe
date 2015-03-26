@@ -11,9 +11,8 @@ BarterMe::Application.routes.draw do
   get 'admin' => 'admin#index'
 
   get 'myitems' => 'items#my_items'
-
-  get 'profile' => 'profile#index'
-
+  get 'profile' => 'profile#profile'
+  get 'profile/:id' => 'profile#profile'
   get 'logout' => 'sessions#destroy'
 
   get 'carts' => 'carts#show'
@@ -32,6 +31,7 @@ BarterMe::Application.routes.draw do
   get "sessions/destroy"
   resources :offers
   resources :users
+  
   
   resources :items do
     get 'myitems' => 'items#my_items'
