@@ -50,7 +50,6 @@ class OffersController < ApplicationController
   #       success_flag = false unless @offer.save
   #     end
   #   end
-
   #   respond_to do |format|
   #     if success_flag
   #       format.html { redirect_to "/", notice: 'Offer was successfully created.' }
@@ -59,10 +58,7 @@ class OffersController < ApplicationController
   #       format.json { render json: @offer.errors, status: :unprocessable_entity }
   #     end
   #   end
-
   # end
-
-
 
   # PATCH/PUT /offers/1
   # PATCH/PUT /offers/1.json

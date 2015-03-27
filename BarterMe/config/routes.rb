@@ -12,6 +12,8 @@ BarterMe::Application.routes.draw do
 
   get 'myitems' => 'items#my_items'
 
+  get 'profile' => 'profile#index'
+
   get 'logout' => 'sessions#destroy'
 
   get 'carts' => 'carts#show'

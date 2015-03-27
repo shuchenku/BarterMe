@@ -1,0 +1,38 @@
+<h1> MY PROFILE </h1>
+<% user = @user %>
+
+
+<% if notice %>
+<p id = "notice"><%= notice%>
+  </p>
+<% end %>
+
+<div class="row">
+ <p style="right:80px"></p>
+  <div class="col-md-4">
+    <%= image_tag "person.jpg" %>
+  </div>
+</div>
+<div class="row">
+  <h2> About </h2>
+  <p> hi, I'm <%= user.user_name %> </p>
+</div>
+
+<div class="row">
+  <div class="jumbotron" style>
+  <% user = @user %>
+  <h2> Public Information </h2>
+  <p> Email: <%= user.email %> </p>
+  <p> reliability: <%= user.reliability %> </p>
+  <p> address: <%= user.address %> </p>
+  <p> reliability: <%= user.reliability %> </p>
+</div>
+
+	<% if admin? %>
+        <td><%= link_to 'Show', user %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	<% end %>
+
+
+<br>
