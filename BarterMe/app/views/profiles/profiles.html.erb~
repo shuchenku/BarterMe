@@ -1,0 +1,7 @@
+<h1> Local User Profiles </h1>
+
+<div class="col-sm-4">
+  <%= @users.each do |user| %>
+  <%= link_to "#{user.name}", 
+
+  

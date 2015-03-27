@@ -24,7 +24,7 @@
     <% elsif logged_in? %>
   <%= link_to 'Show', item, class: 'btn btn-primary btn-md' %><br/>
   <%= link_to 'Edit', edit_item_path(item), class: 'btn btn-primary btn-md' %>
-    <%= button_to 'Add to Cart', line_items_path(item_id: item), class: 'btn btn-primary btn-md' %>
+    <%= button_to 'Add to Cart' ,line_items_path(item_id: item) %>
     <% else %>
     <%= link_to 'Show', item %><br/>
     <% end %>
