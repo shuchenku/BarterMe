@@ -11,5 +11,6 @@ class CreateOffers < ActiveRecord::Migration
       t.timestamps
     end
     remove_column :offers, :offer_id
+    add_column :offers, :pending, :boolean
   end
 end
