@@ -7,11 +7,11 @@ BarterMe::Application.routes.draw do
   resources :carts
   
   resources :categories
-
+  
   controller :admin do
-    get 'admin' => :admin
+    get 'admin' => :index
   end
-
+  
   post 'offers/new' => 'offers#new'
 
   controller :sessions do
