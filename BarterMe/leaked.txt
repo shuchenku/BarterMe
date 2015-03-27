@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 Email: kayleigh_nikolaus_phd@corwin.org, Password: xvtr
 Email: clotilde.phd.luettgen@hilll.com, Password: bopj1
 Email: ursula_boyer@rath.biz, Password: z8336
@@ -9,7 +8,6 @@ Email: nicolas_treva@ernser.org, Password: j4c26
 Email: metz.lucie.dvm@kautzerlegros.biz, Password: m5crm
 Email: howell.mortimer@haag.biz, Password: avc65
 Email: dvm_stephany_bayer@marquardt.name, Password: scqxv
-=======
 Email: brown_ilene@priceblick.com, Password: 7rno5
 Email: tristin.powlowski@wisoky.net, Password: h9dqo
 Email: jazmyne_marvin_sr@stehr.com, Password: hu75y
@@ -20,4 +18,3 @@ Email: rozella_willms@ziemannwalter.biz, Password: yi0gf
 Email: brekke.iii.uriah@gorczany.org, Password: hhhi2
 Email: trantow_vern@toy.biz, Password: o9wyk
 Email: hartmann.derrick@corwin.org, Password: g50m4
->>>>>>> 643df6f92258938aea9194810ac12abfa598ee3c
