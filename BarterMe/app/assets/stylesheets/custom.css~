@@ -3,6 +3,7 @@
     border-color: #030033;
 }
 
- body {
-    background-color: #D0D0D0;
-} 
+.jumbotron {
+   background: rgba(20, 54, 54, 0.2); 
+}
+
