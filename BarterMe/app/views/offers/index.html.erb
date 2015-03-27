@@ -1,14 +1,4 @@
 <h1>Your Offers</h1>
-<div class="row">
-    <div class="col-md-12" style="padding-bottom:10px; border-bottom: 1px solid #ccc">
- <td class="form-group">
-    <%= form_tag offers_path, class: "form-inline", method: :get do %>
-    <%= text_field_tag :query, params[:query], class: "form-control" %>    
-    <%= submit_tag "Search", class: "btn btn-primary" %>
-    <% if params[:query].present? %>    
-    <%= link_to "clear", offers_path%>
-    <% end %>
-  </td>
 
  <div class="row">
     <div class="col-md-10" style="padding-top:10px; border-bottom: 1px solid #ccc">
@@ -49,4 +39,3 @@
 
   <br>
 
-<% end %>

@@ -5,7 +5,7 @@ class OffersController < ApplicationController
   # GET /offers.json
   def index
     user = User.find_by(id: session[:user_id])
-    @offers = Offer.mine? user 
+    @offers = Offer.mine? user
   end
 
   # GET /offers/1
