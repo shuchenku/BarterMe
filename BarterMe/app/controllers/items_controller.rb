@@ -13,6 +13,10 @@ class ItemsController < ApplicationController
  
  def search
    @items = Item.advsearch params
+   respond_to do |format|
+     format.js
+     format.html
+   end
  end
 
  def my_items
