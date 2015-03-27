@@ -7,7 +7,7 @@ class OfferTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
-  test "can create a new offer" do
+  test "can create a  new offer" do
   	new_offer = Offer.new
   	assert_instance_of Offer, new_offer
   end
@@ -28,7 +28,6 @@ class OfferTest < ActiveSupport::TestCase
 
   test "one offer must have two users" do
 
-  	
   	offer1 = Offer.new(:user1_id => @user1.id,:item2_id => @item2.id.to_s, :item1_id => @item1.id.to_s)
   	offer2 = Offer.new(:user1_id => @user1.id,:user2_id => @user2.id,:item1_id => @item1.id.to_s,:item2_id => @item2.id.to_s)
 

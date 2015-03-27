@@ -24,11 +24,12 @@ class Offer < ActiveRecord::Base
 	 # validates_associated :item2
 	 validate :must_have_two_items
 
-	 validate :verify_item1
-	 validate :verify_item2
+	 # validate :verify_item1
+	 # validate :verify_item2
 
 	 def must_have_two_items
-	 	if self[:item1_id].nil? || self[:item2_id] == 'none selected'
+	 	 if self[:item1_id].nil? || self[:item2_id] == 'none selected'
+	 	# if self[:item1_id].nil? || self[:item2_id].nil?
 	 		errors.add(:base, "Neither item can be nil when make an offer")
 	 	end
 	 end
