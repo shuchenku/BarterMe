@@ -1,42 +1,40 @@
 BarterMe::Application.routes.draw do
   
+   root 'welcome#index'
+  
   resources :line_items
 
   resources :carts
-
-  root 'welcome#index'
   
   resources :categories
 
-  get 'admin' => 'admin#index'
-
-  get 'myitems' => 'items#my_items'
-
-  get 'logout' => 'sessions#destroy'
-
-  get 'carts' => 'carts#show'
+  controller :admin do
+    get 'admin' => :admin
+  end
 
   post 'offers/new' => 'offers#new'
 
   controller :sessions do
     get 'login' => :new
     post 'login' => :create
+    get 'logout' => :destroy
     delete 'logout' => :destroy
   end
 
+  controller :profiles do
+    get 'profile' => :profile
+    get 'profile/:id' => :profile
+  end
 
-  # get "sessions/new"
-  get "sessions/create"
-  get "sessions/destroy"
   resources :offers
   resources :users
   
+  
   resources :items do
-    get 'myitems' => 'items#my_items'
     collection do
       get 'search'
+      get 'my_items'
     end
-  #post 'myitems' => 'items#my_items'
   end
   
 end
