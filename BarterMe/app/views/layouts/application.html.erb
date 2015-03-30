@@ -1,49 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Barter Me</title>
+	<title>Barter Me</title>
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-  <%= stylesheet_link_tag "custom" %>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<%= stylesheet_link_tag "custom" %>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+	<%= csrf_meta_tags %>
 </head>
-	<nav class="navbar navbar-default">
-  <div class="container">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/"> <span class="glyphicon glyphicon-home"></span> Barter Me</a>
-    </div>
-    <div>
-      <ul class="nav navbar-nav">
-	<% if logged_in? %>
-	<li><a href="/logout">Log out</a></li>
-	<% if admin? %>
-	<li><a href="/admin">Admin</a></li>
-	<% end %>
-	<li><a href="/users">Users</a></li>
-	<li><a href="/items">Items</a></li> 
-	<li><a href="/items/my_items">My Items</a></li>
-	<li><a href="/offers">Offers</a></li>
-	<li><a href="/profile">My Profile</a></li>
-	<li><%= link_to 'My Cart', cart_path(@cart) %></li>
+<nav class="navbar navbar-default">
+	<div class="container">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/"> <span class="glyphicon glyphicon-home"></span> Barter Me</a>
+		</div>
+		<div>
+			<ul class="nav navbar-nav">
+				<% if logged_in? %>
+				<li><a href="/logout">Log out</a></li>
+				<% if admin? %>
+				<li><a href="/admin">Admin</a></li>
+				<% end %>
+				<li><a href="/users">Users</a></li>
+				<li><a href="/items">Items</a></li> 
+				<li><a href="/items/my_items">My Items</a></li>
+				<li><a href="/offers">Offers</a></li>
+				<li><a href="/profile">My Profile</a></li>
+				<li><%= link_to "Watchlist", cart_path(@cart) %></li>
+			</ul>
 
+				<%= button_to 'Make a Barter', makebarter_path(@cart), :method => :get , class: 'btn btn-success pull-right btn-lg', type: 'button'%>
 
-	<% else %>
-	
-	<li><a href="/login">Login</a></li>
-	<li><a href="/users/new">Sign up</a></li>
-	<li><a href="/items">Items</a></li> 
-	<% end %>
-	
-      </ul>
-    </div>
-  </div>
+				<% else %>
+
+				<li><a href="/login">Login</a></li>
+				<li><a href="/users/new">Sign up</a></li>
+				<li><a href="/items">Items</a></li> 
+				<% end %>
+
+			</ul>
+		</div>
+	</div>
 </nav>
 <div class="container">
-<%= yield %>
+	<%= yield %>
 </div>
 
 </body>
