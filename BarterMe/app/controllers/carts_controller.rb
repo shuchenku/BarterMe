@@ -98,5 +98,4 @@ class CartsController < ApplicationController
       redirect_to "/", notice: 'Invalid cart'
     end
 
-
 end

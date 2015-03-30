@@ -2,7 +2,6 @@ class Offer < ActiveRecord::Base
 
 	has_many :items
 
-
 	belongs_to :user1, class_name: "User", foreign_key: "user1_id"	 
 	belongs_to :user2, class_name: "User", foreign_key: "user2_id" 
   searchkick 
@@ -63,9 +62,9 @@ class Offer < ActiveRecord::Base
 	 	end
 	 end
 
-         def self.mine?(user)
-           @offers = Offer.where('user1_id = ? OR user2_id = ?', user.id, user.id)
-         end
+	 def self.mine?(user)
+	 	@offers = Offer.where('user1_id = ? OR user2_id = ?', user.id, user.id)
+	 end
 
 	 def verify_item2
 	 	check_availabity(self[:item2_id])
@@ -79,7 +78,7 @@ class Offer < ActiveRecord::Base
 	 	ids = items_list.split(",").map(&:to_i)
 	 	ids.each do |id|
 	 		unless Item.exists?(id)
-	 		 	errors.add(items_list,"offer contains unavailable item(s)")
+	 			errors.add(items_list,"offer contains unavailable item(s)")
 	 		end 
 	 	end
 	 end
