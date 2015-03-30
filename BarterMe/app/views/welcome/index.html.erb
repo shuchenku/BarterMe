@@ -1,12 +1,8 @@
+<%= stylesheet_link_tag "welcome" %>
 <% if notice %>
 <p id="notice"><%= notice %></p>
   <% end %>
-<center>
-  <h1>Welcome</h1>
-<%= stylesheet_link_tag "welcome" %>
   <div class="row">
-    This is BarterMe. 
-</center>
 <div class="container-fluid" style="margin-bottom: 1px">
   <div class="span4">
     <div class="col-md-4" style="padding-left:20px; border-left: 1px solid #ccc">
@@ -23,19 +19,13 @@
       <div class="col-md-4" style="padding-left:20px; border-left: 1px solid #ccc">
 	<div class="jumbotron">
 	  <h2> BARTER OF THE DAY</h2>
-	  <p>
-	    These are something else
-	  </p>
 	</div>
       </div>
     </div>
     <div class="span4">
-      <div class="col-md-4" style="padding-left:20px; border-left: 1px solid #ccc">
+      <div class="col-md-4" style="padding-left:20px; border-right: 1px solid #ccc; border-left: 1px solid #ccc">
 	<div class="jumbotron">
 	  <h2> RECOMMENDED BARTERS </h2>
-	  <p>
-	    These are something else
-	  </p>
 	  <p style="color:red"><font size="5">
 	      <%= link_to "Feeling Lucky?", item_path(rand(@total_items)) %>
 	</div>
