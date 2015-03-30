@@ -35,9 +35,7 @@ ActiveRecord::Schema.define(version: 20150315051423) do
     t.integer  "quantity"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "category1"
-    t.integer  "category2"
-    t.integer  "category3"
+    t.string   "category"
   end
 
   create_table "line_items", force: true do |t|
@@ -59,6 +57,7 @@ ActiveRecord::Schema.define(version: 20150315051423) do
     t.boolean  "accepted"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "pending"
   end
 
   create_table "users", force: true do |t|

@@ -4,8 +4,8 @@ class OffersController < ApplicationController
   # GET /offers
   # GET /offers.json
   def index
-   user = User.find_by(id: session[:user_id])
-    @offers = Offer.mine? user 
+    user = User.find_by(id: session[:user_id])
+    @offers = Offer.mine? user
   end
 
   # GET /offers/1
@@ -32,6 +32,10 @@ class OffersController < ApplicationController
         format.html { redirect_to '/', notice: 'Offer was successfully created.' }
         format.json { render action: 'show', status: :created, location: @offer }
       else
+        print("I'm at offer controller, ***********")
+      puts(@offer.errors.messages)
+
+
         format.html { redirect_to '/', notice: 'Offer invalid.' }
         format.json { render json: @offer.errors, status: :unprocessable_entity }
       end

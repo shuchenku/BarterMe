@@ -13,6 +13,10 @@ class ItemsController < ApplicationController
  
  def search
    @items = Item.advsearch params
+   respond_to do |format|
+     format.js
+     format.html
+   end
  end
 
  def my_items
@@ -32,6 +36,9 @@ class ItemsController < ApplicationController
  
  # GET /items/1/edit
  def edit
+   if @item.user_id != @current_user.id
+    redirect_to item_path(@item), notice: "Cannot edit items that aren't yours"
+  end
  end
  
  # POST /items
@@ -47,6 +54,8 @@ class ItemsController < ApplicationController
        format.html { redirect_to @item, notice: 'Item was successfully created.' }
        format.json { render action: 'show', status: :created, location: @item }
      else
+      print("I'm at item controller, ***********")
+      puts(@item.errors.messages)
        format.html { render action: 'new' }
        format.json { render json: @item.errors, status: :unprocessable_entity }
      end

@@ -24,6 +24,7 @@
   <strong>Quantity:</strong>
   <%= @item.quantity %>
 </p>
-
-<%= link_to 'Edit', edit_item_path(@item) %> |
+<% if @item.user_id == @current_user.id %>
+<%= link_to 'Edit', edit_item_path(@item) %>
+<% end %>
 <%= link_to 'Back', items_path %>

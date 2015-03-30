@@ -8,33 +8,37 @@ class ItemTest < ActiveSupport::TestCase
     assert_instance_of Item, product
   end
 
-  test "has two products in the database" do
-    assert_equal Item.count, 2
+  test "has three products in the database" do
+    assert_equal Item.count, 3
   end
 
   def setup
+    @user = User.new(:email=>"xxx@com", :user_name => "haha",:password => "xxx", :password_confirmation => "xxx")
+    @user.save
     @product = Item.new(name: "My Item",
                        description: "test item",
                        image_url: "test.jpg",
-                       quantity: 5)
+                       quantity: 5,
+                       user_id: @user.id)
+    @productD = Item.new(name: "My Item",
+                       description: "test item",
+                       image_url: "test.jpg",
+                       quantity: 5,
+                       user_id: @user.id)
   end
 
   test "user cannot have duplicate items posted" do
-    product1 = Item.first
-    product2 = Item.last
-    assert product1.invalid?
-    assert product2.invalid?
-                      
-    assert @product.valid?
+    assert @product.save
+    assert_not @productD.save
   end
 
   test "Can add and delete products from database" do
-    assert_equal Item.count, 2
+    assert_equal Item.count, 3
 
     @product.save
-    assert_equal Item.count, 3
+    assert_equal Item.count, 4
     @product.destroy
-    assert_equal Item.count, 2
+    assert_equal Item.count, 3
   end
 
   test "product attributes must not be empty" do
@@ -49,7 +53,8 @@ class ItemTest < ActiveSupport::TestCase
   test "product quantity must be greater than 0" do
     product = Item.new(name: "My Item",
                        description: "test item",
-                       image_url: "test.jpg")
+                       image_url: "test.jpg", 
+                       user_id: @user.id)
 
     product.quantity = 0
     assert product.invalid?
@@ -65,20 +70,20 @@ class ItemTest < ActiveSupport::TestCase
     assert product.valid?
   end
 
-  test "product cannot have duplicate category" do
+  # test "product cannot have duplicate category" do
 
-    @product["category1"] = 1
-    assert @product.valid?
-    @product["category2"] = 1
-    assert @product.invalid?
-    @product["category2"] = 2
-    assert @product.valid?
-    @product["category3"] = 1
-    assert @product.invalid?
-    @product["category3"] = 2
-    assert @product.invalid?
-    @product["category3"] = 3
-    assert @product.valid?
+  #   @product["category1"] = 1
+  #   assert @product.valid?
+  #   @product["category2"] = 1
+  #   assert @product.invalid?
+  #   @product["category2"] = 2
+  #   assert @product.valid?
+  #   @product["category3"] = 1
+  #   assert @product.invalid?
+  #   @product["category3"] = 2
+  #   assert @product.invalid?
+  #   @product["category3"] = 3
+  #   assert @product.valid?
 
-  end
+  # end
 end

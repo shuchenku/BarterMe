@@ -2,14 +2,14 @@ require 'test_helper'
 
 class OffersControllerTest < ActionController::TestCase
   setup do
-    @offer = offers(:one)
+    @offer = offers(:offerOne)
   end
 
-  # test "should get index" do
-  #   get :index
-  #   assert_response :success
-  #   assert_not_nil assigns(:offers)
-  # end
+  test "should get index" do
+    get :index
+    assert_response :success
+    assert_not_nil assigns(:offers)
+  end
 
   test "should get new" do
     get :new
@@ -17,6 +17,12 @@ class OffersControllerTest < ActionController::TestCase
   end
 
   # test "should create offer" do
+  #   assert_equal Offer.count, 2
+
+  #   print("I'm at offer controller test, ***********")
+  #     puts(@offer.item1_id)
+  #     puts(@offer.item2_id)
+
   #   assert_difference('Offer.count') do
   #     post :create, offer: { accepted: @offer.accepted, item1_id: @offer.item1_id, item2_id: @offer.item2_id, user1_id: @offer.user1_id, user2_id: @offer.user2_id }
   #   end
@@ -35,7 +41,7 @@ class OffersControllerTest < ActionController::TestCase
   end
 
   # test "should update offer" do
-  #   patch :update, id: @offer, offer: { accepted: @offer.accepted, item1_id: @offer.item1_id.to_i, item2_id: @offer.item2_id.to_i, user1_id: @offer.user1_id, user2_id: @offer.user2_id }
+  #   patch :update, id: @offer, offer: { accepted: @offer.accepted, item1_id: @offer.item1_id, item2_id: @offer.item2_id, user1_id: @offer.user1_id, user2_id: @offer.user2_id }
   #   assert_redirected_to offer_path(assigns(:offer))
   # end
 
