@@ -4,18 +4,15 @@
   <div class="col-md-4">
     <%= image_tag "person.jpg" %>
   </div>
-  <div class="col-md-7">
+  <div class="col-md-4" style:"left:-100px">
     <%= render 'items' %>
   </div>
 </div>
 <div class="row">
+  <div class="col-md-6">
+  <div class="jumbotron">
   <h2> About </h2>
   <p> hi, I'm <%= user.user_name %> </p>
-</div>
-
-<div class="row">
-  <div class="col-md-4">
-  <div class="jumbotron" style>
   <% user = @user %>
   <h2> Public Information </h2>
   <p> Email: <%= user.email %> </p>
