@@ -14,7 +14,7 @@ BarterMe::Application.routes.draw do
   
   post 'offers/new' => 'offers#new'
 
-  get '/carts/makebarter/:id', to: 'carts#makebarter', as: 'makebarter'
+  get '/offers/makeoffer/:id', to: 'offers#makeoffer', as: 'makeoffer'
 
   controller :sessions do
     get 'login' => :new

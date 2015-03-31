@@ -32,7 +32,7 @@
 				<li><%= link_to "Watchlist", cart_path(@cart) %></li>
 			</ul>
 
-				<%= button_to 'Make a Barter', makebarter_path(@cart), :method => :get , class: 'btn btn-success pull-right btn-lg', type: 'button'%>
+				<%= button_to 'Make a Barter', makeoffer_path(@cart), :method => :get , class: 'btn btn-success pull-right btn-lg', type: 'button'%>
 
 				<% else %>
 
