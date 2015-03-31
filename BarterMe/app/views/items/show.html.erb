@@ -1,22 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @item.name %>
+<p> 
+  <%=image_tag @item.image_url %>
 </p>
-
+  <p>
+    <h1><%= @item.name %></h1>
+  </p>
 <p>
-  <strong>Description:</strong>
+
+  <h1><strong>Description:</strong></h1>
   <%= @item.description %>
 </p>
 
 <p>
-  <strong>Image url:</strong>
-  <%= @item.image_url %>
-</p>
-
-<p>
-  <strong>Location:</strong>
+ <h1><strong>Location:</strong></h1>
   <%= @item.location %>
 </p>
 

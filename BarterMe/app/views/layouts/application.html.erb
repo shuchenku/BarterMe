@@ -30,8 +30,9 @@
 				<li><a href="/offers">Offers</a></li>
 				<li><a href="/profile">My Profile</a></li>
 				<li><%= link_to "Watchlist", cart_path(@cart) %></li>
+				<% #<li><%= button_to 'Make a Barter', makeoffer_path(@cart), :method => :get %> 
 			</ul>
-			<% #<%= button_to 'Make a Barter', makeoffer_path(@cart), :method => :get , class: 'btn btn-success pull-right btn-lg', type: 'button'%>
+		
 				
 				<% else %>
 
