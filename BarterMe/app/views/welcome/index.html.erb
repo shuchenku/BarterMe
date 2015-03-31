@@ -29,7 +29,7 @@
 	<div class="jumbotron">
 	  <h2> RECOMMENDED BARTERS </h2>
 	  <p style="color:red"><font size="5">
-	      <%= link_to "Feeling Lucky?", item_path(rand(@total_items)) %>
+	      <%= link_to "Feeling Lucky?", "/items/#{(rand(Item.first.id.. Item.last.id))}" %>
 	</div>
       </div>
     </div>

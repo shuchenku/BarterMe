@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 	has_many :items, inverse_of: :user
 	validates :email, presence: true, uniqueness: true
 	validates :user_name, presence: true, uniqueness: true
-	
+	mount_uploader :image, ImageUploader
 	has_secure_password
 	# # users.password_hash in the database is a :string
  #  	include BCrypt

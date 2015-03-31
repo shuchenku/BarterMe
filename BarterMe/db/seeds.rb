@@ -53,7 +53,7 @@ to_file = ''
     Item.new
     Item.create(name: product,
                 description: Faker::Lorem.paragraph,
-                image_url: url,
+                image_url: open("http://www.hollywoodreporter.com/sites/default/files/imagecache/675x380/2014/09/too_good_for_grumpy_cat.jpg"),
                 user_id: cur_user.id,
                 location: Faker::Address.street_address,
                 quantity: rand(4)+1)
