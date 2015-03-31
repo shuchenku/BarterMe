@@ -15,18 +15,13 @@
   </td>
   <td
   <td class="list_actions">
-    <% if logged_in? && admin? %>
-    <a class="btn btn-default" href="#" role="button">item</a>
-    <%= link_to 'Edit', edit_item_path(item) %><br/>
+    <% if admin? %>
     <%= link_to 'Destroy', item, method: :delete,
 	data: { confirm: 'Are you sure?' } %> <br/>
-    
-    <% elsif logged_in? %>
-  <%= link_to 'Show', item, class: 'btn btn-primary btn-md' %><br/>
-  <%= link_to 'Edit', edit_item_path(item), class: 'btn btn-primary btn-md' %>
-    <%= button_to 'Add to Cart' ,line_items_path(item_id: item) %>
-    <% else %>
-    <%= link_to 'Show', item %><br/>
+    <% end %>
+    <%= link_to 'Show', item, class: 'btn btn-primary btn-md' %><br/>
+    <% if item.user_id == @current_user.id %>
+    <%= link_to 'Edit', edit_item_path(item), class: 'btn btn-primary btn-md' %>
     <% end %>
 
   </td>

@@ -1,14 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-offerOne:
-  user1_id: <%= ActiveRecord::FixtureSet.identify(:dave) %>
-  user2_id: <%= ActiveRecord::FixtureSet.identify(:sam) %>
-  item1_id: <%= ActiveRecord::FixtureSet.identify(:itemOne).to_s %>
-  item2_id: <%= ActiveRecord::FixtureSet.identify(:itemTwo).to_s %>
+one:
+  user1_id: 1
+  user2_id: 2
+  item1_id: "1"
+  item2_id: "2"
   accepted: false
 
-offerTwo:
-  user1_id: <%= ActiveRecord::FixtureSet.identify(:sam) %>
-  user2_id: <%= ActiveRecord::FixtureSet.identify(:dave) %>
-  item1_id: <%= ActiveRecord::FixtureSet.identify(:itemTwo).to_s %>
-  item2_id: <%= ActiveRecord::FixtureSet.identify(:itemOne).to_s %>
+two:
+  user1_id: 1
+  user2_id: 1
+  item1_id: "1"
+  item2_id: "2"
   accepted: false

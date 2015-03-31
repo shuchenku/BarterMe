@@ -60,8 +60,8 @@ class CartsController < ApplicationController
     end
 
     respond_to do |format|
-      format.html { redirect_to "/",
-        notice: 'Your cart is currently empty' }
+      format.html { redirect_to "/carts//#{@cart.id}",
+        notice: 'Your watchlist is currently empty' }
       format.json { head :no_content }
     end
   end
@@ -97,6 +97,5 @@ class CartsController < ApplicationController
       logger.error "Attempt to access invalid cart #{params[:id]}"
       redirect_to "/", notice: 'Invalid cart'
     end
-
 
 end

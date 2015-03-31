@@ -36,6 +36,9 @@ class ItemsController < ApplicationController
  
  # GET /items/1/edit
  def edit
+   if @item.user_id != @current_user.id
+    redirect_to item_path(@item), notice: "Cannot edit items that aren't yours"
+  end
  end
  
  # POST /items

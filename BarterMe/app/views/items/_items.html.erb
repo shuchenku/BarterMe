@@ -13,7 +13,7 @@
       <dd><%= truncate(strip_tags(item.description), length: 200) %></dd>
     </dl>
   </td>
-  <td
+  <td>
   <td class="list_actions">
     <% if logged_in? && admin? %>
     <a class="btn btn-default" href="#" role="button">item</a>
@@ -22,10 +22,12 @@
 	data: { confirm: 'Are you sure?' } %> <br/>
     
     <% elsif logged_in? %>
+  <%= button_to 'Add to Cart', line_items_path(item_id: item), class: 'btn btn-primary btn-md' %>
   <%= link_to 'Show', item, class: 'btn btn-primary btn-md' %><br/>
   <%= link_to 'Edit', edit_item_path(item), class: 'btn btn-primary btn-md' %>
-    <%= button_to 'Add to Cart', line_items_path(item_id: item), class: 'btn btn-primary btn-md' %>
-    <% else %>
+  <% if item.user_id != @current_user.id %>
+  <% end %>
+  <% else %>
     <%= link_to 'Show', item %><br/>
     <% end %>
 
