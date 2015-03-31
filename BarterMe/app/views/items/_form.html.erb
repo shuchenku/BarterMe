@@ -11,7 +11,9 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="row">
+    <div class="col-md-5">
+      <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name, class: 'form-control' %>
   </div>
@@ -39,4 +41,11 @@
   <div class="actions">
     <%= f.submit %>
   </div>
-<% end %>
+
+<div id="preview">
+</div>
+
+    </div>
+  </div>
+  <% end %>
+  
