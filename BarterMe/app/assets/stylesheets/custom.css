@@ -1,6 +1,8 @@
+/* change background color and get rid of it*/
  .navbar-default {
-    background-color: #FFF8DC;
+    background-color: rgba(20, 100, 54, 0.2);
     border-color: #030033;
+    font-color: #FFFFFF;
 }
 
 .jumbotron {
