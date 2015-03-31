@@ -12,7 +12,7 @@
 	<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 	<%= csrf_meta_tags %>
 </head>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default"  style = "text-shadow: 1px 1px black;">
 	<div class="container">
 		<div class="navbar-header">
 			<a class="navbar-brand" href="/"> <span class="glyphicon glyphicon-home"></span> Barter Me</a>
@@ -31,9 +31,8 @@
 				<li><a href="/profile">My Profile</a></li>
 				<li><%= link_to "Watchlist", cart_path(@cart) %></li>
 			</ul>
-
-				<%= button_to 'Make a Barter', makeoffer_path(@cart), :method => :get , class: 'btn btn-success pull-right btn-lg', type: 'button'%>
-
+			<% #<%= button_to 'Make a Barter', makeoffer_path(@cart), :method => :get , class: 'btn btn-success pull-right btn-lg', type: 'button'%>
+				
 				<% else %>
 
 				<li><a href="/login">Login</a></li>
