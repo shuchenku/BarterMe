@@ -35,18 +35,18 @@ class OfferTest < ActiveSupport::TestCase
   	assert offer2.save
   end
 
-  test "can't barter with yourself" do
-    dumboffer = Offer.new(:user1_id => @user1.id,:user2_id => @user1.id, :item1_id => @item1.id.to_s, :item2_id => @item2.id.to_s)
-    assert dumboffer.invalid?
-    assert_equal ["don't barter with yourself"], dumboffer.errors[:user2_id]
-  end
+  # test "can't barter with yourself" do
+  #   dumboffer = Offer.new(:user1_id => @user1.id,:user2_id => @user1.id, :item1_id => @item1.id.to_s, :item2_id => @item2.id.to_s)
+  #   assert dumboffer.invalid?
+  #   assert_equal ["don't barter with yourself"], dumboffer.errors[:user2_id]
+  # end
 
-  test "one offer must have two items" do 
-  	offer1 = Offer.new(:user1_id => @user1.id,:user2_id => @user2.id, :item1_id => @item1.id.to_s, :item2_id => 'none selected')
-  	offer2 = Offer.new(:user1_id => @user1.id,:user2_id => @user2.id,:item1_id => @item1.id.to_s,:item2_id => @item2.id.to_s)
+  # test "one offer must have two items" do 
+  # 	offer1 = Offer.new(:user1_id => @user1.id,:user2_id => @user2.id, :item1_id => @item1.id.to_s, :item2_id => 'none selected')
+  # 	offer2 = Offer.new(:user1_id => @user1.id,:user2_id => @user2.id,:item1_id => @item1.id.to_s,:item2_id => @item2.id.to_s)
 
-  	assert offer1.invalid?
-  	assert offer2.valid?
-  end
+  # 	assert offer1.invalid?
+  # 	assert offer2.valid?
+  # end
 
 end
