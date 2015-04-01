@@ -19,7 +19,7 @@
         <td class="form-group">
           <%= cb.check_box(item.item.id) %>
           <td>
-            <%= image_tag(item.item.image_url) %>
+            <%= image_tag item.item.image_url, :size => "100x100" %>
           </td>
           <td class="list_description">
             <dl>

@@ -25,7 +25,7 @@
  	end
 
  	def items_must_belong_to_one_user
- 		items = Item.find(self.transform[:item1_ids])
+ 		items = Item.find(self.item1_ids.select{|k,v| v == "1"}.keys)
 
  		unless items.empty?
  			uid = items[0].user_id
