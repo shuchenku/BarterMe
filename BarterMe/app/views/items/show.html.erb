@@ -1,13 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<p> 
-  <%=image_tag @item.image_url %>
-</p>
   <p>
     <h1><%= @item.name %></h1>
   </p>
-<p>
 
+  <p> 
+  <%=image_tag @item.image_url, :size => "200x200" %>
+</p>
+
+  <p> 
+    <h1><strong>Owner:</strong></h1>
+    <%= @item.user.user_name %>
+  </p>
+<p>
   <h1><strong>Description:</strong></h1>
   <%= @item.description %>
 </p>
@@ -18,7 +23,7 @@
 </p>
 
 <p>
-  <strong>Quantity:</strong>
+  <h1><strong>Quantity:</strong></h1>
   <%= @item.quantity %>
 </p>
 <% if logged_in? && @item.user_id == @current_user.id %>

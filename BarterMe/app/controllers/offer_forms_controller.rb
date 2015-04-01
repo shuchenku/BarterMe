@@ -13,7 +13,7 @@ class OfferFormsController < ApplicationController
 				format.html { redirect_to new_offer_path(@offer_form.transform), notice: 'Offer valid.' }
 				format.json { head :no_content }
 			else
-				format.html { redirect_to new_offer_form_path, notice: 'Offer invalid.' }
+				format.html { redirect_to new_offer_form_path, notice: @offer_form.errors.messages.values.join(', ') }
 				format.json { render json: @offer_form.errors, status: :unprocessable_entity }
 			end
 		end

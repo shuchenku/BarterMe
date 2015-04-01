@@ -10,7 +10,7 @@
 			<% @cart.line_items.each do |item| %>
 			<tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
 				<td>
-					<%= image_tag(item.item.image_url) %>
+					<%= image_tag item.item.image_url, :size => "100x100"  %>
 				</td>
 				<td class="list_description">
 					<dl>
