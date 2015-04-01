@@ -1,26 +1,28 @@
-
 <div class="row">
  <p style="right:80px"></p>
   <div class="col-md-4">
-    <%= image_tag "person.jpg" %>
+	<% if user.id == @current_user.id %>
+	<%= link_to 'Edit My Profile', edit_user_path(user) %>
+	<% end %>
+<h1><%= "#{user.user_name}" + "'s Profile" %></h1>
+     <%= image_tag user.image, :size => "100x100" %>
   </div>
-  <div class="col-md-7">
+  <h2 style="padding-left:200px"><%= user.user_name %>'s Items</h2>
+  <div class="col-md-8">
     <%= render 'items' %>
   </div>
 </div>
 <div class="row">
+  <div class="col-md-6">
+  <div class="jumbotron">
   <h2> About </h2>
   <p> hi, I'm <%= user.user_name %> </p>
-</div>
-
-<div class="row">
-  <div class="col-md-4">
-  <div class="jumbotron" style>
   <% user = @user %>
   <h2> Public Information </h2>
   <p> Email: <%= user.email %> </p>
   <p> reliability: <%= user.reliability %> </p>
   <p> address: <%= user.address %> </p>
-  <p> reliability: <%= user.reliability %> </p>
   </div>
   </div>
+
+

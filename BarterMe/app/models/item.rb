@@ -3,11 +3,12 @@ class Item < ActiveRecord::Base
   has_many :line_items
   before_destroy :ensure_not_referenced_by_any_line_item
 
-  validates :name, :description, :image_url, :quantity, presence: true
+  validates :name, :description, :quantity, presence: true
   validates :quantity, numericality: {greater_than: 0}
   validates_uniqueness_of :name, scope: :user_id
   belongs_to :user, foreign_key: "user_id",inverse_of: :items
   validates_presence_of :user
+  mount_uploader :image_url, ImageUploader
   searchkick word_start: [:name]
   
   validate :no_duplicate_category

@@ -1,8 +1,0 @@
-<% user = @user %>
-<h1><%= "#{user.user_name}" + "'s Profile" %></h1>
-<% if notice %>
-<p id = "notice"><%= notice%>
-  </p>
-<% end %>
-
-<%= render 'userprofile', :user => user %>

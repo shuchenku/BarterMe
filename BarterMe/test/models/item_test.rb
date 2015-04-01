@@ -47,7 +47,6 @@ class ItemTest < ActiveSupport::TestCase
     assert product.errors[:name].any?
     assert product.errors[:description].any?
     assert product.errors[:quantity].any?
-    assert product.errors[:image_url].any?
   end
 
   test "product quantity must be greater than 0" do
