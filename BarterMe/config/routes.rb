@@ -4,7 +4,7 @@ BarterMe::Application.routes.draw do
   
   resources :line_items
 
-  resources :carts
+  resources :carts, :path => "watchlist"
   
   resources :categories
 
