@@ -4,6 +4,26 @@
     border-color: #030033;
     font-color: #FFFFFF;
 }
+.flash-message {
+.notice {
+    border: solid 10px #26722D;
+    border-color: rgba(255, 178, 102, 1.0);
+          background-color: #A4E7A0;
+        };
+
+.error {
+    border: solid 10px #26722D;
+    border-color: rgba(255, 178, 102, 1.0);
+          background-color: #A4E7A0;
+        };
+
+.alert {
+    border: solid 10px #26722D;
+    border-color: rgba(255, 178, 102, 1.0);
+          background-color: #A4E7A0;
+        };
+}
+
 
 .jumbotron {
    background: rgba(100, 30, 30, 0.7); 
