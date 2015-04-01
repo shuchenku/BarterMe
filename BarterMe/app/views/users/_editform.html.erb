@@ -50,6 +50,19 @@
     <%= f.label :looking_for, 'Looking For?:' %>
     <%= f.text_field :looking_for, size: 40,class: 'form-control' %>
   </div>
+
+  <!-- test -->
+  <% begin %>
+  <% if admin? %>
+    <div class = "form-group" style="margin-bottom:20px">
+      <%= f.label :admin, 'Admin?:' %>
+      <%= f.select(:admin, options_for_select([['Yes', true], ['No',false]], @user.admin)) %>
+    </div>
+    
+  <% end %>
+  <% rescue %>
+  <% end %>
+
   <div class="btn btn-default">
     <%= f.submit %>
   </div>
