@@ -3,6 +3,10 @@
  <div class="row">
     <div class="col-md-10" style="padding-top:10px; border-bottom: 1px solid #ccc">
 <table class="table table-striped">
+
+  <% offers1 = Offer.where(user1_id: session[:user_id])%>
+  <% offers2 = Offer.where(user2_id: session[:user_id])%>
+  <% @offers = offers1.concat(offers2) %>
     <thead>
       <tr>
 	<th>Proposee</th>
@@ -36,6 +40,5 @@
     <% end %>
     </tbody>
   </table>
-
   <br>
 
