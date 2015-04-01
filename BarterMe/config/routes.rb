@@ -1,20 +1,20 @@
 BarterMe::Application.routes.draw do
   
-   root 'welcome#index'
+  root 'welcome#index'
   
   resources :line_items
 
   resources :carts
   
   resources :categories
+
+  resources :offer_forms, only: [:new, :create]
   
   controller :admin do
     get 'admin' => :index
   end
   
   post 'offers/new' => 'offers#new'
-
-  get '/offers/makeoffer/:id', to: 'offers#makeoffer', as: 'makeoffer'
 
   controller :sessions do
     get 'login' => :new

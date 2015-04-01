@@ -1,40 +1,37 @@
 <%= stylesheet_link_tag "welcome" %>
 <% if notice %>
 <p id="notice"><%= notice %></p>
-  <% end %>
-  <div class="row">
-<div class="container-fluid" style="margin-bottom: 1px">
-  <div class="span4">
-    <div class="col-md-4" style="padding-left:20px; border-left: 1px solid #ccc; text-shadow: 2px 2px black; ">
-      <div class="jumbotron">
-	<h2> TOP LISTINGS</h2>
-	<p><font size="5">
-	    <%= link_to "Granite", items_path(:query => "granite") %><br>
-	    <%= link_to "Hats", items_path(:query => "hat") %><br>
-	    <%= link_to "Awesome", items_path(:query => "awesome") %>
-	</font></p>
-      </div>
-    </div>
+<% end %>
+<div class="row">
+  <div class="container-fluid" style="margin-bottom: 1px">
     <div class="span4">
+      <div class="col-md-4" style="padding-left:20px; border-left: 1px solid #ccc; text-shadow: 2px 2px black; ">
+        <div class="jumbotron">
+         <h2> TOP LISTINGS</h2>
+         <p><font size="5">
+           <%= link_to "Granite", items_path(:query => "granite") %><br>
+           <%= link_to "Hats", items_path(:query => "hat") %><br>
+           <%= link_to "Awesome", items_path(:query => "awesome") %>
+         </font></p>
+       </div>
+     </div>
+     <div class="span4">
       <div class="col-md-4" style="padding-left:20px; border-left: 1px solid #ccc; text-shadow: 2px 2px black;">
-	<div class="jumbotron">
-	  <h2> BARTER OF THE DAY</h2>
-	</div>
-  <div class="col-md-9">
-        <%= button_to 'Make a Barter', makeoffer_path(@cart), :method => :get , class: 'btn btn-success pull-right btn-lg', type: 'button'%>
-      </div>
-    </div>
-    <div class="span4">
-      <div class="col-md-4" style="padding-left:21px; border-right: 1px solid #ccc; border-left: 1px solid #ccc; text-shadow: 2px 2px black;">
-	<div class="jumbotron">
-	  <h2> RECOMMENDED BARTERS </h2>
-	  <p style="color:red"><font size="5">
-	      <%= link_to "Feeling Lucky?", "/items/#{(rand(Item.first.id.. Item.last.id))}" %>
-	</div>
-      </div>
-    </div>
-  </div>
-</div>
+       <div class="jumbotron">
+         <h2> BARTER OF THE DAY</h2>
+       </div>
+     </div>
+     <div class="span4">
+      <div class="col-md-4" style="padding-left:20px; border-right: 1px solid #ccc; border-left: 1px solid #ccc; text-shadow: 2px 2px black;">
+       <div class="jumbotron">
+         <h2> RECOMMENDED BARTERS </h2>
+         <p style="color:red"><font size="5">
+           <%= link_to "Feeling Lucky?", "/items/#{(rand(Item.first.id.. Item.last.id))}" %>
+         </div>
+       </div>
+     </div>
+   </div>
+ </div>
 </div>
 
 

@@ -29,10 +29,10 @@ class OffersController < ApplicationController
 
     respond_to do |format|
       if @offer.save
-        format.html { redirect_to @offer, notice: 'Offer was successfully created.' }
+        format.html { redirect_to root_url, notice: 'Offer was successfully created.' }
         format.json { render action: 'show', status: :created, location: @offer }
       else
-        format.html { redirect_to '/', notice: 'Offer invalid.' }
+        format.html { redirect_to root_url, notice: 'Offer invalid.' }
         format.json { render json: @offer.errors, status: :unprocessable_entity }
       end
     end
