@@ -1,37 +1,19 @@
 <h1>Review your offer</h1>
 
-<%  user = User.find_by(id: session[:user_id])%>
-
-<!-- ids = params[:item2_ids] || ['none selected']
-      params[:offer][:item2_id] = ids.join(",") -->
-
-
-<% user1_id = Item.find(params[:item1_ids][0]).user_id %>
-<% item1_id = params[:item1_ids] %>
-<% item2_id = params[:item2_ids] %>
-
-<% item1 = Item.find(item1_id) %>
-<% item2 = Item.find(item2_id) %>
-
 <%= form_for(@offer) do |f| %>
 
-<%= f.hidden_field :user1_id, :value => user1_id %>
-<%= f.hidden_field :item1_id, :value => item1_id.join(",") %>
-<%= f.hidden_field :user2_id, :value => user.id %>
-<%= f.hidden_field :item2_id, :value => item2_id.join(",") %>
+<%= f.hidden_field :user1_id, :value => params[:user1_id] %>
+<%= f.hidden_field :item1_id, :value => params[:item1_ids].join(",") %>
+<%= f.hidden_field :user2_id, :value => params[:user2_id] %>
+<%= f.hidden_field :item2_id, :value => params[:item2_ids].join(",") %>
 <%= f.hidden_field :accepted, :value => false %>
 <table>
 
-<% item1_names = [] %>
-<% item2_names = [] %>
-<% item1.each { |i| item1_names << i.name } %>
-<% item2.each { |i| item2_names << i.name } %>
-
-<h4>Asking for <%= User.find(user1_id).user_name %>'s: </h4>
-<%= item1_names.join(", ") %>
+<h4>Asking for <%= User.find(params[:user1_id]).user_name %>'s: </h4>
+<%= params[:item1_names] %>
 
 <h4>Offering:</h4>
-<%= item2_names.join(", ") %>
+<%= params[:item2_names] %>
 
 </table>
 <div class="actions">
