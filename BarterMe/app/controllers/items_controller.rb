@@ -6,8 +6,15 @@ class ItemsController < ApplicationController
  def index
     if params[:query].present?
       @items = Item.search(params[:query], operator: :or,  page: params[:page], per_page: 10)
+      if params[:order].present?
+        @items = Item.order(params[:order])
+      end
     else
-      @items = Item.order("name").page(params[:page])
+      if params[:order].present?
+        @items = Item.order(params[:order]).page(params[:page])
+      else
+        @items = Item.order("name").page(params[:page])
+      end
     end
  end
  
