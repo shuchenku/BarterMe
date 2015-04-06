@@ -22,7 +22,7 @@
 	data: { confirm: 'Are you sure?' } %> <br/>
     
     <% elsif logged_in? && item.user_id != @current_user.id %>
-  <%= button_to 'Add to Cart', line_items_path(item_id: item), class: 'btn btn-primary btn-md' %>
+  <%= button_to 'Add to Watchlist', line_items_path(item_id: item), class: 'btn btn-primary btn-md' %>
   <%= link_to 'Show', item, class: 'btn btn-primary btn-md' %><br/>
   <% elsif logged_in? %>
      <%= link_to 'Show', item, class: 'btn btn-primary btn-md' %><br/>

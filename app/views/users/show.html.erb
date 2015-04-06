@@ -42,7 +42,7 @@
 
 <p>
   <strong>Looking for:</strong>
-  <%= @user.looking_for %>
+  <%= (@user.looking_for[0..-2].map {|i| Category.find(i.to_i).name}).map {|s| s[0..-1]}.join(", ") %>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |

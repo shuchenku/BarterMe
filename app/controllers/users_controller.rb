@@ -42,6 +42,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    @user.looking_for = params[:user][:looking_for]
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: "User #{@user.user_name} was successfully updated." }

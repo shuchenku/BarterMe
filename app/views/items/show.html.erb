@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<p id="notice"><h3><%= notice %></h3></p>
 
   <p>
     <h1><%= @item.name %></h1>
@@ -7,14 +7,17 @@
   <p> 
   <%=image_tag @item.image_url, :size => "200x200" %>
 </p>
-
-  <p> 
+ 
     <h1><strong>Owner:</strong></h1>
-    <%= @item.user.user_name %>
-  </p>
+  <p style="font-size:20px"><a href=<%= "/profile/#{@item.user.id}" %>> <%= "#{@item.user.user_name}" %></a></li></p>
 <p>
   <h1><strong>Description:</strong></h1>
   <%= @item.description %>
+</p>
+
+<p>
+  <h1><strong>Category:</strong></h1>
+  <%= Category.find(@item.category_id).name%>
 </p>
 
 <p>
@@ -26,6 +29,7 @@
   <h1><strong>Quantity:</strong></h1>
   <%= @item.quantity %>
 </p>
+
 <% if logged_in? && @item.user_id == @current_user.id %>
 <%= link_to 'Edit', edit_item_path(@item) %>
 <% end %>

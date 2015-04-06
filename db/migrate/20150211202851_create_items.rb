@@ -15,6 +15,6 @@ class CreateItems < ActiveRecord::Migration
       t.timestamps
     end
     remove_columns(:items, :test2, :product_key,:post_date, :type_id)
-    add_column :items, :category, :string
+    add_column :items, :category_id, :integer
   end
 end

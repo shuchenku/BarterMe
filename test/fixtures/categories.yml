@@ -1,11 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
+c_one:
   name: MyString
   description: MyText
-  item_id: 1
 
-two:
+
+c_two:
   name: MyString
   description: MyText
-  item_id: 1

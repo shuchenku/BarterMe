@@ -21,6 +21,11 @@
     <%= f.label :description %><br>
     <%= f.text_area :description, class: 'form-control' %>
   </div>
+
+  <div class="field">
+    <%= f.label :category %><br>
+    <%= f.select(:category_id, options_from_collection_for_select(Category.all, :id, :name, @item.category_id)) %>
+  </div>
   
   <div class="field">
     <%= f.label :image_url %><br>

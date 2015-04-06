@@ -48,10 +48,9 @@
 
 <div class="form-group" style="margin-bottom:20px">
     <%= f.label :looking_for, 'Looking For?:' %>
-    <%= f.text_field :looking_for, size: 40,class: 'form-control' %>
+    <%= f.collection_check_boxes(:looking_for, Category.all, :id, :name, :checked => @user.looking_for)%>
   </div>
 
-  <!-- test -->
   <% begin %>
   <% if admin? %>
     <div class = "form-group" style="margin-bottom:20px">
