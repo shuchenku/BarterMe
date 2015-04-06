@@ -1,6 +1,7 @@
 # require 'bcrypt'
 
 class User < ActiveRecord::Base
+	serialize :looking_for, Array
 	has_many :items, inverse_of: :user
 	validates :email, presence: true, uniqueness: true
 	validates :user_name, presence: true, uniqueness: true

@@ -56,6 +56,9 @@ class ItemsController < ApplicationController
    @item = Item.new(item_params)
    user = User.find_by(id: session[:user_id])
    @item.user_id = user.id
+   # category = Category.find_by name: params[:category]
+   # @item.category_id = category.id
+
    
    respond_to do |format|
      if @item.save
@@ -105,7 +108,7 @@ class ItemsController < ApplicationController
  
  # Never trust parameters from the scary internet, only allow the white list through.
  def item_params
-   params.require(:item).permit(:name, :description, :image_url, :user_id, :location, :quantity)
+   params.require(:item).permit(:name, :description, :image_url, :user_id, :location, :quantity, :category_id)
  end
 
  def invalid_items 

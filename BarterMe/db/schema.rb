@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 20150331225449) do
   create_table "categories", force: true do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "item_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -35,9 +34,7 @@ ActiveRecord::Schema.define(version: 20150331225449) do
     t.integer  "quantity"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "category1"
-    t.integer  "category2"
-    t.integer  "category3"
+    t.integer  "category_id"
   end
 
   create_table "line_items", force: true do |t|
@@ -59,6 +56,7 @@ ActiveRecord::Schema.define(version: 20150331225449) do
     t.boolean  "accepted"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "pending"
   end
 
   create_table "users", force: true do |t|
@@ -71,7 +69,7 @@ ActiveRecord::Schema.define(version: 20150331225449) do
     t.string   "city"
     t.string   "state"
     t.integer  "zip"
-    t.string   "looking_for"
+    t.text     "looking_for"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "admin"

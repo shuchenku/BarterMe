@@ -16,6 +16,11 @@
 </p>
 
 <p>
+  <h1><strong>Category:</strong></h1>
+  <%= Category.find(@item.category_id).name%>
+</p>
+
+<p>
  <h1><strong>Location:</strong></h1>
   <%= @item.location %>
 </p>
@@ -24,6 +29,7 @@
   <h1><strong>Quantity:</strong></h1>
   <%= @item.quantity %>
 </p>
+
 <% if logged_in? && @item.user_id == @current_user.id %>
 <%= link_to 'Edit', edit_item_path(@item) %>
 <% end %>

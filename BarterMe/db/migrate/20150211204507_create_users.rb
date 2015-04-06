@@ -11,7 +11,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :city
       t.string :state
       t.integer :zip
-      t.string :looking_for
+      t.text :looking_for
 
       t.timestamps
     end
