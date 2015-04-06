@@ -149,18 +149,10 @@ DEPENDENCIES
   faker
   jbuilder (~> 1.2)
   jquery-rails
-<<<<<<< HEAD:Gemfile.lock~
-<<<<<<< HEAD
-  kaminari
-=======
-  pg
->>>>>>> a383472706388e2abf7415a26364ab3948450347
-=======
   kaminari
   pg
   pry
   pry-byebug
->>>>>>> e1cd876231d5335b85ff307a43f45bb2833b6d2e:BarterMe/Gemfile.lock
   rails (= 4.0.0)
   sass-rails (~> 4.0.0)
   sdoc

@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+itemOne:
+  name: coolpants
+  description: MyText
+  image_url: MyString
+  user_id: <%= ActiveRecord::FixtureSet.identify(:dave) %>
+  location: MyString
+  quantity: 1
+  category_id: <%= ActiveRecord::FixtureSet.identify(:c_one) %>
+
+
+itemTwo:
+  name: coolpants
+  description: MyText
+  image_url: MyString
+  user_id: <%= ActiveRecord::FixtureSet.identify(:sam) %>
+  location: MyString
+  quantity: 1
+  category_id: <%= ActiveRecord::FixtureSet.identify(:c_two) %>
+
+itemTree:
+  name: table
+  description: MyText
+  image_url: MyString
+  user_id: <%= ActiveRecord::FixtureSet.identify(:dave) %>
+  location: MyString
+  quantity: 1
+  category_id: <%= ActiveRecord::FixtureSet.identify(:c_one) %>

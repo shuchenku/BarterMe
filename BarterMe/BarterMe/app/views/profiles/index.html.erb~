@@ -1,0 +1,49 @@
+<h1>My Profile</h1>
+
+<% if notice %>
+<p id = "notice"><%= notice%>
+  </p>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>User name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Reliability</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip</th>
+      <th>Looking for</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.user_name %></td>
+        <td><%= user.email %></td>
+        <td><%= user.phone %></td>
+        <td><%= user.reliability %></td>
+        <td><%= user.address %></td>
+        <td><%= user.city %></td>
+        <td><%= user.state %></td>
+        <td><%= user.zip %></td>
+        <td><%= user.looking_for %></td>
+
+	<% if admin? %>
+        <td><%= link_to 'Show', user %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+	<% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

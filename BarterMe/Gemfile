@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+
+ruby '2.2.0'
 # Use for searching
 gem 'searchkick'
 #use for debug
@@ -41,6 +43,10 @@ gem 'autoprefixer-rails'
 gem 'rails-admin'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'kaminari'
+
+#making heroku happy
+gem 'rails_12factor'
+
 
 # gem 'pg'
 group :doc do
