@@ -1,0 +1,23 @@
+<h1>Review your offer</h1>
+
+<%= form_for(@offer) do |f| %>
+
+<%= f.hidden_field :user1_id, :value => params[:user1_id] %>
+<%= f.hidden_field :item1_id, :value => params[:item1_ids].join(",") %>
+<%= f.hidden_field :user2_id, :value => params[:user2_id] %>
+<%= f.hidden_field :item2_id, :value => params[:item2_ids].join(",") %>
+<%= f.hidden_field :accepted, :value => false %>
+<table>
+
+<h4>Asking for <%= User.find(params[:user1_id]).user_name %>'s: </h4>
+<%= params[:item1_names] %>
+
+<h4>Offering:</h4>
+<%= params[:item2_names] %>
+
+</table>
+<div class="actions">
+  <%= f.submit "Confirm Offer", :class => 'btn btn-success btn-lg' %>
+</div>
+<% end %>
+<%= link_to 'Back', '/'%>

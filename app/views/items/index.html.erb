@@ -1,0 +1,22 @@
+<h1>Listing products</h1>
+<div class="row">
+  <div class="col-md-12" style="padding-bottom:10px; border-bottom: 1px solid #ccc">
+    <td class="form-group">
+   <%= form_tag items_path, class: "form-inline", method: :get do %>
+    <%= text_field_tag :query, params[:query], class: "form-control" %>    
+    <%= submit_tag "Search", class: "btn btn-primary" %>
+    <% if params[:query].present? %>    
+    <%= link_to "clear", items_path%>
+    <% end %>
+    <% end %>
+  </td>
+
+ <%= link_to 'Advanced Search', search_items_path %>
+
+    </div>
+</div>
+
+<%= render 'items' %>
+
+<%= link_to 'New Item', new_item_path %>
+<%= paginate @items %>

@@ -1,0 +1,30 @@
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+
+<h2>Your Watchlist</h2>
+<div class="row">
+	<p style="right:80px"></p>
+	<ul>
+		<table class="table table-striped">
+			<% @cart.line_items.each do |item| %>
+			<tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+				<td>
+					<%= image_tag item.item.image_url, :size => "100x100"  %>
+				</td>
+				<td class="list_description">
+					<dl>
+						<dt><%= link_to item.item.name, item_path(item.item) %> &times; <%= item.quantity %></dt>
+						<dd><%= truncate(strip_tags(item.item.description), length: 80) %></dd>
+					</dl>
+				</td>
+			</tr>
+			<% end %> 
+		</table>
+	</ul>
+</div>
+<%= button_to 'Empty Watchlist', @cart, method: :delete,
+data: { confirm: 'Are you sure?' }, class: 'btn btn-primary pull-right btn-md', type: 'button' %>
+
+<!--<%= link_to 'Edit', edit_cart_path(@cart) %> -->
+<!-- <%= link_to 'Back', carts_path %> -->
