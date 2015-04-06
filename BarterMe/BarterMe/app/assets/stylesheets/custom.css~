@@ -1,9 +1,0 @@
- .navbar-default {
-    background-color: #FFF8DC;
-    border-color: #030033;
-}
-
-.jumbotron {
-   background: rgba(20, 54, 54, 0.2); 
-}
-
