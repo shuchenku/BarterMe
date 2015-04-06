@@ -1,0 +1,16 @@
+<h1>Local User Profiles </h1>
+
+<% if notice %>
+<p id = "notice"><%= notice %>
+  </p>
+<% end %>
+
+<div class="col-sm-4">
+  <% @users.each do |user| %>
+ <li><%= link_to "#{user.user_name}", "/profile/" + "#{user.id}" %></li><br>
+  <% end %>
+</div>
+
+<br>
+
+<p><%= paginate @users %></p>

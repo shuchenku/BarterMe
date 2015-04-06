@@ -1,0 +1,63 @@
+<div class="row">
+    <div class="span3" style="border-bottom: 1px solid #ccc">
+	 
+<h1>SEARCH</h1>
+<%= form_tag "search", method: "get", :class => "form-inline", :role => "form"  do %>
+
+<div class="form-group" style="margin-bottom: 20px">
+  <label>Name</label>
+  <br><%= text_field_tag :name, "", class: "form-control" %></br>
+</div>
+<div class="form-group" style="margin-bottom: 20px">
+  <label>Description</label>
+  <br> <%= text_area_tag :description, "", size: "24x2", class: "form-control" %></br>
+</div>
+<div class="form-group" style="margin-bottom: 20px">
+  <label>Quantity</label>
+  <br> <%= text_field_tag :quantity, "", class: "form-control" %></br>
+</div>
+<div class="form-group" style="margin-bottom: 20px">
+  <label>Match All?</label>
+  <%= check_box_tag(:match_all) %>
+</div>
+<%= submit_tag("Search", class: "btn btn-default") %>
+<% end %>
+
+    </div>
+    <%- model_class = Item -%>
+    <div class="span8" style="padding-left:20px; border-left: 1px solid #ccc;">
+      <h1>Matching Items</h1>
+      <table class="table">
+  <% @items.each do |item| %>
+  <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+    <td>
+      <%= image_tag(item.image_url) %>
+  </td>
+  <td class="list_description">
+    <dl>
+      <dt><%= item.name %></dt>
+      <dd><%= truncate(strip_tags(item.description), length: 80) %></dd>
+    </dl>
+  </td>
+    <td
+  <td class="list_actions">
+    <% if logged_in? && admin? %>
+    <%= link_to 'Show', item %><br/>
+    <%= link_to 'Edit', edit_item_path(item) %><br/>
+    <%= link_to 'Destroy', item, method: :delete,
+	data: { confirm: 'Are you sure?' } %> <br/>
+    
+    <% elsif logged_in? %>
+     <%= link_to 'Show', item %><br/>
+     <%= link_to 'Edit', edit_item_path(item) %><br/>
+    <%= button_to 'Add to Cart' ,line_items_path(item_id: item) %>
+    <% else %>
+    <%= link_to 'Show', item %><br/>
+    <% end %>
+    
+  </td>
+  </tr>
+  <% end %>
+      </table>
+      <br />
+
