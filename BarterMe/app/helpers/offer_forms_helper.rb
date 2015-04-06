@@ -1,2 +1,0 @@
-module OfferFormsHelper
-end
