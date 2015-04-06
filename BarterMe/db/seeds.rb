@@ -12,8 +12,16 @@ def create_file(path, extension)
  File.new(path, 'w')
 end
 
+Category.delete_all
 User.delete_all
 Item.delete_all
+
+
+
+#create categories
+File.open("/Users/Yahui/Desktop/BarterMe/BarterMe/db/category.txt").each_line do |line|
+  Category.create(name: line[0..-3], description: "This is the category " + line)
+end
 
 create_file('leaked','txt')
 
@@ -55,6 +63,7 @@ to_file = ''
                 description: Faker::Lorem.paragraph,
                 image_url: open("http://www.hollywoodreporter.com/sites/default/files/imagecache/675x380/2014/09/too_good_for_grumpy_cat.jpg"),
                 user_id: cur_user.id,
+                category_id: Category.offset(rand(Category.count)).first.id,
                 location: Faker::Address.street_address,
                 quantity: rand(4)+1)
   end

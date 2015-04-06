@@ -8,23 +8,12 @@ class Item < ActiveRecord::Base
   validates_uniqueness_of :name, scope: :user_id
   belongs_to :user, foreign_key: "user_id",inverse_of: :items
   validates_presence_of :user
+
+  belongs_to :category, foreign_key: "category_id"
+  validates_presence_of :category
+
   mount_uploader :image_url, ImageUploader
   searchkick word_start: [:name]
-  
-  validate :no_duplicate_category
-  
-  def no_duplicate_category 
-    if !self[:category].nil?
-      if check_duplicate
-        errors.add(:base, "cannot have duplicate categories")
-      end
-    end
-  end
-  
-  def check_duplicate
-    categories = self[:category].split(",")
-    return !(categories.uniq.length == categories.length)
-  end
   
   def self.advsearch(params)
     if params 

@@ -15,16 +15,22 @@ class ItemTest < ActiveSupport::TestCase
   def setup
     @user = User.new(:email=>"xxx@com", :user_name => "haha",:password => "xxx", :password_confirmation => "xxx")
     @user.save
+
+    @category = Category.new(:name=>"c1", :description=>"test c1")
+    @category.save
+
     @product = Item.new(name: "My Item",
                        description: "test item",
                        image_url: "test.jpg",
                        quantity: 5,
-                       user_id: @user.id)
+                       user_id: @user.id, 
+                       category_id: @category.id)
     @productD = Item.new(name: "My Item",
                        description: "test item",
                        image_url: "test.jpg",
                        quantity: 5,
-                       user_id: @user.id)
+                       user_id: @user.id, 
+                       category_id: @category.id)
   end
 
   test "user cannot have duplicate items posted" do
@@ -53,7 +59,8 @@ class ItemTest < ActiveSupport::TestCase
     product = Item.new(name: "My Item",
                        description: "test item",
                        image_url: "test.jpg", 
-                       user_id: @user.id)
+                       user_id: @user.id, 
+                       category_id: @category.id)
 
     product.quantity = 0
     assert product.invalid?
@@ -69,20 +76,4 @@ class ItemTest < ActiveSupport::TestCase
     assert product.valid?
   end
 
-  # test "product cannot have duplicate category" do
-
-  #   @product["category1"] = 1
-  #   assert @product.valid?
-  #   @product["category2"] = 1
-  #   assert @product.invalid?
-  #   @product["category2"] = 2
-  #   assert @product.valid?
-  #   @product["category3"] = 1
-  #   assert @product.invalid?
-  #   @product["category3"] = 2
-  #   assert @product.invalid?
-  #   @product["category3"] = 3
-  #   assert @product.valid?
-
-  # end
 end

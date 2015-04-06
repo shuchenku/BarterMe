@@ -7,6 +7,7 @@ itemOne:
   user_id: <%= ActiveRecord::FixtureSet.identify(:dave) %>
   location: MyString
   quantity: 1
+  category_id: <%= ActiveRecord::FixtureSet.identify(:c_one) %>
 
 
 itemTwo:
@@ -16,6 +17,7 @@ itemTwo:
   user_id: <%= ActiveRecord::FixtureSet.identify(:sam) %>
   location: MyString
   quantity: 1
+  category_id: <%= ActiveRecord::FixtureSet.identify(:c_two) %>
 
 itemTree:
   name: table
@@ -24,3 +26,4 @@ itemTree:
   user_id: <%= ActiveRecord::FixtureSet.identify(:dave) %>
   location: MyString
   quantity: 1
+  category_id: <%= ActiveRecord::FixtureSet.identify(:c_one) %>

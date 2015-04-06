@@ -20,7 +20,7 @@ class ItemsControllerTest < ActionController::TestCase
 # IN THIS TEST, I USED THE FIRST 2 CHARS OF STRING
   test "should create item" do
     assert_difference('Item.count') do
-      post :create, item: { id: @item.id, description: @item.description, image_url: @item.image_url, location: @item.location, name: @item.name[0..2], quantity: @item.quantity, user_id: @item.user_id }
+      post :create, item: { id: @item.id, description: @item.description, image_url: @item.image_url, location: @item.location, name: @item.name[0..2], quantity: @item.quantity, user_id: @item.user_id, category_id: @item.category_id }
     end
 
     assert_redirected_to item_path(assigns(:item))
@@ -37,7 +37,7 @@ class ItemsControllerTest < ActionController::TestCase
   end
 
  test "should update item" do
-   patch :update, id: @item, item: {description: @item.description, image_url: @item.image_url, location: @item.location, name: @item.name, quantity: @item.quantity, user_id: @item.user_id }
+   patch :update, id: @item, item: {description: @item.description, image_url: @item.image_url, location: @item.location, name: @item.name, quantity: @item.quantity, user_id: @item.user_id, category_id: @item.category_id }
    assert_redirected_to item_path(@item.id)
  end
 
