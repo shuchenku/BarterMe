@@ -19,20 +19,15 @@ Item.delete_all
 
 
 #create categories
-File.open("/Users/Yahui/Desktop/BarterMe/BarterMe/db/category.txt").each_line do |line|
-  Category.create(name: line[0..-3], description: "This is the category " + line)
+File.open("db/category.txt").each_line do |line|
+  Category.create(name: line.delete("\n"), description: "This is the category " + line)
 end
 
-create_file('leaked','txt')
-
 tmp_location = Hash.new
-to_file = ''
-
-
+password = 123
 
 10.times do |n|
   user_name = Faker::Name.name
-  password = Faker::Internet.password(4)
   city = Faker::Address.city
   state = Faker::Address.state
   email = Faker::Internet.email(user_name)
@@ -49,10 +44,7 @@ to_file = ''
                          state: state,
                          zip: Faker::Address.zip,
                          admin: false)
-  
-  tmp_str = "Email: "+email+", Password: "+password+"\n"
-  to_file = to_file+tmp_str
-  
+
   3.times do |n|
     
     product = Faker::Commerce.product_name
@@ -80,8 +72,4 @@ User.create(user_name: "admin",
             state: " ",
             zip: Faker::Address.zip,
             admin: true)
-
-leaked = open('leaked.txt', 'w')
-leaked.write(to_file)
-leaked.close
 
