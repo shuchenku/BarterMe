@@ -51,7 +51,6 @@ password = 123
     url = "http://placehold.it/150&text="+product
     
     Item.new
-    puts Category.offset(rand(Category.count)).first.id
     Item.create(name: product,
                 description: Faker::Lorem.paragraph,
                 image_url: open("http://www.hollywoodreporter.com/sites/default/files/imagecache/675x380/2014/09/too_good_for_grumpy_cat.jpg"),
