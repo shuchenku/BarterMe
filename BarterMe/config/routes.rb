@@ -28,7 +28,11 @@ BarterMe::Application.routes.draw do
     get 'profile/:id' => :profile
   end
 
-  resources :offers
+  resources :offers do
+    get :accept, :on => :member
+    get :reject, :on => :member
+  end
+
   resources :users
   
   

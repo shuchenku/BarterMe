@@ -31,8 +31,20 @@ class Offer < ActiveRecord::Base
 	 end
 
 
-	def self.mine?(user)
-    	@offers  = Offer.where(:user2_id => user.id)
+	def self.proposed?(user)
+    	offers2 = Offer.where(:user2_id => user.id)
+  	end
+
+  	def self.received?(user)
+  		offers1 = Offer.where(:user1_id => user.id)
+  	end
+
+  	def  self.mine?(user)
+  		return @offer.user2_id == user.id
+  	end
+
+  	def self.pending?
+  		@offers = Offer.where(:pending => true)
   	end
 
 
