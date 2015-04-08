@@ -7,11 +7,13 @@
     <div class="span4">
       <div class="col-md-4" style="padding-left:20px; border-left: 1px solid #ccc; text-shadow: 2px 2px black; ">
         <div class="jumbotron">
-         <h2> TOP LISTINGS</h2>
+         <h2> TOP 5 LISTINGS</h2>
          <p><font size="5">
-           <%= link_to "Granite", items_path(:query => "granite") %><br>
-           <%= link_to "Hats", items_path(:query => "hat") %><br>
-           <%= link_to "Awesome", items_path(:query => "awesome") %>
+	     <% @top_categories[0,5].each do |k, v| %>
+	     <%= link_to k, items_path(:query => k) %>
+	     <%= "(" + "#{v}" + ")" %><br>
+	     <% end %>
+	    <br> <%= link_to "All Categories", listings_path %>
          </font></p>
        </div>
      </div>
