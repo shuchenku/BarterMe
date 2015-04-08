@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.2.0'
+# ruby '2.2.0'
 # Use for searching
 gem 'searchkick'
 #use for debug
