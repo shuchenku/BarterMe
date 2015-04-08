@@ -7,6 +7,8 @@
 <%= f.hidden_field :user2_id, :value => params[:user2_id] %>
 <%= f.hidden_field :item2_id, :value => params[:item2_ids].join(",") %>
 <%= f.hidden_field :accepted, :value => false %>
+<%= f.hidden_field :pending, :value => true %>
+
 <table>
 
 <h4>Asking for <%= User.find(params[:user1_id]).user_name %>'s: </h4>

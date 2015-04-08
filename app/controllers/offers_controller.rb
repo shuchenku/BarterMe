@@ -5,8 +5,15 @@ class OffersController < ApplicationController
   # GET /offers.json
   def index
     user = User.find_by(id: session[:user_id])
-    @offers = Offer.mine? user
-  end
+    proposed_offers = Offer.proposed? user
+    received_offers = Offer.received? user
+    offers = received_offers.concat(proposed_offers)
+    if (params[:pending]=="all" || params[:pending].nil?)
+      @offers = offers
+    else
+      @offers = offers.select {|o| o.pending == (params[:pending]=="true")}
+    end
+ end
 
   # GET /offers/1
   # GET /offers/1.json
@@ -29,10 +36,10 @@ class OffersController < ApplicationController
 
     respond_to do |format|
       if @offer.save
-        format.html { redirect_to root_url, notice: 'Offer was successfully created.' }
+        format.html { redirect_to offers_url, notice: 'Offer was successfully created.' }
         format.json { render action: 'show', status: :created, location: @offer }
       else
-        format.html { redirect_to root_url, notice: 'Offer invalid.' }
+        format.html { redirect_to offers_url, notice: 'Offer invalid.' }
         format.json { render json: @offer.errors, status: :unprocessable_entity }
       end
     end
@@ -62,6 +69,18 @@ class OffersController < ApplicationController
     end
   end
 
+  def accept
+    set_offer
+    @offer.update_attributes(:accepted => true, :pending => false)
+    redirect_to offers_url
+  end
+
+  def reject
+    set_offer
+    @offer.update_attributes(:accepted => false, :pending => false)
+    redirect_to offers_url
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_offer
@@ -70,6 +89,6 @@ class OffersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def offer_params
-      params.require(:offer).permit(:user1_id, :user2_id, :item1_id, :item2_id, :accepted)
+      params.require(:offer).permit(:user1_id, :user2_id, :item1_id, :item2_id, :accepted, :pending)
     end
   end

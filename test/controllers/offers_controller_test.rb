@@ -22,7 +22,7 @@ class OffersControllerTest < ActionController::TestCase
       post :create, offer: { accepted: @offer.accepted, item1_id: @offer.item1_id, item2_id: @offer.item2_id, user1_id: @offer.user1_id, user2_id: @offer.user2_id }
     end
 
-    assert_redirected_to root_url
+    assert_redirected_to offers_path
   end
 
   test "should show offer" do

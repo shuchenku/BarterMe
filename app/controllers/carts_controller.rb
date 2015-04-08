@@ -60,7 +60,7 @@ class CartsController < ApplicationController
     end
 
     respond_to do |format|
-      format.html { redirect_to "/carts//#{@cart.id}",
+      format.html { redirect_to @cart,
         notice: 'Your watchlist is currently empty' }
       format.json { head :no_content }
     end
