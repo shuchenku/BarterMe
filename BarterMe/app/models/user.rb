@@ -7,6 +7,26 @@ class User < ActiveRecord::Base
 	validates :user_name, presence: true, uniqueness: true
 	mount_uploader :image, ImageUploader
 	has_secure_password
+
+  def self.similarity_score(user1, user2)
+    owner = User.find_by(:user_name => user1)
+    owner_looking_for = Hash.new
+    owner.looking_for.each do |category|
+      category_name = Category.find(category).name
+      owner_looking_for[category_name] = 0
+    end
+    current_user = user2
+    similarity_score = 10
+    current_user_items = Item.find(:all, :conditions => ['user_id LIKE ? ', "%#{current_user.id}%"])
+    current_user_items.each do |item|
+      if owner_looking_for.has_key?(item.category.name)
+        owner_looking_for[item.category.name] += 1
+      end
+    end
+    owner_looking_for.each_value {|val| similarity_score += val*5 }
+    return similarity_score
+  end
+
 	# # users.password_hash in the database is a :string
  #  	include BCrypt
 

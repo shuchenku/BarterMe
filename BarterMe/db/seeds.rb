@@ -41,6 +41,7 @@ password = 123
                          reliability: rand(10),
                          address: Faker::Address.street_address,
                          city: city,
+                         looking_for: [10, 20, 15],
                          state: state,
                          zip: Faker::Address.zip,
                          admin: false)
