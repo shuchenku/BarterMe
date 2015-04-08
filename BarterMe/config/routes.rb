@@ -15,6 +15,10 @@ BarterMe::Application.routes.draw do
   end
   
   post 'offers/new' => 'offers#new'
+  
+  controller :welcome do
+    get 'listings' => :all_listings
+  end
 
   controller :sessions do
     get 'login' => :new

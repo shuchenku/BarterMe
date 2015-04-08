@@ -15,13 +15,34 @@ class Item < ActiveRecord::Base
   mount_uploader :image_url, ImageUploader
   searchkick word_start: [:name]
   
+  def self.listing
+    listings = Hash.new
+    Item.all.each do |item|
+      if listings.has_key?(item.category.name)
+        listings[item.category.name] += 1
+      else
+        listings[item.category.name] = 1
+      end
+    end
+      sorted_listing = listings.sort_by {|k,v| -v} 
+      return sorted_listing
+  end
+  
+  def search_data
+    {
+      name: name,
+      description: description,
+      category: category.name
+    }
+  end
+  
   def self.advsearch(params)
     if params 
       if params[:match_all] == "1" #implement the AND logic
         find(:all, :conditions => ['name LIKE ? AND description LIKE ? AND quantity LIKE?',"%#{params[:name]}%", "%#{params[:description]}%", "%#{params[:quantity]}%"])
       else
         params.each do |k, v|
-          params[k] = "++" if params[k] == "" #by default, if a field is left blank, we can change from the ignore syntax "" to a filler, so that blank fields do not generate all results.
+          params[k] = "++" if params[k] == "" #by default, if a field is left blank, we can change from the ignore syntax "" to a filler
         end
         find(:all, :conditions => ['name LIKE ? OR description LIKE ? OR quantity LIKE?',"%#{params[:name]}%", "%#{params[:description]}%", "%#{params[:quantity]}%"])
       end
