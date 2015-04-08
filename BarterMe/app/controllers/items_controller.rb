@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
    if logged_in?
      user2 = User.find_by(id: session[:user_id]) 
      @items.each do |item|
-       @similarity_score.push(User.similarity_score(item.user.user_name, user2))
+      @similarity_score.push(User.similarity_score(item.user.user_name, user2))
      end
    end
  end

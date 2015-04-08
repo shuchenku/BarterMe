@@ -28,8 +28,10 @@
        <div class="jumbotron">
          <h2> RECOMMENDED BARTERS </h2>
          <p style="color:red"><font size="5">
+	     <% if  @current_user != nil && @current_user.looking_for.size > 1 %>
 	     <% @recommendations.each do |item| %>
 		<%= link_to item.name, "/items/#{item.id}" %> <br>
+		<% end %>
 		<% end %>
            <%= link_to "Feeling Lucky?", "/items/#{(rand(Item.first.id.. Item.last.id))}" %>
          </div>

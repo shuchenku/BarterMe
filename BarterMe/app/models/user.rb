@@ -12,8 +12,10 @@ class User < ActiveRecord::Base
     owner = User.find_by(:user_name => user1)
     owner_looking_for = Hash.new
     owner.looking_for.each do |category|
+      if category != ""
       category_name = Category.find(category).name
       owner_looking_for[category_name] = 0
+      end
     end
     current_user = user2
     similarity_score = 10
