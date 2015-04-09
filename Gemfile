@@ -48,7 +48,7 @@ gem 'kaminari'
 gem 'rails_12factor'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
-gem 'bonsai-elasticsearch-rails'
+gem 'bonsai-elasticsearch-rails', group: :production
 
 
 # gem 'pg'
