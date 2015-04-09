@@ -50,6 +50,7 @@ gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 gem 'bonsai-elasticsearch-rails'
 
+
 # gem 'pg'
 group :doc do
 # bundle exec rake doc:rails generates the API under doc/api.
