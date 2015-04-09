@@ -14,8 +14,6 @@ BarterMe::Application.routes.draw do
     get 'admin' => :index
   end
   
-  post 'offers/new' => 'offers#new'
-  
   controller :welcome do
     get 'listings' => :all_listings
   end
@@ -35,6 +33,7 @@ BarterMe::Application.routes.draw do
   resources :offers do
     get :accept, :on => :member
     get :reject, :on => :member
+    post 'offers/new' => :new
   end
 
   resources :users

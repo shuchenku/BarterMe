@@ -37,4 +37,13 @@
         </table>
         <br/>
       </div>
-    </div>
+   <div class="col-md-2" style="padding-top:10px; border-bottom: 1px solid #ccc">
+     <% if @similarity_score != nil %>
+     <% @similarity_score.each do |score| %>
+    <p style="font-size:30px; color:red; padding-bottom:64px;">
+	<%= score %> 
+     <% end %>
+     <% end %>
+   </div>
+</div>
+
