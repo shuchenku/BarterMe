@@ -1,16 +1,10 @@
 require 'fileutils'
 require 'faker'
 
-def create_file(path, extension)
- dir = File.dirname(path)
-
- unless File.directory?(dir)
-   FileUtils.mkdir_p(dir)
-  end
-
- path << ".#{extension}"
- File.new(path, 'w')
+def random_category
+  return Category.all[rand(Category.all.size-1)].id
 end
+
 
 Category.delete_all
 User.delete_all
@@ -25,6 +19,8 @@ end
 
 tmp_location = Hash.new
 password = 123
+
+
 
 10.times do |n|
   user_name = Faker::Name.name
@@ -41,7 +37,7 @@ password = 123
                          reliability: rand(10),
                          address: Faker::Address.street_address,
                          city: city,
-                         looking_for: [10, 20, 15],
+                         looking_for: [random_category,random_category,random_category],
                          state: state,
                          zip: Faker::Address.zip,
                          admin: false)
