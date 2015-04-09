@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
     end
     current_user = user2
     similarity_score = 10
-    current_user_items = Item.find(:all, :conditions => ['user_id LIKE ? ', "#{current_user.id}"])
+    current_user_items = Item.find(:all, :conditions => ['user_id = ? ', current_user.id])
     current_user_items.each do |item|
       if owner_looking_for.has_key?(item.category.name)
         owner_looking_for[item.category.name] += 1
