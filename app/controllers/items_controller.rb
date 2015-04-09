@@ -3,7 +3,9 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   skip_before_action :authorize, only: [:index, :show, :search]
   rescue_from ActiveRecord::RecordNotFound, with: :invalid_items
+
  def index
+   @similarity_score = Array.new
     if params[:query].present?
       @items = Item.search(params[:query], operator: :or,  page: params[:page], per_page: 10)
       if params[:order].present?
@@ -16,6 +18,12 @@ class ItemsController < ApplicationController
         @items = Item.order("name").page(params[:page])
       end
     end
+   if logged_in?
+     user2 = User.find_by(id: session[:user_id]) 
+     @items.each do |item|
+      @similarity_score.push(User.similarity_score(item.user.user_name, user2))
+     end
+   end
  end
  
  def search

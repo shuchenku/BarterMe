@@ -7,6 +7,75 @@ class User < ActiveRecord::Base
 	validates :user_name, presence: true, uniqueness: true
 	mount_uploader :image, ImageUploader
 	has_secure_password
+
+  def self.similarity_score(user1, user2)
+    owner = User.find_by(:user_name => user1)
+    owner_looking_for = Hash.new
+    owner.looking_for.each do |category|
+      if category != ""
+      category_name = Category.find(category).name
+      owner_looking_for[category_name] = 0
+      end
+    end
+    current_user = user2
+    similarity_score = 10
+    current_user_items = Item.find(:all, :conditions => ['user_id LIKE ? ', "%#{current_user.id}%"])
+    current_user_items.each do |item|
+      if owner_looking_for.has_key?(item.category.name)
+        owner_looking_for[item.category.name] += 1
+      end
+    end
+    owner_looking_for.each_value {|val| similarity_score += val*5 }
+    return similarity_score
+  end
+
+  def self.best_match(user)
+    best_users = Hash.new 
+    items = Item.all
+    user_looking_for = Hash.new
+    best_match = Hash.new
+    recommendations = Array.new
+    user.looking_for.each do |category|
+      if category != ""
+      category_name = Category.find(category).name
+      user_looking_for[category_name] = 0
+      end
+    end
+    items.each do |item|
+      if user_looking_for.has_key?(item.category.name)
+        if best_users.has_key?(item.user.user_name)
+          best_users[item.user.user_name] += 1
+        else
+          best_users[item.user.user_name] = 1
+        end
+      end
+    end
+    sorted_match = best_users.sort_by { |k, v| -v}
+    sorted_match[0..10].each do |k, v|
+      best_match[k] = (User.similarity_score(k, user))
+    end
+    sorted_best_match = best_match.sort_by { |k, v| -v }
+    sorted_best_match[0..5].each do |k, v|
+      possible_items = Item.mine?(User.find_by(:user_name => k))
+      possible_items.each do |item|
+        if user_looking_for.has_key?(item.category.name)
+          recommendations.push(item)
+        end
+      end
+    end
+    return recommendations
+  end
+    
+
+
+
+
+
+
+
+
+
+
 	# # users.password_hash in the database is a :string
  #  	include BCrypt
 
