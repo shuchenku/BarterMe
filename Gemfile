@@ -46,7 +46,9 @@ gem 'kaminari'
 
 #making heroku happy
 gem 'rails_12factor'
-
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
+gem 'bonsai-elasticsearch-rails'
 
 # gem 'pg'
 group :doc do
