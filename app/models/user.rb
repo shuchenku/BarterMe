@@ -10,13 +10,7 @@ class User < ActiveRecord::Base
 
   def self.similarity_score(user1, user2)
     owner = User.find_by(:user_name => user1)
-    owner_looking_for = Hash.new
-    owner.looking_for.each do |category|
-      if category != ""
-      category_name = Category.find(category).name
-      owner_looking_for[category_name] = 0
-      end
-    end
+    owner_looking_for = looking_for?(owner)
     current_user = user2
     similarity_score = 10
     current_user_items = Item.find(:all, :conditions => ['user_id = ? ', current_user.id])
@@ -30,34 +24,17 @@ class User < ActiveRecord::Base
   end
 
   def self.best_match(user)
-    best_users = Hash.new 
-    items = Item.all
-    user_looking_for = Hash.new
     best_match = Hash.new
     recommendations = Array.new
-    user.looking_for.each do |category|
-      if category != ""
-      category_name = Category.find(category).name
-      user_looking_for[category_name] = 0
-      end
-    end
-    items.each do |item|
-      if user_looking_for.has_key?(item.category.name)
-        if best_users.has_key?(item.user.user_name)
-          best_users[item.user.user_name] += 1
-        else
-          best_users[item.user.user_name] = 1
-        end
-      end
-    end
-    sorted_match = best_users.sort_by { |k, v| -v}
+    user_looking_for = looking_for?(user)
+    sorted_match = similar_users(user_looking_for)
     sorted_match[0..10].each do |k, v|
       best_match[k] = (User.similarity_score(k, user))
     end
     sorted_best_match = best_match.sort_by { |k, v| -v }
     sorted_best_match[0..5].each do |k, v|
-      possible_items = Item.mine?(User.find_by(:user_name => k))
-      possible_items.each do |item|
+      matcher_items = Item.mine?(User.find_by(:user_name => k))
+      matcher_items.each do |item|
         if user_looking_for.has_key?(item.category.name)
           recommendations.push(item)
         end
@@ -65,8 +42,32 @@ class User < ActiveRecord::Base
     end
     return recommendations
   end
-    
 
+  def self.similar_users(looking_for)
+    items = Item.all
+    best_users = Hash.new 
+    items.each do |item|
+      if looking_for.has_key?(item.category.name)
+        if best_users.has_key?(item.user.user_name)
+          best_users[item.user.user_name] += 1
+        else
+          best_users[item.user.user_name] = 1
+        end
+      end
+    end
+    return best_users.sort_by { |k, v| -v}
+  end
+
+  def self.looking_for?(user)
+    user_looking_for = Hash.new
+    user.looking_for.each do |category|
+      if category != ""
+        category_name = Category.find(category).name
+        user_looking_for[category_name] = 0
+      end
+    end
+    return user_looking_for
+  end
 
 
 
