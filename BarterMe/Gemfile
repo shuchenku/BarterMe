@@ -8,6 +8,9 @@ gem 'searchkick'
 gem 'pry'
 gem 'pry-byebug'
 
+gem 'fog','~> 1.3.1'
+gem 'figaro'
+
 #use for images
 gem 'carrierwave'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
