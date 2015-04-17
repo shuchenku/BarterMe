@@ -1,0 +1,11 @@
+
+
+<%= form_for([@offer, @offer.comments.new], role: "form", class: "form") do |f| %>
+  
+  <%= f.hidden_field :from, :value => User.find_by(id: session[:user_id]).user_name %>
+  <div class="form-group">
+    <label class="control-label">Comment:</label>
+    <%= f.text_area :message, class: "form-control" %>
+  </div>
+  <%= f.submit 'Submit', class: 'btn btn-primary btn-md' %>
+<% end %>

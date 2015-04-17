@@ -1,6 +1,7 @@
 class Offer < ActiveRecord::Base
 
 	has_many :items
+	has_many :comments
 
 	belongs_to :user1, class_name: "User", foreign_key: "user1_id"	 
 	belongs_to :user2, class_name: "User", foreign_key: "user2_id" 

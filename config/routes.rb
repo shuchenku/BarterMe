@@ -34,6 +34,7 @@ BarterMe::Application.routes.draw do
     get :accept, :on => :member
     get :reject, :on => :member
     post 'offers/new' => :new
+    resources :comments, only: [:index, :new, :create]
   end
 
   resources :users

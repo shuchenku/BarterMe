@@ -10,6 +10,6 @@
 #   stripe_api_key: sk_live_EeHnL644i6zo4Iyq4v1KdV9H
 #   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
 
-AWS_ACCESS_KEY: "AKIAIICF62HK3DWY6CBQ"
-AWS_SECRET_KEY: "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"
+AWS_ACCESS_KEY: "AKIAJKPHC46IVVIQ3LBQ"
+AWS_SECRET_KEY: "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"
 AWS_BUCKET: "bartermeimages"
