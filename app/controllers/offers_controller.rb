@@ -81,10 +81,6 @@ class OffersController < ApplicationController
     redirect_to offers_url
   end
 
-<<<<<<< HEAD:BarterMe/app/controllers/offers_controller.rb
-=======
-
->>>>>>> f95454d3f2da4f1c0ed01d882f74d641fc606c5b:app/controllers/offers_controller.rb
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_offer
