@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="col-md-10" style="padding-top:10px; border-bottom: 1px solid #ccc">
+    <td>
+      <table class="table table-striped">
+        <% @items.each do |item| %>
+        <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+          <td>
+      <%= image_tag item.image_url, :size => "100x100" %>
+  </td>
+  <td class="list_description">
+    <dl>
+      <dt><%= item.name %></dt>
+      <dd><%= truncate(strip_tags(item.description), length: 100) %></dd>
+    </dl>
+  </td>
+  </td>
+  <td class="list_actions">
+    <% if logged_in? && admin? %>
+    <a class="btn btn-default" href="#" role="button">item</a>
+    <%= link_to 'Edit', edit_item_path(item) %><br/>
+    <%= link_to 'Destroy', item, method: :delete,
+	data: { confirm: 'Are you sure?' } %> <br/>
+    
+    <% elsif logged_in? && item.user_id != @current_user.id %>
+  <%= button_to 'Add to Watchlist', line_items_path(item_id: item), class: 'btn btn-primary btn-md' %>
+  <%= link_to 'Show', item, class: 'btn btn-primary btn-md' %><br/>
+  <% elsif logged_in? %>
+     <%= link_to 'Show', item, class: 'btn btn-primary btn-md' %><br/>
+  <%= link_to 'Edit', edit_item_path(item), class: 'btn btn-primary btn-md' %>
+  <% else %>
+   <%= link_to 'Show', item, class: 'btn btn-primary btn-md' %><br/>
+    <% end %>
+     
+            </td>
+          </tr>
+          <% end %>
+        </table>
+        <br/>
+      </div>
+   <div class="col-md-2" style="padding-top:10px; border-bottom: 1px solid #ccc">
+     <% if @similarity_score != nil %>
+     <% @similarity_score.each do |score| %>
+    <p style="font-size:30px; color:red; padding-bottom:64px;">
+	<%= score %> 
+     <% end %>
+     <% end %>
+   </div>
+</div>
+

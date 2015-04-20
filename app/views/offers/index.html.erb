@@ -1,0 +1,69 @@
+<h1>Your Offers</h1>
+
+Filter offer by status: 
+<%= form_tag offers_path, method: 'get' do %>
+<%= select_tag 'pending', options_for_select({"all" => "all", "Pending" => true, "Responded" => false},"all") %>
+<%= submit_tag 'Filter', class: 'btn btn-success btn-md' %>
+<% end %>
+
+<div class="row">
+  <div class="col-md-10" style="padding-top:10px; border-bottom: 1px solid #ccc">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+         <th>Proposee</th>
+         <th>Proposer</th>
+         <th>Items desired</th>
+         <th>Items offered</th>
+         <th>Status</th>
+       </tr>
+     </thead>
+     <tbody>
+      <% @offers.each do |offer| %>
+      <% item1_ids = offer.item1_id.split(",") %>
+      <% item2_ids = offer.item2_id.split(",") %>
+      <% user1 = User.find(offer.user1_id) %>
+      <% user2 = User.find(offer.user2_id) %>
+      <% item1 = Item.find(item1_ids) %>
+      <% item2 = Item.find(item2_ids) %>
+      <tr>
+
+        <% item1_names = [] %>
+        <% item2_names = [] %>
+        <% item1.each { |i| item1_names << i.name } %>
+        <% item2.each { |i| item2_names << i.name } %>
+
+        <td><%= user1.user_name %></td>
+        <td><%= user2.user_name %></td>
+        <td><%= item1_names.join(", ") %></td>
+        <td><%= item2_names.join(", ") %></td>
+        <% if offer.pending %>
+        <td><h4><span class="label label-default label-lg">Pending</span></h4></td>
+        <% else%>
+        <% if offer.accepted %>
+        <td><h4><span class="label label-success label-lg">Accepted</span></h4></td>
+        <% else %>
+        <td><h4><span class="label label-danger label-lg">Rejected</span></h4></td>
+        <% end %>
+        <% end %>
+        <td>
+          <%= link_to 'View offer', offer_path(offer), class: 'btn btn-primary btn-md'%><br/>
+          <% if offer.pending %>
+          <% if offer.user1_id == @current_user.id%>
+          <%= link_to 'Accept', accept_offer_path(offer),
+          data: { confirm: 'Are you sure?' }, class: 'btn btn-primary btn-md' %> <br/>
+          <%= link_to 'Reject', reject_offer_path(offer),
+          data: { confirm: 'Are you sure?' }, class: 'btn btn-primary btn-md' %> <br/>
+          <% else %>
+          <%= link_to 'Retract', offer, method: :delete,
+          data: { confirm: 'Are you sure?' }, class: 'btn btn-primary btn-md' %> <br/>
+          <% end %>
+          <% end %>
+          <%= link_to 'Comment', new_offer_comment_path(offer), class: 'btn btn-primary btn-md' %> 
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+
