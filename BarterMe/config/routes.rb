@@ -2,6 +2,9 @@ BarterMe::Application.routes.draw do
   
   root 'welcome#index'
   
+  #loaderio
+  get '/loaderio-aebddc794bb8ac95237b9436d82e65c1', :to redirect('/loaderio-aebddc794bb8ac95237b9436d82e65c1.html')
+
   resources :line_items
 
   resources :carts, :path => "watchlist"
