@@ -1,10 +1,6 @@
 source 'https://rubygems.org'
 
-<<<<<<< HEAD:BarterMe/Gemfile
-# ruby '2.2.0'
-=======
 ruby '2.2.0'
->>>>>>> f95454d3f2da4f1c0ed01d882f74d641fc606c5b:Gemfile
 # ruby '2.1.5'
 # Use for searching
 gem 'searchkick'
