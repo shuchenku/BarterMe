@@ -37,10 +37,7 @@ BarterMe::Application.routes.draw do
     get :accept, :on => :member
     get :reject, :on => :member
     post 'offers/new' => :new
-<<<<<<< HEAD:BarterMe/config/routes.rb
-=======
     resources :comments, only: [:index, :new, :create]
->>>>>>> f95454d3f2da4f1c0ed01d882f74d641fc606c5b:config/routes.rb
   end
 
   resources :users
