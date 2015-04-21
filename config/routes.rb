@@ -1,9 +1,11 @@
 BarterMe::Application.routes.draw do
   
+  resources :locations
+
   root 'welcome#index'
   
   #loaderio
-  get '/loaderio-aebddc794bb8ac95237b9436d82e65c1', :to redirect('/loaderio-aebddc794bb8ac95237b9436d82e65c1.html')
+  get '/loaderio-aebddc794bb8ac95237b9436d82e65c1' => redirect('/loaderio-aebddc794bb8ac95237b9436d82e65c1.html')
 
   resources :line_items
 

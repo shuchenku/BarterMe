@@ -3,6 +3,8 @@
 class User < ActiveRecord::Base
 	serialize :looking_for, Array
 	has_many :items, inverse_of: :user
+  has_one:location
+  accepts_nested_attributes_for :location, allow_destroy: true
 	validates :email, presence: true, uniqueness: true
 	validates :user_name, presence: true, uniqueness: true
 	mount_uploader :image, ImageUploader

@@ -7,10 +7,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email
       t.string :phone
       t.integer :reliability
-      t.string :address
-      t.string :city
-      t.string :state
-      t.integer :zip
       t.text :looking_for
 
       t.timestamps

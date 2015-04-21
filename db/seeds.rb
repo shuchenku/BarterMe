@@ -9,6 +9,7 @@ end
 Category.delete_all
 User.delete_all
 Item.delete_all
+Location.delete_all
 
 
 
@@ -27,7 +28,9 @@ password = 123
   city = Faker::Address.city
   state = Faker::Address.state
   email = Faker::Internet.email(user_name)
-  tmp_location[n] = city<<', '<<state
+  street = Faker::Address.street_address
+  location = street <<', '<<city<<', '<<state
+  tmp_location[n] = location
   
   cur_user = User.create(user_name: user_name,
                          password: password,
@@ -35,12 +38,10 @@ password = 123
                          email: email,
                          phone: Faker::PhoneNumber.cell_phone,
                          reliability: rand(10),
-                         address: Faker::Address.street_address,
-                         city: city,
                          looking_for: [random_category,random_category,random_category],
-                         state: state,
-                         zip: Faker::Address.zip,
                          admin: false)
+
+  cur_location = Location.create(user_id: cur_user.id, address: location)
 
   3.times do |n|
     
@@ -58,15 +59,13 @@ password = 123
   end
 end
 
-User.create(user_name: "admin",
+admin = User.create(user_name: "admin",
             password: "123",
             password_confirmation: "123",
             email: "admin",
             phone: Faker::PhoneNumber.cell_phone,
             reliability: rand(10),
-            address: Faker::Address.street_address,
-            city: " ",
-            state: " ",
-            zip: Faker::Address.zip,
             admin: true)
+cur_location = Location.create(user_id: admin.id, address: "Brandeis University, Waltham, MA, USA")
+
 

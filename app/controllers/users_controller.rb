@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+    @user.location = Location.new
   end
 
   # GET /users/1/edit
@@ -25,7 +26,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
+    @user = User.new(user_parms)
 
     respond_to do |format|
       if @user.save
@@ -43,6 +44,11 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     @user.looking_for = params[:user][:looking_for]
+    #updates Location: may have a better way
+    l = Location.find_by user_id: @user.id
+
+    l.update_attributes(:address => params[:user][:location_attributes][:address])
+
     respond_to do |format|
       if @user.update(user_params)
         format.html { redirect_to @user, notice: "User #{@user.user_name} was successfully updated." }
@@ -72,6 +78,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:admin, :user_name, :password, :password_confirmation, :email, :phone, :reliability, :address, :city, :state, :image, :looking_for)
+      params.require(:user).permit(:admin, :user_name, :password, :password_confirmation, :email, :phone, :reliability, :image, :looking_for)
     end
 end
