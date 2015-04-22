@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_parms)
+    @user = User.new(user_params)
 
     respond_to do |format|
       if @user.save
@@ -45,9 +45,10 @@ class UsersController < ApplicationController
   def update
     @user.looking_for = params[:user][:looking_for]
     #updates Location: may have a better way
-    l = Location.find_by user_id: @user.id
-
-    l.update_attributes(:address => params[:user][:location_attributes][:address])
+    if !params[:user][:location_attributes].nil? 
+      l = Location.find_by user_id: @user.id
+      l.update_attributes(:address => params[:user][:location_attributes][:address])
+    end
 
     respond_to do |format|
       if @user.update(user_params)
