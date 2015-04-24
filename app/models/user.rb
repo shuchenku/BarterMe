@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 	mount_uploader :image, ImageUploader
 	has_secure_password
 
-  def self.similarity_score(user1, user2)
+  def self.similarity_score(user1, user2, distance = nil)
     owner = User.find_by(:user_name => user1)
     owner_looking_for = looking_for?(owner)
     current_user = user2
@@ -22,6 +22,22 @@ class User < ActiveRecord::Base
       end
     end
     owner_looking_for.each_value {|val| similarity_score += val*5 }
+
+    if !distance.nil?
+      distance = distance.to_i
+      u1_location = Location.find_by user_id: owner.id
+      u2_location = Location.find_by user_id: current_user.id
+
+      user_distance = u1_location.distance_to(u2_location).round(2)
+
+      if user_distance > distance
+        similarity_score = -similarity_score
+      else
+        similarity_score += (distance - user_distance)
+      end
+
+    end
+
     return similarity_score
   end
 
