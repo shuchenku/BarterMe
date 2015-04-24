@@ -1,4 +1,20 @@
 <!DOCTYPE html>
+<style>
+button {
+	color: #9c9;
+	opacity: 1;
+	padding: 0px 0px 0px 0px;
+	vertical-align: middle;
+}
+
+.btn {
+	padding: 10px 20px 10px 20px;
+}
+
+</style>
+
+
+
 <html lang="en">
 <head>
 	<title>Barter Me</title>
@@ -27,32 +43,34 @@
 				<li><a href="/items">Items</a></li> 
 				<li><a href="/offers">Offers</a></li>
 				<li><%= link_to "Watchlist", cart_path(@cart) %></li>
-				<div class="btn-group">
-				  <button type="button" data-toggle="dropdown" aria-expanded="false">
-				    <%= image_tag @current_user.image, :size => "60x40" %>
-				  </button>
-				  <ul class="dropdown-menu" role="menu">
-			   <li><a href="/profile">My Profile</a></li>
-			   <li><a href="/items/my_items">My Items</a></li>
-			   <li> <a href="/logout">Log out</a><li>
-				  </ul>
-				</div>
 			</ul>
-			
-			
-			
-			<%= button_to 'Make a Barter', new_offer_form_path, :method => :get , class: 'btn btn-success pull-right btn-lg', type: 'button'%>
 
-			    <% else %>
-				
-				<li><a href="/login">Login</a></li>
-				<li><a href="/users/new">Sign up</a></li>
-				<li><a href="/items">Items</a></li> 
-				<% end %>
 
-			</ul>
-		</div>
-	</div>
+			<ul class="nav navbar-nav navbar-right">
+				<li><%= link_to 'Make a Barter', new_offer_form_path(@cart)%></li>
+
+				<li><button type="button" data-toggle="dropdown" aria-expanded="false" id="close-image">
+					<img src= <%=@current_user.image %> height="50" width="85"> 
+				</button>
+				<ul class="dropdown-menu" role="menu">
+					<li><a href="/profile">My Profile</a></li>
+					<li><a href="/items/my_items">My Items</a></li>
+					<li><a href="/logout">Log out</a></li>
+				</ul>
+			</li>
+
+			<% else %>
+
+			<li><a href="/login">Login</a></li>
+			<li><a href="/users/new">Sign up</a></li>
+			<li><a href="/items">Items</a></li> 
+			<% end %>
+
+		</ul>
+
+	</ul>
+</div>
+</div>
 </nav>
 <div class="container">
 	<%= yield %>

@@ -48,6 +48,10 @@ class OffersController < ApplicationController
   # PATCH/PUT /offers/1
   # PATCH/PUT /offers/1.json
   def update
+
+    params[:offer][:item1_id] = params[:offer][:item1_id].select{|k,v| v == "1"}.keys.join(",")
+    params[:offer][:item2_id] = params[:offer][:item2_id].select{|k,v| v == "1"}.keys.join(",")
+
     respond_to do |format|
       if @offer.update(offer_params)
         format.html { redirect_to @offer, notice: 'Offer was successfully updated.' }

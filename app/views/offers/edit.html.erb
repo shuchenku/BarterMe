@@ -1,5 +1,88 @@
 <h1>Editing offer</h1>
 
-<%= render 'form' %>
 
-<%= link_to 'Back', offers_path %>
+<% proposer = User.find(@offer.user2_id)%>
+<% proposee = User.find(@offer.user1_id)%>
+<% if (session[:user_id] == proposer.id.to_i)%>
+<% proposer_str = "You are "%>
+<% proposee_str = proposee.user_name + "'s "%>
+<% else %>
+<% proposer_str = proposer.user_name + " is "%>
+<% proposee_str =  "your "%>
+<% end %>
+
+
+<%= form_for(@offer, :url =>  {:action => 'update'}) do |f| %>
+
+<div class="row" style="margin-bottom: 100px">
+	<div class="container-fluid" style="margin-bottom: 1px">
+		<div class="row">
+			<p style="right:80px"></p>
+			<ul>
+				<h2><%= proposer_str %> offering:</h2>
+				<table class="table table-striped">
+					<% items2 = Item.mine?(proposer) %>
+					<% contained = @offer.item2_id.split(",") %>
+					<%= f.fields_for :item2_id do |cb| %>
+					<% items2.each do |item| %>
+					<tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+						<td class="form-group">
+							<%= cb.check_box(item.id, {checked: contained.include?(item.id.to_s)}) %>
+							<td>
+								<%= image_tag item.image_url, :size => "100x100" %>
+							</td>
+							<td class="list_description">
+								<dl>
+									<dt><%= link_to item.name, item_path(item) %></dt>
+									<dd><%= truncate(strip_tags(item.description), length: 80) %></dd>
+								</dl>
+							</td>
+						</td>
+						<% end %>
+						<% end %>
+					</tr>
+				</table>
+			</ul>
+		</div>
+		<div class="row">
+			<p style="right:80px"></p>
+			<ul>
+				<h2>for <%= proposee_str %> items:</h2>
+				<table class="table table-striped">
+					<% items1 = Item.mine?(proposee) %>
+					<% contained = @offer.item1_id.split(",") %>
+					<%= f.fields_for :item1_id do |cb| %>
+					<% items1.each do |item| %>
+					<tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+						<td class="form-group">
+							<%= cb.check_box(item.id, {checked: contained.include?(item.id.to_s)}) %>
+							<td>
+								<%= image_tag item.image_url, :size => "100x100" %>
+							</td>
+							<td class="list_description">
+								<dl>
+									<dt><%= link_to item.name, item_path(item) %></dt>
+									<dd><%= truncate(strip_tags(item.description), length: 80) %></dd>
+								</dl>
+							</td>
+						</td>
+						<% end %>
+						<% end %>
+					</tr>
+				</table>
+			</ul>
+		</div>
+	</div>
+
+	
+	<div class="actions">
+		<%= f.submit "Submit edit", :class => 'btn btn-success btn-lg' %>
+	</div>
+
+
+	<%= link_to 'Back', offers_path %>
+	
+</div>
+
+<% end %>
+

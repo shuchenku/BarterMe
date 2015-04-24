@@ -1,37 +1,19 @@
 <p id="notice"><%= notice %></p>
+<style>
+h4 {
+  color: orange;
+}
+</style>
 
-<p>
-  <strong>User1:</strong>
-  <%= @offer.user1_id %>
-</p>
-
-<p>
-  <strong>User2:</strong>
-  <%= @offer.user2_id %>
-</p>
-
-<p>
-  <strong>Item1:</strong>
-  <%= @offer.item1_id %>
-</p>
-
-<p>
-  <strong>Item2:</strong>
-  <%= @offer.item2_id %>
-</p>
-
-<p>
-  <strong>Accepted:</strong>
-  <%= @offer.accepted %>
-</p>
+<%= render :partial => 'detail', :locals => {:offer => @offer} %>
 
 
-<strong>Chat log:</strong>
+<h4>Chat log:</h4>
 <div class="row">
   <div class="col-md-10" style="padding-top:10px; border-bottom: 1px solid #ccc">
    <table class="table table-striped">
     <thead>
-   </thead>
+    </thead>
     <% @offer.comments.each do |c| %>
     <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
      <td class="col-md-2">
@@ -42,9 +24,9 @@
       <%= c.message %>
     </td>
     <td class="col-md-6">
-    <td>
-      <%= c.created_at.to_s.delete("UTC") %>
-    </td>
+      <td>
+        <%= c.created_at.to_s.delete("UTC") %>
+      </td>
     </td>
   </tr>
   <% end %>

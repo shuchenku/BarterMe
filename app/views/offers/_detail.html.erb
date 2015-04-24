@@ -1,16 +1,23 @@
-<h1>Review your offer</h1>
+<% @offer = Offer.find(params[:id])%>
 
 
 <div class="col">
   <div class="container-fluid" style="margin-bottom: 1px">
     <div class="row" style="padding-left:20px;">
       <p>
-        <% proposer = User.find(params[:user1_id])%>
-        <% proposee = User.find(params[:user2_id])%>
-        <h4><%= "You are is offering items:"%></h4>
+        <% proposer = User.find(@offer.user2_id)%>
+        <% proposee = User.find(@offer.user1_id)%>
+        <% if (session[:user_id] == proposer.id.to_i)%>
+          <% proposer_str = "You are "%>
+          <% proposee_str = proposee.user_name + "'s "%>
+        <% else %>
+          <% proposer_str = proposer.user_name + " is "%>
+          <% proposee_str =  "your "%>
+        <% end %>
+        <h4><%= proposer_str + " offering items:"%></h4>
         <table class="table table-striped">
-          <% params[:item1_ids].each do |id|%>
-          <% item = Item.find(id) %>
+          <% @offer.item2_id.split(",").each do |id|%>
+          <% item = Item.find(id.to_i) %>
           <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
             <td>
               <%= image_tag item.image_url, :size => "100x100" %>
@@ -28,11 +35,11 @@
     </div>
     <div class="span4">
       <div class="row" style="padding-left:20px;">
-        <h4><%= " for " + proposee.user_name + " items:" %></h4>
+        <h4><%= " for " + proposee_str + " items:" %></h4>
       </p>
       <table class="table table-striped">
-        <% params[:item2_ids].each do |id|%>
-        <% item = Item.find(id) %>
+        <% @offer.item1_id.split(",").each do |id|%>
+        <% item = Item.find(id.to_i) %>
         <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
           <td>
             <%= image_tag item.image_url, :size => "100x100" %>
@@ -49,6 +56,16 @@
     </div>
   </div>
 </div>
-<%= button_to "Confirm Offer", {action: "create", offer: {:user1_id=>params[:user1_id], :item1_id=>params[:item1_ids].join(","), :user2_id=>params[:user2_id], :item2_id=>params[:item2_ids].join(","), :accepted=>false, :pending=>true} }, class: 'btn btn-success btn-lg'%>
-
-<%= link_to 'Back', '/'%>
+<p>
+  <h4>Status:</h4>
+  <% if @offer.pending %>
+  <td><h4><span class="label label-default label-lg">Pending</span></h4></td>
+  <% else%>
+  <% if @offer.accepted %>
+  <td><h4><span class="label label-success label-lg">Accepted</span></h4></td>
+  <% else %>
+  <td><h4><span class="label label-danger label-lg">Rejected</span></h4></td>
+  <% end %>
+  <% end %>
+</p>
+</div>

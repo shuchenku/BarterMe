@@ -2,76 +2,7 @@
 <p id="notice"><%= notice %></p>
 <% end %>
 
-<h2>Please select items to trade for</h2>
 
-<%= form_for(@offer_form, :url =>  {:action => 'create'}) do |f| %>
-
-<div class="row">
-  <p style="right:80px"></p>
-  <ul>
-    <table class="table table-striped">
-      <% if @cart.line_items.empty? %>
-      <%= "Add items to your watchlist to make a barter!" %>
-      <%else %>
-      <%= f.fields_for :item1_ids do |cb| %>
-      <% @cart.line_items.each do |item| %>
-      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-        <td class="form-group">
-          <%= cb.check_box(item.item.id) %>
-          <td>
-            <%= image_tag item.item.image_url, :size => "100x100" %>
-          </td>
-          <td class="list_description">
-            <dl>
-              <dt><%= link_to item.item.name, item_path(item.item) %></dt>
-              <dd><%= truncate(strip_tags(item.item.description), length: 80) %></dd>
-            </dl>
-          </td>
-        </td>
-        <% end %>
-        <% end %>
-      </tr>
-      <% end %>
-    </table>
-  </ul>
-</div>
-
-<h2>Please select items to offer in the trade</h2>
-<div class="row">
-  <p style="right:80px"></p>
-  <ul>
-    <table class="table table-striped">
-      <%  user = User.find_by(id: session[:user_id])
-      @items = Item.mine? user %>
-      <%= f.fields_for :item2_ids do |cb| %>
-      <% @items.each do |item| %>
-      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-        <td class="form-group">
-          <%= cb.check_box(item.id) %>
-          <td>
-<<<<<<< HEAD:BarterMe/app/views/offer_forms/new.html.erb
-            <%= image_tag item.item.image_url, :size => "100x100" %>
-=======
-            <%= image_tag item.image_url, :size => "100x100" %>
->>>>>>> f95454d3f2da4f1c0ed01d882f74d641fc606c5b:app/views/offer_forms/new.html.erb
-          </td>
-          <td class="list_description">
-            <dl>
-              <dt><%= link_to item.name, item_path(item) %></dt>
-              <dd><%= truncate(strip_tags(item.description), length: 80) %></dd>
-            </dl>
-          </td>
-        </td>
-      </tr>
-      <% end %>
-      <% end %>
-    </table>
-  </ul>
-</div>
-
-
-<%= f.submit "Next", class: "btn btn-large pull-right btn-primary"%>
-<% end %>
-
+<%= render :partial => 'new_offer_form'%>
 
 
