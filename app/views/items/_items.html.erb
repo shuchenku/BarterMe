@@ -17,6 +17,7 @@
   <td class="list_actions">
     <% if logged_in? && admin? %>
     <a class="btn btn-default" href="#" role="button">item</a>
+    <%= link_to 'Show', item, class: 'btn btn-primary btn-md' %><br/>
     <%= link_to 'Edit', edit_item_path(item) %><br/>
     <%= link_to 'Destroy', item, method: :delete,
 	data: { confirm: 'Are you sure?' } %> <br/>

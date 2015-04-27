@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
       if user_distance > distance
         similarity_score = -similarity_score
       else
-        similarity_score += (distance - user_distance)
+        similarity_score = (similarity_score * (distance- user_distance)/distance).round(2)
       end
 
     end
