@@ -28,14 +28,17 @@ class User < ActiveRecord::Base
       u1_location = Location.find_by user_id: owner.id
       u2_location = Location.find_by user_id: current_user.id
 
-      user_distance = u1_location.distance_to(u2_location).round(2)
+      if !u1_location.nil? && !u2_location.nil?
 
-      if user_distance > distance
-        similarity_score = -similarity_score
-      else
-        similarity_score = (similarity_score * (distance- user_distance)/distance).round(2)
+        user_distance = u1_location.distance_to(u2_location).round(2)
+
+        if user_distance > distance
+          similarity_score = -similarity_score
+        else
+          similarity_score = (similarity_score * (distance- user_distance)/distance).round(2)
+        end
+
       end
-
     end
 
     return similarity_score

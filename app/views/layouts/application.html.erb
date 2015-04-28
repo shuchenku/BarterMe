@@ -20,10 +20,10 @@
 		<div>
 			<ul class="nav navbar-nav">
 				<% if logged_in? %>
-				<% if admin? %>
-				<li><a href="/users">Users</a></li>
-				<li><a href="/admin">Admin</a></li>
-				<% end %>
+					<% if admin? %>
+						<li><a href="/users">Users</a></li>
+						<li><a href="/admin">Admin</a></li>
+					<% end %>
 				<li><a href="/items">Items</a></li> 
 				<li><a href="/offers">Offers</a></li>
 				<li><%= link_to "Watchlist", cart_path(@cart) %></li>

@@ -16,9 +16,10 @@
   </td>
   <td class="list_actions">
     <% if logged_in? && admin? %>
-    <a class="btn btn-default" href="#" role="button">item</a>
-    <%= link_to 'Show', item, class: 'btn btn-primary btn-md' %><br/>
-    <%= link_to 'Edit', edit_item_path(item) %><br/>
+    
+    <%= button_to 'Add to Watchlist', line_items_path(item_id: item), class: 'btn btn-primary btn-md' %>
+    <%= link_to 'Show', item %>
+    <%= link_to 'Edit', edit_item_path(item) %>
     <%= link_to 'Destroy', item, method: :delete,
 	data: { confirm: 'Are you sure?' } %> <br/>
     
@@ -41,9 +42,12 @@
    <div class="col-md-2" style="padding-top:10px; border-bottom: 1px solid #ccc">
      <% if @similarity_score != nil %>
      <% @similarity_score.each do |score| %>
-    <p style="font-size:30px; color:red; padding-bottom:64px;">
-	<%= score %> 
+    <p class = "small" style="font-size:30px; color:red; padding-bottom:64px;">
+	 <%= score %> 
      <% end %>
+     <style> p.small {
+      line-height: 148.55%;
+     }</style>
      <% end %>
    </div>
 </div>
