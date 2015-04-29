@@ -16,28 +16,16 @@
 </p>
 
 <p>
+  <strong>Address:</strong>
+  <% l = Location.find_by user_id: @user.id %>
+  <% if !l.nil? %>
+  <%= l.address%>
+  <%end%>
+</p>
+
+<p>
   <strong>Reliability:</strong>
   <%= @user.reliability %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @user.address %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @user.city %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <%= @user.state %>
-</p>
-
-<p>
-  <strong>Zip:</strong>
-  <%= @user.zip %>
 </p>
 
 <p>

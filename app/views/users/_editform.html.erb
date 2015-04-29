@@ -28,18 +28,10 @@
 
 <div class="form-group" style="margin-bottom:20px">
     <%= f.label :address, 'Address:' %>
-    <%= f.text_field :address, size: 40,class: 'form-control' %>
-  </div>
-
-<div class="form-group" style="margin-bottom:20px">
-    <%= f.label :city, 'City:' %>
-    <%= f.text_field :city, size: 40,class: 'form-control' %>
-  </div>
-
-<div class="form-group" style="margin-bottom:20px">
-    <%= f.label :state, 'State:' %>
-    <%= f.text_field :state, size: 40,class: 'form-control' %>
-  </div>
+    <%= f.fields_for :location, Location do |l| %>
+      <%= l.text_field :address, size: 40,class: 'form-control'%>
+    <%end %>
+</div>
 
 <div class="form-group" style="margin-bottom:20px">
     <%= f.label :image %><br>

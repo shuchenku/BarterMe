@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
 
  def index
    @similarity_score = Array.new
+
     if params[:query].present?
       @items = Item.search(params[:query], operator: :or,  page: params[:page], per_page: 10)
       if params[:order].present?
@@ -18,12 +19,16 @@ class ItemsController < ApplicationController
         @items = Item.order("name").page(params[:page])
       end
     end
+
    if logged_in?
-     user2 = User.find_by(id: session[:user_id]) 
-     @items.each do |item|
-      @similarity_score.push(User.similarity_score(item.user.user_name, user2))
-     end
+    #Yahui is testing locations on score
+      user2 = User.find_by(id: session[:user_id]) 
+      @items.each do |item|
+      @similarity_score.push(User.similarity_score(item.user.user_name, user2, params[:location]))
+      end
    end
+
+
  end
  
  def search

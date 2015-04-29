@@ -21,7 +21,10 @@
   <h2> Public Information </h2>
   <p> Email: <%= user.email %> </p>
   <p> reliability: <%= user.reliability %> </p>
-  <p> address: <%= user.address %> </p>
+  <p> address: 
+    <% unless (loc = (Location.find_by user_id: user.id)).nil? %>
+    <%= loc.address %> </p>
+    <% end %>
   </div>
   </div>
 

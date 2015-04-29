@@ -48,6 +48,10 @@ gem 'rails-admin'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'kaminari'
 
+#geolocation
+gem 'geocoder'
+gem 'mongoid'
+
 #making heroku happy
 gem 'rails_12factor'
 

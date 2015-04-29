@@ -5,11 +5,16 @@ button {
 	opacity: 1;
 	padding: 0px 0px 0px 0px;
 	vertical-align: middle;
+	height: 50px;
+	width: 85px;
 }
 
-.btn {
-	padding: 10px 20px 10px 20px;
-}
+.btn-xlarge {
+    padding: 14px 14px;
+    font-size: 16px;
+    line-height: normal;
+    background-color: #9c9;
+    }
 
 </style>
 
@@ -47,8 +52,7 @@ button {
 
 
 			<ul class="nav navbar-nav navbar-right">
-				<li><%= link_to 'Make a Barter', new_offer_form_path(@cart)%></li>
-
+				<li><%= button_to 'Make a Barter', new_offer_form_path(@cart), :method => :get, class: 'btn-xlarge' %></li>
 				<li><button type="button" data-toggle="dropdown" aria-expanded="false" id="close-image">
 					<img src= <%=@current_user.image %> height="50" width="85"> 
 				</button>
