@@ -25,6 +25,14 @@
   <%= @offer.accepted %>
 </p>
 
+<p>
+  <strong>Rating:</strong>
+  <% r = Rating.find_by user_id: @offer.user1_id + @offer.user2_id - @current_user.id%>
+  <%= r.score %>
+</p>
+
+
+
 
 <strong>Chat log:</strong>
 <div class="row">
