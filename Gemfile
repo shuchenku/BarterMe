@@ -50,7 +50,7 @@ gem 'kaminari'
 
 #geolocation
 gem 'geocoder'
-gem 'mongoid'
+# gem 'mongoid'
 
 #making heroku happy
 gem 'rails_12factor'

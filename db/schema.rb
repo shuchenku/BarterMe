@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150421034247) do
+ActiveRecord::Schema.define(version: 20150429192421) do
 
   create_table "carts", force: true do |t|
     t.datetime "created_at"
@@ -77,16 +77,18 @@ ActiveRecord::Schema.define(version: 20150421034247) do
     t.boolean  "pending"
   end
 
+  create_table "ratings", force: true do |t|
+    t.integer "offer_id"
+    t.integer "user_id"
+    t.float   "score"
+  end
+
   create_table "users", force: true do |t|
     t.string   "user_name"
     t.string   "password"
     t.string   "email"
     t.string   "phone"
     t.integer  "reliability"
-    t.string   "address"
-    t.string   "city"
-    t.string   "state"
-    t.integer  "zip"
     t.text     "looking_for"
     t.datetime "created_at"
     t.datetime "updated_at"

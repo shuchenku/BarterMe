@@ -1,5 +1,4 @@
 require 'geocoder'
-require 'mongoid'
 
 
 class Location < ActiveRecord::Base
