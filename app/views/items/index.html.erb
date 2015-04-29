@@ -1,40 +1,38 @@
 <h1>Listing products</h1>
 <div class="row">
-  <div class="col-md-6" style="padding-bottom:10px; border-bottom: 1px solid #ccc">
+  <div class="col-md-6" style="padding-bottom:10px">
     <td class="form-group">
-   <%= form_tag items_path, class: "form-inline", method: :get do %>
-    <%= text_field_tag :query, params[:query], class: "form-control", :style => "width:170px"%>    
-    <%= submit_tag "Search", class: "btn btn-primary" %></br>
-    <% if params[:query].present? %>    
-    <%= link_to "clear", items_path%>
-    <% end %>
-    <% end %>
-
-    <td class="form-group">
-   <%= form_tag items_path, class: "form-inline", method: :get do %>
-    <% options = options_for_select([['name', "name"], ['description', "description"], ['quantity', "quantity"]]) %>
-    <%= select_tag(:order, options, class: "form-control", :style => "width:170px") %>
-    <%= submit_tag "Order By", class: "btn btn-primary" %>
+     <%= form_tag items_path, class: "form-inline", method: :get do %>
+     <%= text_field_tag :query, params[:query], class: "form-control", :style => "width:170px"%>    
+     <%= submit_tag "Search", class: "btn btn-primary" %></br>
+     <% if params[:query].present? %>    
+     <%= link_to "clear", items_path%>
      <% end %>
-  </td>
+     <% end %>
 
-   
-
- <%= link_to 'Advanced Search', search_items_path %>
-
-    </div>
-  <div class="col-md-6" style="padding-bottom:10px; padding-left:350px">
-    <h2>Can I get it? </h2></br>
-        <td class="form-group">
-  <%if logged_in? && has_location?(current_user.id)%>
-   <%= form_tag items_path, class: "form-inline", method: :get do %>
-   <%= label(:location, :"How far you're willing to travel?")%>
-    <% options = options_for_select([['All miles', 24901],['10 miles', 10], ['20 miles', 20], ['50 miles', 50], ['100 miles', 100]]) %>
-    <%= select_tag(:location, options, class: "form-control") %>
-    <%= submit_tag "Apply", class: "btn btn-primary" %>
-    <%end%>
-    <%end%>
-  </td>
+     <td class="form-group">
+       <%= form_tag items_path, class: "form-inline", method: :get do %>
+       <% options = options_for_select([['name', "name"], ['description', "description"], ['quantity', "quantity"]]) %>
+       <%= select_tag(:order, options, class: "form-control", :style => "width:170px") %>
+       <%= submit_tag "Order By", class: "btn btn-primary" %>
+       <% end %>
+     </td>
+     <%= link_to 'Advanced Search', search_items_path %>
+   </div>
+   <div class="col-md-4" style="padding-left:241px; padding-top:50px">
+      <h3>Can I get it? </h3>
+   </div>
+   <div class="col-md-2" style="padding-top:50px">
+    <td class="form-group">
+      <%if logged_in? && has_location?(current_user.id)%>
+      <%= form_tag items_path, class: "form-inline", method: :get do %>
+      <%= label(:location, :"How far you're willing to travel?")%>
+      <% options = options_for_select([['All miles', 24901],['10 miles', 10], ['20 miles', 20], ['50 miles', 50], ['100 miles', 100]]) %>
+      <%= select_tag(:location, options, class: "form-control") %>
+      <%= submit_tag "Apply", class: "btn btn-primary" %>
+      <%end%>
+      <%end%>
+    </td>
 
   </div>
 </div>
