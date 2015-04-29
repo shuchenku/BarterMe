@@ -29,6 +29,14 @@ class ItemsController < ApplicationController
    end
 
 
+   count = @similarity_score.length-1
+   (-count..-0).each do |i|
+    if(@similarity_score[i] < 0) 
+      @similarity_score.delete_at(i)
+      @items.delete_at(i)
+    end
+  end
+
  end
  
  def search

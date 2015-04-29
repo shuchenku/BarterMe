@@ -25,7 +25,9 @@
 
 <p>
   <strong>Reliability:</strong>
-  <%= @user.reliability %>
+  <%count1 = Offer.find(:all, :conditions => { :user1_id => @user.id, :accepted => true})%>
+  <%count2 = Offer.find(:all, :conditions => { :user2_id => @user.id, :accepted => true})%>
+  <%= count1.length + count2.length %>
 </p>
 
 <p>

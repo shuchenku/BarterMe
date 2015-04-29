@@ -15,16 +15,22 @@
 <div class="row">
   <div class="col-md-6">
   <div class="jumbotron">
-  <h2> About </h2>
-  <p> hi, I'm <%= user.user_name %> </p>
+  <h2> <u>About</u> </h2>
+  <p> Hi, I'm <%= user.user_name %> </p>
   <% user = @user %>
-  <h2> Public Information </h2>
-  <p> Email: <%= user.email %> </p>
-  <p> reliability: <%= user.reliability %> </p>
-  <p> address: 
-    <% unless (loc = (Location.find_by user_id: user.id)).nil? %>
-    <%= loc.address %> </p>
-    <% end %>
+  <h2> <u>Public Information</u> </h2>
+  <p> <b>Email</b>: <%= user.email %> </p>
+  <p> <b>Reliability</b>: <%count1 = Offer.find(:all, :conditions => { :user1_id => user.id, :accepted => true})%>
+  <%count2 = Offer.find(:all, :conditions => { :user2_id => user.id, :accepted => true})%>
+  <%= count1.length + count2.length %> </p>
+  <%l = Location.find_by user_id: user.id%>
+  <p> <b>Address</b>: <%if !l.nil? %> 
+    <%=l.address%>
+    <% if user.id != @current_user.id %>
+  <% tmp = Location.find_by user_id: @current_user.id %>
+  <p><b>Distance</b>: <%= l.distance_to(tmp).round(2)%> miles </p>
+  <% end %>
+    <%end%></p>
   </div>
   </div>
 
