@@ -9,9 +9,9 @@ h4 {
 
 
 <p>
-  <strong>Rating:</strong>
+  <h4>Rating:</h4>
   <% r = Rating.find_by user_id: @offer.user1_id + @offer.user2_id - @current_user.id%>
-  <%= r.score %>
+  <%= image_tag 'http://www.wpclipart.com/signs_symbol/stars/5_star_rating_system/stars_2/'+ r.score.to_i.to_s + '_stars.png', :size => "150x30"  %>
 </p>
 
 

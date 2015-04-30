@@ -3,21 +3,19 @@
 Filter offer by status: 
 <%= form_tag offers_path, method: 'get' do %>
 <%= select_tag 'pending', options_for_select({"all" => "all", "Pending" => true, "Responded" => false},"all") %>
-<%= submit_tag 'Filter', class: 'btn btn-success btn-md' %>
+<%= submit_tag 'Filter', class: 'btn btn-primary btn-md' %>
 <% end %>
 
 <div class="row">
   <div class="col-md-10" style="padding-top:10px; border-bottom: 1px solid #ccc">
     <table class="table table-striped">
       <thead>
-        <tr>
          <th>Proposee</th>
          <th>Proposer</th>
          <th>Items desired</th>
          <th>Items offered</th>
          <th>Status</th>
          <th>Ratings</th>
-       </tr>
      </thead>
      <tbody>
       <% @offers.each do |offer| %>
@@ -50,7 +48,7 @@ Filter offer by status:
           <% end %>
 
           <% r = Rating.find_by user_id: offer.user1_id + offer.user2_id - @current_user.id%>
-          <td><%= r.score %></td>
+          <td><%= image_tag 'http://www.wpclipart.com/signs_symbol/stars/5_star_rating_system/stars_2/'+ r.score.to_i.to_s + '_stars.png', :size => "120x24"  %></td>
           
           <td>
             <%= link_to 'View offer', offer_path(offer), class: 'btn btn-primary btn-md'%><br/>

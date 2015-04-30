@@ -49,6 +49,6 @@
     </div>
   </div>
 </div>
-<%= button_to "Confirm Offer", {action: "create", offer: {:user1_id=>params[:user1_id], :item1_id=>params[:item1_ids].join(","), :user2_id=>params[:user2_id], :item2_id=>params[:item2_ids].join(","), :accepted=>false, :pending=>true} }, class: 'btn btn-success btn-lg'%>
+<%= button_to "Confirm Offer", {action: "create", offer: {:user1_id=>params[:user1_id], :item1_id=>params[:item1_ids].join(","), :user2_id=>params[:user2_id], :item2_id=>params[:item2_ids].join(","), :accepted=>false, :pending=>true} }, :class => 'myButton' %>
 
 <%= link_to 'Back', '/'%>

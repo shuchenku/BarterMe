@@ -61,7 +61,7 @@
   </ul>
 </div>
 
-<%= f.submit "Next", class: "btn btn-large pull-right btn-primary", :disabled => @cart.line_items.empty? || @items.empty?%>
+<%= f.submit "Next", :class => 'myButton', :disabled => @cart.line_items.empty? || @items.empty?%>
 <% end %>
 
 
