@@ -10,6 +10,7 @@ h4 {
 
 <p>
   <h4>Rating:</h4>
+
   <% r = Rating.find_by user_id: @offer.user1_id + @offer.user2_id - @current_user.id%>
   <%= image_tag r.score.to_i.to_s + '_star.png', :size => "150x30"  %>
 </p>
@@ -17,7 +18,7 @@ h4 {
 
 <div class="row">
   <div class="col-md-10" style="padding-top:10px; border-bottom: 1px solid #ccc">
-    <%= render :partial => 'ratings/form', :locals => {:offer => @offer}  %>
+    <%= render :partial => 'ratings/form', :locals => {:rating => r}  %>
   </div>
 </div>
 
