@@ -6,7 +6,7 @@ class RatingsController < ApplicationController
 	def update
 		@rating = Rating.find(params[:id])
 		respond_to do |format|
-      		if @rating.update_attributes(rating_params)
+      		if @rating.update(rating_params)
 		        format.html { redirect_to Offer.find(params[:rating][:offer_id]), notice: 'Rating was successfully updated.' }
 		        format.json { head :no_content }
       		else
