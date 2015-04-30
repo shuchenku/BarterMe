@@ -4,6 +4,14 @@
     border-color: #030033;
     font-color: #FFFFFF;
 }
+
+
+ .nav-tabs {
+    background-color: rgba(0, 0, 0, 0.7);
+     border-color: #030033;
+     font-color: #FFFFFF;
+}
+
 .flash-message {
 .notice {
     border: solid 10px #26722D;

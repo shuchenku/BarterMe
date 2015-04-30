@@ -14,6 +14,15 @@ h4 {
   <%= r.score %>
 </p>
 
+
+<div class="row">
+  <div class="col-md-10" style="padding-top:10px; border-bottom: 1px solid #ccc">
+    <%= render :partial => 'ratings/form', :locals => {:offer => @offer}  %>
+  </div>
+</div>
+
+
+
 <div class="row">
   <div class="col-md-10" style="padding-top:10px; border-bottom: 1px solid #ccc">
    <table class="table table-striped">

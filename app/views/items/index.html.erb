@@ -1,6 +1,6 @@
 <h1>Listing products</h1>
-<div class="row">
-  <div class="col-md-6" style="padding-bottom:10px">
+<div class="row" style="padding-top:10px">
+   <div class="col-md-3" style="padding-top:10px">
     <td class="form-group">
      <%= form_tag items_path, class: "form-inline", method: :get do %>
      <%= text_field_tag :query, params[:query], class: "form-control", :style => "width:170px"%>    
@@ -9,20 +9,22 @@
      <%= link_to "clear", items_path%>
      <% end %>
      <% end %>
+    <%= link_to 'Advanced Search', search_items_path %>
+   </div>
 
-     <td class="form-group">
+      <td class="form-group">
        <%= form_tag items_path, class: "form-inline", method: :get do %>
        <% options = options_for_select([['name', "name"], ['description', "description"], ['quantity', "quantity"]]) %>
+     </td>
+     <div class="col-md-3" style="padding-top:10px">
        <%= select_tag(:order, options, class: "form-control", :style => "width:170px") %>
        <%= submit_tag "Order By", class: "btn btn-primary" %>
        <% end %>
-     </td>
-     <%= link_to 'Advanced Search', search_items_path %>
-   </div>
-   <div class="col-md-4" style="padding-left:241px; padding-top:50px">
+      </div>
+   <div class="col-md-4" style="padding-left:200px">
       <h3>Can I get it? </h3>
    </div>
-   <div class="col-md-2" style="padding-top:50px">
+   <div class="col-md-2">
     <td class="form-group">
       <%if logged_in? && has_location?(current_user.id)%>
       <%= form_tag items_path, class: "form-inline", method: :get do %>

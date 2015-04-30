@@ -33,7 +33,12 @@ button {
 	<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 	<%= csrf_meta_tags %>
 </head>
-<nav class="navbar navbar-default">
+	<style type="button/css">
+		ul li:hover ul {
+			display: block; /* display dropdown */
+		}
+</style>
+<nav class="nav-tabs">
 	<div class="container">
 		<div class="navbar-header">
 			<a class="navbar-brand" href="/"> <span class="glyphicon glyphicon-home"></span> Barter Me</a>

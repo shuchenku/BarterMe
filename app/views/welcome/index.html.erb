@@ -2,43 +2,34 @@
 <% if notice %>
 <p id="notice"><%= notice %></p>
 <% end %>
-<div class="row">
-  <div class="container-fluid" style="margin-bottom: 1px">
-    <div class="span4">
-      <div class="col-md-4" style="padding-left:20px; border-left: 1px solid #ccc; text-shadow: 2px 2px black; ">
-        <div class="jumbotron">
-         <h2> TOP 5 LISTINGS</h2>
-         <p><font size="5">
-	     <% @top_categories[0,5].each do |k, v| %>
-	     <%= link_to k, items_path(:query => k) %>
-	     <%= "(" + "#{v}" + ")" %><br>
-	     <% end %>
-	    <br> <%= link_to "All Categories", listings_path %>
-         </font></p>
-       </div>
-     </div>
-     <div class="span4">
-      <div class="col-md-4" style="padding-left:20px; border-left: 1px solid #ccc; text-shadow: 2px 2px black;">
-       <div class="jumbotron">
-         <h2> BARTER OF THE DAY</h2>
-       </div>
-     </div>
-     <div class="span4">
-      <div class="col-md-4" style="padding-left:20px; border-right: 1px solid #ccc; border-left: 1px solid #ccc; text-shadow: 2px 2px black;">
-       <div class="jumbotron">
-         <h2> RECOMMENDED BARTERS </h2>
-         <p style="color:red"><font size="5">
-	     <% if  @current_user != nil && @current_user.looking_for.size > 1 %>
-	     <% @recommendations.each do |item| %>
-		<%= link_to item.name, "/items/#{item.id}" %> <br>
-		<% end %>
-		<% end %>
-           <%= link_to "Feeling Lucky?", "/items/#{(rand(Item.first.id.. Item.last.id))}" %>
-         </div>
-       </div>
-     </div>
+<div class="row" style="padding-top:10px;">
+      <div class="jumbotron" style="padding-top:10px; padding-left:10px; padding-right:10px;">
+  <div class="container-fluid">
+      <div class="col-md-4" style="padding-left:10px; padding-right:10px; text-shadow: 2px 2px black; ">
+       <h2> TOP 5 LISTINGS</h2>
+       <p><font size="5">
+        <% @top_categories[0,5].each do |k, v| %>
+        <%= link_to k, items_path(:query => k) %>
+        <%= "(" + "#{v}" + ")" %><br>
+        <% end %>
+        <br> <%= link_to "All Categories", listings_path %>
+      </font></p>
+    </div>
+    <div class="col-md-4" style="padding-left:10px; padding-right:10px; border-left: 1px solid #ccc; text-shadow: 2px 2px black;">
+     <h2> BARTER OF THE DAY</h2>
    </div>
- </div>
+   <div class="col-md-4" style="padding-left:10px; padding-right:10px; border-left: 1px solid #ccc; text-shadow: 2px 2px black;">
+     <h2> RECOMMENDED BARTERS </h2>
+     <p style="color:red"><font size="5">
+      <% if  @current_user != nil && @current_user.looking_for.size > 1 %>
+      <% @recommendations.each do |item| %>
+      <%= link_to item.name, "/items/#{item.id}" %> <br>
+      <% end %>
+      <% end %>
+      <%= link_to "Feeling Lucky?", "/items/#{(rand(Item.first.id.. Item.last.id))}" %>
+    </div>
+  </div>
 </div>
-
+</div>
+</div>
 

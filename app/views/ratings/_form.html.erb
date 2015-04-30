@@ -1,0 +1,15 @@
+<%@rating = Rating.find(params[:id].to_i)%>
+
+<%= form_for(@rating, :url =>  {:controller => 'ratings', :action => 'update'}) do |f| %>
+    <div class="row">
+    <p style="right:80px"></p>
+    	<%= f.hidden_field :id, :value=> @rating.id %>
+    	<%= f.hidden_field :user_id, :value=> @rating.user_id %>
+    	<%= f.hidden_field :offer_id, :value=> @rating.offer_id %>
+        <%= f.label :"Ratings:" %>
+        <% options = options_for_select([[1,1.0],[2,2.0],[3,3.0],[4,4.0],[5,5.0]]) %>
+        <%= f.select(:score, options) %>
+        <%= f.submit 'Submit', class: 'btn btn-primary btn-md' %>
+    </div>
+
+<%end%>

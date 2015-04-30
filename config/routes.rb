@@ -44,6 +44,7 @@ BarterMe::Application.routes.draw do
 
   resources :users
   
+  resources :ratings
   
   resources :items do
     collection do

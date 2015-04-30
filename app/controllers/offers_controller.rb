@@ -33,15 +33,12 @@ class OffersController < ApplicationController
   # POST /offers.json
   def create
     @offer = Offer.new(offer_params)
-
     respond_to do |format|
-
       if @offer.save
         format.html { redirect_to offers_url, notice: 'Offer was successfully created.' }
         format.json { render action: 'show', status: :created, location: @offer }
         Rating.create(:offer_id => @offer.id, :user_id=>@offer.user1_id, :score => 0)
         Rating.create(:offer_id => @offer.id, :user_id=>@offer.user2_id, :score => 0)
-
       else
         format.html { redirect_to offers_url, notice: 'Offer invalid.' }
         format.json { render json: @offer.errors, status: :unprocessable_entity }
