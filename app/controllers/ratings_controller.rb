@@ -3,6 +3,14 @@ class RatingsController < ApplicationController
 		@ratings = Rating.all
 	end
 
+	def new
+		@rating = Rating.new
+	end
+
+	def create
+		@rating = Rating.create(rating_params)
+	end
+
 	def update
 		@rating = Rating.find(params[:id])
 		respond_to do |format|
