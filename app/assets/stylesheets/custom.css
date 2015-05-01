@@ -1,4 +1,6 @@
 /* change background color and get rid of it*/
+@import "bootstrap";
+
  .navbar-default {
     background-color: rgba(255, 178, 102, 0.9);
     border-color: #030033;
