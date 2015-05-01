@@ -26,9 +26,9 @@ button {
 	<%= csrf_meta_tags %>
 </head>
 <style type="button/css">
-		ul li:hover ul {
-			display: block; /* display dropdown */
-		}
+ul li:hover ul {
+	display: block; /* display dropdown */
+}
 </style>
 <nav class="nav-tabs">
 	<div class="container">
@@ -38,10 +38,10 @@ button {
 		<div>
 			<ul class="nav navbar-nav">
 				<% if logged_in? %>
-					<% if admin? %>
-						<li><a href="/users">Users</a></li>
-						<li><a href="/admin">Admin</a></li>
-					<% end %>
+				<% if admin? %>
+				<li><a href="/users">Users</a></li>
+				<li><a href="/admin">Admin</a></li>
+				<% end %>
 				<li><a href="/items">Items</a></li> 
 				<li><a href="/offers">Offers</a></li>
 				<li><%= link_to "Watchlist", cart_path(@cart) %></li>
@@ -51,7 +51,11 @@ button {
 			<ul class="nav navbar-nav navbar-right">
 				<li style="padding-right:10px; "><%= button_to 'Make a Barter', new_offer_form_path(@cart), :method => :get, class: 'myButton' %></li>
 				<li><button type="button" data-toggle="dropdown" aria-expanded="false" id="close-image">
-					<img src= <%=@current_user.image %> height="50" width="85"> 
+					<% if @current_user.image.present? %>
+					  <img src= <%=@current_user.image %> height="50" width="85"> 
+					<% else %>
+					  <%= image_tag 'person.png', :size => "85x50" %>
+					<% end %>
 				</button>
 				<ul class="dropdown-menu" role="menu">
 					<li><a href="/profile">My Profile</a></li>

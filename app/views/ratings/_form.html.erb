@@ -1,4 +1,4 @@
-<%@rating = Rating.find(params[:id].to_i)%>
+<%@rating = Rating.find_by(offer_id: params[:id].to_i, user_id: @offer.user1_id + @offer.user2_id - @current_user.id)%>
 
 <%= form_for(@rating, :url =>  {:controller => 'ratings', :action => 'update'}) do |f| %>
     <div class="row">

@@ -48,7 +48,7 @@ Filter offer by status:
           <% end %>
 
           <% r = Rating.find_by user_id: offer.user1_id + offer.user2_id - @current_user.id%>
-          <td><%= image_tag 'http://www.wpclipart.com/signs_symbol/stars/5_star_rating_system/stars_2/'+ r.score.to_i.to_s + '_stars.png', :size => "120x24"  %></td>
+          <td><%= image_tag  r.score.to_i.to_s + '_star.png', :size => "120x24"  %></td>
           
           <td>
             <%= link_to 'View offer', offer_path(offer), class: 'btn btn-primary btn-md'%><br/>
