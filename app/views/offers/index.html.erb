@@ -15,7 +15,7 @@ Filter offer by status:
          <th>Items desired</th>
          <th>Items offered</th>
          <th>Status</th>
-         <th>Ratings</th>
+         <th>You rated this barter:</th>
      </thead>
      <tbody>
       <% @offers.each do |offer| %>
@@ -48,8 +48,13 @@ Filter offer by status:
           <% end %>
 
           <% r = Rating.find_by user_id: offer.user1_id + offer.user2_id - @current_user.id%>
-          <td><%= image_tag  r.score.to_i.to_s + '_star.png', :size => "120x24"  %></td>
-          
+          <td>
+            <% if offer.accepted? %>
+            <%= image_tag  r.score.to_i.to_s + '_star.png', :size => "120x24"  %></td>
+            <% else %>
+            <%= "Rating available after" %></br>
+            <%= "the barter is accepted."%>
+            <% end %>
           <td>
             <%= link_to 'View offer', offer_path(offer), class: 'btn btn-primary btn-md'%><br/>
             <% if offer.pending %>

@@ -7,11 +7,19 @@ h4 {
 
 <%= render :partial => 'detail', :locals => {:offer => @offer} %>
 
+<% if @offer.accepted? %>
+
+<% other_user = User.find(@offer.user1_id + @offer.user2_id - @current_user.id) %>
+<p>
+  <h4><%= other_user.user_name + " rated you:" %></h4>
+  <% ry = Rating.find_by(offer_id: params[:id], user_id: @current_user.id)%>
+  <%= image_tag ry.score.to_i.to_s + '_star.png', :size => "150x30"  %>
+</p>
 
 <p>
-  <h4>Rating:</h4>
-  <% r = Rating.find_by user_id: @offer.user1_id + @offer.user2_id - @current_user.id%>
-  <%= image_tag r.score.to_i.to_s + '_star.png', :size => "150x30"  %>
+  <h4><%= "You rated " + other_user.user_name + ":"%></h4>
+  <% ro = Rating.find_by(offer_id: params[:id], user_id: other_user.id)%> 
+  <%= image_tag ro.score.to_i.to_s + '_star.png', :size => "150x30"  %>
 </p>
 
 
@@ -20,6 +28,8 @@ h4 {
     <%= render :partial => 'ratings/form', :locals => {:offer => @offer}  %>
   </div>
 </div>
+
+<% end %>
 
 
 

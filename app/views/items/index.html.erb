@@ -21,12 +21,15 @@
        <%= submit_tag "Order By", class: "btn btn-primary" %>
        <% end %>
       </div>
+
    <div class="col-md-2" style="padding-left:78px; padding-top: 50px">
-      <h4>Can I get it? </h4>
+    <%if logged_in? %>
+      <h4><%= "Can I get it?" %></h4>
    </div>
    <div class="col-md-2">
     <td class="form-group">
-      <%if logged_in? && has_location?(current_user.id)%>
+
+      <%if has_location?(current_user.id)%>
       <%= form_tag items_path, class: "form-inline", method: :get do %>
       <%= label(:location, :"How far you're willing to travel?")%>
       <% options = options_for_select([['All miles', 24901],['10 miles', 10], ['20 miles', 20], ['50 miles', 50], ['100 miles', 100]]) %>
@@ -34,6 +37,7 @@
       <%= submit_tag "Apply", class: "btn btn-primary" %>
       <%end%>
       <%end%>
+    <%end%>
     </td>
 
   </div>

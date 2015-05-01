@@ -10,6 +10,9 @@ Category.delete_all
 User.delete_all
 Item.delete_all
 Location.delete_all
+Rating.delete_all
+Comment.delete_all
+Cart.delete_all
 
 
 

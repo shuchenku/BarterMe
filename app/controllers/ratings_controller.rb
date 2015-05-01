@@ -12,7 +12,8 @@ class RatingsController < ApplicationController
 	end
 
 	def update
-		@rating = Rating.find(params[:id])
+		offer = Offer.find(params[:id])
+		@rating = Rating.find_by(offer_id: offer.id, user_id: offer.user1_id+ offer.user2_id- @current_user.id)
 		respond_to do |format|
       		if @rating.update(rating_params)
 		        format.html { redirect_to Offer.find(params[:rating][:offer_id]), notice: 'Rating was successfully updated.' }
