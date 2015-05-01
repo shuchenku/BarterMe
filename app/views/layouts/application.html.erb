@@ -51,17 +51,18 @@ ul li:hover ul {
 			<ul class="nav navbar-nav navbar-right">
 				<li style="padding-right:10px; "><%= button_to 'Make a Barter', new_offer_form_path(@cart), :method => :get, class: 'myButton' %></li>
 
-				<li class="btn-group">
-    <button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle"><% if @current_user.image.present? %>
+				<li class="dropdown">
+            <a href="#" data-toggle="dropdown" class="dropdown-toggle"><% if @current_user.image.present? %>
 					  <img src= <%=@current_user.image %> height="50" width="85"> 
 					<% else %>
-					  <%= image_tag 'person.png', :size => "95x60" %>
-					<% end %> <span class="caret"></span></button>
-    <ul class="dropdown-menu" role="menu">
+					  <%= image_tag 'person.png', :size => "85x50" %>
+					<% end %><b class="caret"></b></a>
+            <ul class="dropdown-menu" role="menu">
 					<li><a href="/profile">My Profile</a></li>
 					<li><a href="/items/my_items">My Items</a></li>
 					<li><a href="/logout">Log out</a></li>
 				</ul>
+        </li>
 </li>
 				<li><button type="button" data-toggle="dropdown" aria-expanded="false" id="close-image">
 					<% if @current_user.image.present? %>
