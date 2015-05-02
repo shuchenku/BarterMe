@@ -21,9 +21,30 @@ button {
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 	<%= stylesheet_link_tag "custom" %>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 	<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 	<%= csrf_meta_tags %>
+
+	 <script src="http://js.pusher.com/2.2/pusher.min.js"></script>
+	 <script type="text/javascript" src="titlealert.js"></script>
+	 <script type="text/javascript" charset="utf-8">
+	   <% if logged_in? %>
+	   Pusher.log = function(message) {
+	   if (window.console && window.console.log) {
+	   window.console.log(message);
+	   }
+	   };
+	   var pusher = new Pusher('4592aefd1b81830a8c88'); 
+	   var channel = pusher.subscribe('private-'+<%= @current_user.id %>);
+	   
+	   channel.bind('offer_update', function(data) {
+	   msg = 'There has been an update on your offer with user' + data.offer; 
+	   $.titleAlert(msg);
+	   });
+	   
+	   <% end %>
+	 </script>
+	 
 </head>
 <style type="button/css">
 ul li:hover ul {

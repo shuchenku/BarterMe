@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 ruby '2.2.0'
-# ruby '2.1.5'
+ruby '2.1.5'
 # Use for searching
 gem 'searchkick'
 #use for debug
@@ -10,6 +10,7 @@ gem 'pry-byebug'
 
 gem 'fog','~> 1.3.1'
 gem 'figaro'
+gem 'pusher'
 
 #use for images
 gem 'carrierwave'

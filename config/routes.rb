@@ -3,6 +3,7 @@ BarterMe::Application.routes.draw do
   resources :locations
 
   root 'welcome#index'
+   post 'pusher/auth'
   
   #loaderio
   get '/loaderio-8968c2e71cf3502dbd55d8cc12dcb850' => redirect('/loaderio-8968c2e71cf3502dbd55d8cc12dcb850.txt')
