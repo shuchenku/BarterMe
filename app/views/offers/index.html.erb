@@ -47,7 +47,7 @@ Filter offer by status:
             <% end %>
           <% end %>
 
-          <% r = Rating.find_by user_id: offer.user1_id + offer.user2_id - @current_user.id%>
+          <% r = Rating.find_by(offer_id: offer.id, user_id: offer.user1_id + offer.user2_id - @current_user.id)%>
           <td>
             <% if offer.accepted? %>
             <%= image_tag  r.score.to_i.to_s + '_star.png', :size => "120x24"  %></td>

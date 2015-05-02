@@ -3,14 +3,6 @@ class RatingsController < ApplicationController
 		@ratings = Rating.all
 	end
 
-	def new
-		@rating = Rating.new
-	end
-
-	def create
-		@rating = Rating.create(rating_params)
-	end
-
 	def update
 		offer = Offer.find(params[:id])
 		@rating = Rating.find_by(offer_id: offer.id, user_id: offer.user1_id+ offer.user2_id- @current_user.id)
