@@ -19,7 +19,7 @@
 		<div class="row">
 			<p style="right:80px"></p>
 			<ul>
-				<h2><%= proposer_str %> offering:</h2>
+				<h2><%= link_to proposer.user_name, "/profile/#{proposer.id}"%> is offering:</h2>
 				<table class="table table-striped">
 					<% items2 = Item.mine?(proposer) %>
 					<% contained = @offer.item2_id.split(",") %>

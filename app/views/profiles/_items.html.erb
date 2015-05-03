@@ -9,7 +9,7 @@
   </td>
   <td class="list_description">
     <dl>
-      <dt><%= item.name %></dt>
+      <h4><%= link_to item.name, "/items/#{item.id}" %></h4>
       <dd><%= truncate(strip_tags(item.description), length: 200) %></dd>
     </dl>
   </td>

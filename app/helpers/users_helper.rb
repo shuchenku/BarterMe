@@ -10,7 +10,11 @@ module UsersHelper
 			end
 		end
 
-		return reliability_score/count
+		if count != 0
+			return reliability_score/count
+		else 
+			return 0
+		end
 
 	end
 end
