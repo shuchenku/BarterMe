@@ -26,14 +26,18 @@
           <td class="list_actions">
             <% if logged_in? && admin? %>
 
-            <%= button_to 'Add to Watchlist', line_items_path(item_id: item), class: 'btn btn-primary btn-md' %>
+            <%if item_available?(item.id) && !belongs_to_current_user(item.id)%>
+              <%= button_to 'Add to Watchlist', line_items_path(item_id: item), class: 'btn btn-primary btn-md' %>
+            <%end%>            
             <%= link_to 'Show', item %>
             <%= link_to 'Edit', edit_item_path(item) %>
             <%= link_to 'Destroy', item, method: :delete,
             data: { confirm: 'Are you sure?' } %> <br/>
 
             <% elsif logged_in? && item.user_id != @current_user.id %>
-            <%= button_to 'Add to Watchlist', line_items_path(item_id: item), class: 'btn btn-primary btn-md' %>
+            <%if item_available?(item.id) && !belongs_to_current_user(item.id)%>
+              <%= button_to 'Add to Watchlist', line_items_path(item_id: item), class: 'btn btn-primary btn-md' %>
+            <%end%>            
             <%= link_to 'Show', item, class: 'btn btn-primary btn-md' %><br/>
             <% elsif logged_in? %>
             <%= link_to 'Show', item, class: 'btn btn-primary btn-md' %>
