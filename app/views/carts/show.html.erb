@@ -14,7 +14,7 @@
 				</td>
 				<td class="list_description">
 					<dl>
-						<dt><%= link_to item.item.name, item_path(item.item) %> &times; <%= item.quantity %></dt>
+						<dt><%= link_to item.item.name, item_path(item.item) %></dt>
 						<dd><%= truncate(strip_tags(item.item.description), length: 80) %></dd>
 					</dl>
 				</td>

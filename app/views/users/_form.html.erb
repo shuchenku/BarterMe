@@ -13,7 +13,8 @@
   <% end %>
 
   <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-3">
+      <div class="jumbotron" style="padding-top:1px; padding-left:10px; padding-right:10px;">
   <h2 style="color:white">Enter User Details</h2>
 
   <div class="form-group" style="margin-bottom:20px">
@@ -45,8 +46,10 @@
   <% end %>
   <% rescue %>
   <% end %>
+  <%= f.submit "Submit", :class => 'myButton'%>
+      </div>
     </div>
   </div>
-    <%= f.submit "Submit", :class => 'myButton'%>
 </div>
-<% end %>
+  <% end %>
+  
