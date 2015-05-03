@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
       end
     end
 
-    return Math.exp(Math.log(similarity_score)/Math.log(6)).round(2)
+    return similarity_score
   end
 
   def self.best_match(user)
