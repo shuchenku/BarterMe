@@ -1,5 +1,5 @@
 module ItemsHelper
-		def item_available?(id)
+	def item_available?(id)
 		o1 = Offer.find_by item1_id:id
 		o2 = Offer.find_by item2_id:id
 
