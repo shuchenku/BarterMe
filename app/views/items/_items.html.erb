@@ -17,7 +17,13 @@
           </td>
           <td>
            <% if @similarity_score != nil %>
+	   <% if @similarity_score[index] < 30 %>
            <p class = "small" style="font-size:30px; color:red; padding-bottom:64px; padding-right:64px;">
+	     <% elsif @similarity_score[index] >= 30 && @similarity_score[index] < 70 %>
+	       <p class = "small" style="font-size:30px; color:yellow; padding-bottom:64px; padding-right:64px;">
+		 <% else %>
+	       <p class = "small" style="font-size:30px; color:green; padding-bottom:64px; padding-right:64px;">
+		 <% end %>
           <%= @similarity_score[index] %>
             <style> p.small {
               line-height: 148.55%;
@@ -33,7 +39,7 @@
             <%end%>            
             <%= link_to 'Show', item %>
             <%= link_to 'Edit', edit_item_path(item) %>
-            <%= link_to 'Destroy', item, method: :delete,
+            <%= link_to 'Remove', item, method: :delete,
             data: { confirm: 'Are you sure?' } %> <br/>
 
             <% elsif logged_in? && item.user_id != @current_user.id %>
@@ -44,7 +50,7 @@
             <% elsif logged_in? %>
             <%= link_to 'Show', item, class: 'btn btn-primary btn-md btn-block' %>
             <%= link_to 'Edit', edit_item_path(item), class: 'btn btn-primary btn-md btn-block' %>
-            <%= link_to 'Destroy', item, method: :delete,
+            <%= link_to 'Remove', item, method: :delete,
             data: { confirm: 'Are you sure?' }, class: 'btn btn-primary btn-md btn-block' %> 
             <% else %>
             <%= link_to 'Show', item, class: 'btn btn-primary btn-md btn-block' %><br/>
