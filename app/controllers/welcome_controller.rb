@@ -3,6 +3,8 @@ class WelcomeController < ApplicationController
   def index
     @top_categories = Item.listing
     @total_items = Item.count
+    recommended_barters = Offer.where(accepted: true)
+    @recommended_barter = barter_spotlight(recommended_barters.sample)
     if logged_in? && @current_user.looking_for.size >= 1
       best_matches = User.best_match(@current_user)
       @recommendations = best_matches.sample(3)
@@ -13,9 +15,20 @@ class WelcomeController < ApplicationController
       @recommendations = Item.all.sample(3)
     end
   end
-  
+ 
   def all_listings
     @all_categories = Item.listing
+  end
+  
+  def barter_spotlight(recommended_barter)
+    barter_data = Array.new
+    barter_data[0] = recommended_barter.user1.user_name
+    barter_data[1] = recommended_barter.user2.user_name
+    barter_data[2] = Item.find(recommended_barter.item1_id).name
+    barter_data[3] = Item.find(recommended_barter.item1_id).name
+    barter_data[4] = recommended_barter.user1.id
+    barter_data[5] = recommended_barter.user2.id
+    return barter_data
   end
 
 end

@@ -89,14 +89,18 @@
   </div>
 </div>
 <div class="col-md-3" style="padding-left:10px; padding-right:10px; text-shadow: 2px 2px black;">
- <h2> BARTER OF THE DAY</h2>
+ 
+  <h2>Barter Spotlight</h2>
 
- <h1> PLACE HOLDER </h1></br>
+     <p><b>Check out what other users have been able to trade with our site:</b></p>
+     <% if @recommended_barter != nil %>
+     <p style="font-size:20px">Users:<br><a href=<%= "/profile/#{@recommended_barter[4]}" %>> <%= @recommended_barter[0] %></a> and <a href=<%= "/profile/#{@recommended_barter[5]}" %>> <%= @recommended_barter[1] %></a><br> were able to trade:<br><%= @recommended_barter[2] %> and  <%= @recommended_barter[3] %>! </p>
+     <% end %>
 
  <%= link_to "Feeling Lucky?", item_path(Item.all.sample) %>
 </div>
 
-</div>
-</div>
+    </div>
+  </div>
 </div>
 

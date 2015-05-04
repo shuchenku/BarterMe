@@ -5,7 +5,11 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all.page(params[:page])
+    if @current_user.admin
+      @users = User.all.page(params[:page])
+    else
+      redirect_to "/"
+    end
   end
 
   # GET /users/1
