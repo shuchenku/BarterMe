@@ -1,8 +1,25 @@
-<%= stylesheet_link_tag "welcome" %>
+ <%= stylesheet_link_tag "welcome" %>
 <% if notice %>
 <p id="notice"><%= notice %></p>
 <% end %>
-<div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+<div class="row" style="padding-top:10px;">
+      <div class="jumbotron" style="padding-top:10px; padding-left:10px; padding-right:10px;">
+  <div class="container-fluid">
+      <div class="col-md-3" style="padding-left:10px; padding-right:10px; text-shadow: 2px 2px black; ">
+       <h2> TOP 5 LISTINGS</h2>
+       <p><font size="5">
+        <% @top_categories[0,5].each do |k, v| %>
+        <%= link_to k, items_path(:query => k) %>
+        <%= "(" + "#{v}" + ")" %><br>
+        <% end %>
+        <br> <%= link_to "All Categories", listings_path %>
+      </font></p>
+    </div>
+    <div class="col-md-6" style="padding-left:10px; padding-right:10px; border-left: 1px solid #ccc; text-shadow: 2px 2px black;">
+
+     <h2> RECOMMENDED FOR YOU</h2>
+     <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
     <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -11,36 +28,26 @@
   </ol>
   
   <!-- Wrapper for slides -->
+
   <div class="container">
     <div class="carousel-inner" role="listbox">
       <div class="item active">
        <div class="container">
-         <h2> TOP 5 LISTINGS</h2>
-         <p><font size="5">
-           <% @top_categories[0,5].each do |k, v| %>
-           <%= link_to k, items_path(:query => k) %>
-           <%= "(" + "#{v}" + ")" %><br>
-           <% end %>
-           <br> <%= link_to "All Categories", listings_path %>
-         </font></p>
+        <%= link_to @recommendations[0].name, item_path(@recommendations[0]) %>
+        <%=image_tag @recommendations[0].image_url, :size => "500x500" %>
        </div>
      </div>
      <div class="item">
        <div class="container">
-         <h2> BARTER OF THE DAY</h2>
+         <%= link_to @recommendations[1].name, item_path(@recommendations[1]) %>
+         <%=image_tag @recommendations[1].image_url, :size => "500x500" %>
        </div>
      </div>
      
      <div class="item">
        <div class="container">
-         <h2> RECOMMENDED BARTERS </h2>
-         <p><font size="5">
-           <% if  @current_user != nil && @current_user.looking_for.size > 1 %>
-           <% @recommendations.each do |item| %>
-           <%= link_to item.name, "/items/#{item.id}" %> <br>
-           <% end %>
-           <% end %>
-           <%= link_to "Feeling Lucky?", "/items/#{(rand(Item.first.id.. Item.last.id))}" %></font></p>
+          <%= link_to @recommendations[2].name, item_path(@recommendations[2]) %>
+          <%=image_tag @recommendations[2].image_url, :size => "500x500" %>
          </div>
        </div>
      </div>
@@ -54,6 +61,17 @@
     <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
+</div>
+   </div>
+   <div class="col-md-3" style="padding-left:10px; padding-right:10px; border-left: 1px solid #ccc; text-shadow: 2px 2px black;">
+     <h2> BARTER OF THE DAY</h2>
+
+     <h1> PLACE HOLDER </h1></br>
+
+     <%= link_to "Feeling Lucky?", item_path(Item.all.sample) %>
+  </div>
+
+</div>
 </div>
 </div>
 
