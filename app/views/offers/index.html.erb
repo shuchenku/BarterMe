@@ -63,19 +63,19 @@ Filter offer by status:
             <%= "the barter is accepted."%>
             <% end %>
           <td>
-            <%= link_to 'View offer', offer_path(offer), class: 'btn btn-primary btn-md'%><br/>
+            <%= link_to 'View offer', offer_path(offer), class: 'btn btn-primary btn-md btn-block'%>
             <% if offer.pending %>
               <% if offer.user1_id == @current_user.id%>
                 <%= link_to 'Accept', accept_offer_path(offer),
-                data: { confirm: 'Are you sure?' }, class: 'btn btn-primary btn-md' %> <br/>
+                data: { confirm: 'Are you sure?' }, class: 'btn btn-primary btn-md btn-block' %>
                 <%= link_to 'Reject', reject_offer_path(offer),
-                data: { confirm: 'Are you sure?' }, class: 'btn btn-primary btn-md' %> <br/>
+                data: { confirm: 'Are you sure?' }, class: 'btn btn-primary btn-md btn-block' %> 
               <% else %>
                 <%= link_to 'Retract', offer, method: :delete,
-                data: { confirm: 'Are you sure?' }, class: 'btn btn-primary btn-md' %> <br/>
+                data: { confirm: 'Are you sure?' }, class: 'btn btn-primary btn-md btn-block' %> 
               <% end %>
             <% end %>
-            <%= link_to 'Comment', new_offer_comment_path(offer), class: 'btn btn-primary btn-md' %> 
+            <%= link_to 'Comment', new_offer_comment_path(offer), class: 'btn btn-primary btn-md btn-block' %> 
           </td>
 
 

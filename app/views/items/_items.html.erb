@@ -27,7 +27,7 @@
             <% if logged_in? && admin? %>
 
             <%if item_available?(item.id) && !belongs_to_current_user(item.id)%>
-              <%= button_to 'Add to Watchlist', line_items_path(item_id: item), class: 'btn btn-primary btn-md' %>
+              <%= button_to 'Add to Watchlist', line_items_path(item_id: item), class: 'btn btn-primary btn-md btn-block' %><br/>
             <%end%>            
             <%= link_to 'Show', item %>
             <%= link_to 'Edit', edit_item_path(item) %>
@@ -36,16 +36,16 @@
 
             <% elsif logged_in? && item.user_id != @current_user.id %>
             <%if item_available?(item.id) && !belongs_to_current_user(item.id)%>
-              <%= button_to 'Add to Watchlist', line_items_path(item_id: item), class: 'btn btn-primary btn-md' %>
+              <%= button_to 'Add to Watchlist', line_items_path(item_id: item), class: 'btn btn-primary btn-md btn-block' %><br/>
             <%end%>            
-            <%= link_to 'Show', item, class: 'btn btn-primary btn-md' %><br/>
+            <%= link_to 'Show', item, class: 'btn btn-primary btn-md btn-block' %>
             <% elsif logged_in? %>
-            <%= link_to 'Show', item, class: 'btn btn-primary btn-md' %>
-            <%= link_to 'Edit', edit_item_path(item), class: 'btn btn-primary btn-md' %>
+            <%= link_to 'Show', item, class: 'btn btn-primary btn-md btn-block' %>
+            <%= link_to 'Edit', edit_item_path(item), class: 'btn btn-primary btn-md btn-block' %>
             <%= link_to 'Destroy', item, method: :delete,
-            data: { confirm: 'Are you sure?' }, class: 'btn btn-primary btn-md' %> 
+            data: { confirm: 'Are you sure?' }, class: 'btn btn-primary btn-md btn-block' %> 
             <% else %>
-            <%= link_to 'Show', item, class: 'btn btn-primary btn-md' %><br/>
+            <%= link_to 'Show', item, class: 'btn btn-primary btn-md btn-block' %><br/>
             <% end %>
 
           </td>

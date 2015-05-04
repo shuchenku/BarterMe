@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-10" style="padding-top:10px; border-bottom: 1px solid #ccc">
+    <div class="col-md-12" style="padding-top:10px; border-bottom: 1px solid #ccc">
 <td>
 <table class="table table-striped">
   <% @items.each do |item| %>
@@ -19,9 +19,9 @@
     <%= link_to 'Destroy', item, method: :delete,
 	data: { confirm: 'Are you sure?' } %> <br/>
     <% end %>
-    <%= link_to 'Show', item, class: 'btn btn-primary btn-md' %>
+    <%= link_to 'Show', item, class: 'btn btn-primary btn-md btn-block' %>
     <% if item.user_id == @current_user.id %>
-    <%= link_to 'Edit', edit_item_path(item), class: 'btn btn-primary btn-md' %>
+    <%= link_to 'Edit', edit_item_path(item), class: 'btn btn-primary btn-md btn-block' %>
     <% end %>
 
   </td>

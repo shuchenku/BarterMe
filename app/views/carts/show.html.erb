@@ -4,7 +4,7 @@
 
 <h2>Your Watchlist</h2>
 <div class="row">
-	<p style="right:80px"></p>
+	<div class="col-md-10" style="padding-top:10px">
 	<ul>
 		<table class="table table-striped">
 			<% @cart.line_items.each do |item| %>
@@ -19,17 +19,19 @@
 					</dl>
 				</td>
 				<td>
-					<%= link_to 'Show', item_path(item.item),class: 'btn btn-primary btn-md'  %>
+					<%= link_to 'Show', item_path(item.item),class: 'btn btn-primary btn-md btn-block'  %>
 					<%= link_to 'Remove', item, method: :delete, data: { confirm: 'Are you sure?' },
-					class: 'btn btn-primary btn-md' %>
+					class: 'btn btn-primary btn-md btn-block' %>
 				</td>
 			</tr>
 			<% end %> 
 		</table>
 	</ul>
+
+	<%= button_to 'Empty Watchlist', @cart, method: :delete,
+data: { confirm: 'Are you sure?' }, class: 'btn btn-danger pull-right btn-lg ', type: 'button' %>
+	</div>
 </div>
-<%= button_to 'Empty Watchlist', @cart, method: :delete,
-data: { confirm: 'Are you sure?' }, class: 'btn btn-danger pull-right btn-lg', type: 'button' %>
 
 <!--<%= link_to 'Edit', edit_cart_path(@cart) %> -->
 <!-- <%= link_to 'Back', carts_path %> -->
