@@ -1,11 +1,26 @@
- <%= stylesheet_link_tag "welcome" %>
+<style>
+
+.carousel-container {
+ padding-right: 5px;
+ padding-left: 5px;
+ margin-right: 5px;
+ margin-left: 5px;
+ width: 500px;
+ overflow:hidden;
+ height:400px;
+}
+
+</style>
+
+
+<%= stylesheet_link_tag "welcome" %>
 <% if notice %>
 <p id="notice"><%= notice %></p>
 <% end %>
 
 <div class="row" style="padding-top:10px;">
-      <div class="jumbotron" style="padding-top:10px; padding-left:10px; padding-right:10px;">
-  <div class="container-fluid">
+  <div class="jumbotron" style="padding-top:10px; padding-left:10px; padding-right:10px;">
+    <div class="container-fluid">
       <div class="col-md-3" style="padding-left:10px; padding-right:10px; text-shadow: 2px 2px black; ">
        <h2> TOP 5 LISTINGS</h2>
        <p><font size="5">
@@ -16,60 +31,70 @@
         <br> <%= link_to "All Categories", listings_path %>
       </font></p>
     </div>
-    <div class="col-md-6" style="padding-left:10px; padding-right:10px; border-left: 1px solid #ccc; text-shadow: 2px 2px black;">
+    <div class="col-md-6" style="padding-left:10px; padding-right:10px; border-left: 1px solid #ccc; border-right: 1px solid #ccc; text-shadow: 2px 2px black;">
 
      <h2> RECOMMENDED FOR YOU</h2>
+     <br>
      <div id="myCarousel" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-  </ol>
-  
-  <!-- Wrapper for slides -->
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+      </ol>
 
-  <div class="container">
-    <div class="carousel-inner" role="listbox">
-      <div class="item active">
-       <div class="container">
-        <h3><%=@recommendations[0].name%></h3>
-        <%= link_to image_tag(@recommendations[0].image_url), item_path(@recommendations[0]) %>
-       </div>
-     </div>
-     <div class="item">
-       <div class="container">
-         <h3><%=@recommendations[1].name%></h3>
-         <%= link_to image_tag(@recommendations[1].image_url), item_path(@recommendations[1]) %>
-       </div>
-     </div>
-     
-     <div class="item">
-       <div class="container">
-          <h3><%=@recommendations[2].name%></h3>
-          <%= link_to image_tag(@recommendations[1].image_url), item_path(@recommendations[1]) %>
-         </div>
-       </div>
-     </div>
-   </div>
-   <!-- Left and right controls -->
-   <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-   </div>
-   <div class="col-md-3" style="padding-left:10px; padding-right:10px; border-left: 1px solid #ccc; text-shadow: 2px 2px black;">
-     <h2> BARTER OF THE DAY</h2>
+      <!-- Wrapper for slides -->
 
-     <h1> PLACE HOLDER </h1></br>
+      <div class="carousel-container">
+        <div class="carousel-inner" role="listbox">
+          <div class="item active">
+           <div class="container">
+            <%= link_to image_tag(@recommendations[0].image_url, :align => 'absmiddle'), item_path(@recommendations[0]) %>
+            <div class="carousel-caption" style="text-shadow: 3px 3px black;">
+              <h3><%=@recommendations[0].name%></h3>
+              <p><%=truncate(strip_tags(@recommendations[0].description), length:40)%></p>
+            </div>
+          </div>
+        </div>
+        <div class="item">
+         <div class="container">
+           <%= link_to image_tag(@recommendations[1].image_url, :align => 'absmiddle'), item_path(@recommendations[1]) %>
+           <div class="carousel-caption" style="text-shadow: 3px 3px black;">
+            <h3><%=@recommendations[1].name%></h3>
+            <p><%=truncate(strip_tags(@recommendations[1].description), length:40)%></p>
+            </div>
+          </div>
+        </div>
 
-     <%= link_to "Feeling Lucky?", item_path(Item.all.sample) %>
+        <div class="item">
+         <div class="container">
+          <%= link_to image_tag(@recommendations[2].image_url, :align => 'absmiddle'), item_path(@recommendations[2]) %>
+          <div class="carousel-caption" style="text-shadow: 3px 3px black;">
+            <h3><%=@recommendations[2].name%></h3>
+            <p><%=truncate(strip_tags(@recommendations[2].description), length:40)%></p>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
   </div>
+</div>
+<div class="col-md-3" style="padding-left:10px; padding-right:10px; text-shadow: 2px 2px black;">
+ <h2> BARTER OF THE DAY</h2>
+
+ <h1> PLACE HOLDER </h1></br>
+
+ <%= link_to "Feeling Lucky?", item_path(Item.all.sample) %>
+</div>
 
 </div>
 </div>
