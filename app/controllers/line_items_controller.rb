@@ -28,25 +28,31 @@ class LineItemsController < ApplicationController
   def create
     item = Item.find(params[:item_id])
     @line_item = @cart.add_item(item.id)
-
-    respond_to do |format|
-      if @line_item.save
-        if item.user_id == session[:user_id]
-          redirect_path = 'offer/new'
+    if @line_item == -1
+      respond_to do |format|
+        format.html {
+          redirect_to items_url,
+          notice: 'Item already in your watchlist'}
+      end
+    else
+      respond_to do |format|
+        if @line_item.save
+          if item.user_id == session[:user_id]
+            redirect_path = 'offer/new'
+          else
+            redirect_path = @line_item.cart
+          end
+          format.html { 
+            redirect_to redirect_path,
+            notice: 'Item added to your cart.' }
+          format.json { render action: 'show', status: :created, location: @line_item }
         else
-          redirect_path = @line_item.cart
+          format.html { render action: 'new' }
+          format.json { render json: @line_item.errors, status: :unprocessable_entity }
         end
-        format.html { 
-          redirect_to redirect_path,
-          notice: 'Item added to your cart.' }
-        format.json { render action: 'show', status: :created, location: @line_item }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @line_item.errors, status: :unprocessable_entity }
       end
     end
   end
-
   # PATCH/PUT /line_items/1
   # PATCH/PUT /line_items/1.json
   def update

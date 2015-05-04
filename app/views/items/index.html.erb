@@ -14,7 +14,7 @@
 
       <td class="form-group">
        <%= form_tag items_path, class: "form-inline", method: :get do %>
-       <% options = options_for_select([['name', "name"], ['description', "description"], ['quantity', "quantity"]]) %>
+       <% options = options_for_select([['name', "name"], ['recently added', "created_at"], ['recently updated', "updated_at"]]) %>
      </td>
      <div class="col-md-3" style="padding-top:10px">
        <%= select_tag(:order, options, class: "form-control", :style => "width:170px") %>

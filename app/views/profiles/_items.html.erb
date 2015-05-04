@@ -9,7 +9,7 @@
   </td>
   <td class="list_description">
     <dl>
-      <dt><%= item.name %></dt>
+      <h4><%= link_to item.name, "/items/#{item.id}" %></h4>
       <dd><%= truncate(strip_tags(item.description), length: 200) %></dd>
     </dl>
   </td>
@@ -19,7 +19,7 @@
     <%= link_to 'Destroy', item, method: :delete,
 	data: { confirm: 'Are you sure?' } %> <br/>
     <% end %>
-    <%= link_to 'Show', item, class: 'btn btn-primary btn-md' %><br/>
+    <%= link_to 'Show', item, class: 'btn btn-primary btn-md' %>
     <% if item.user_id == @current_user.id %>
     <%= link_to 'Edit', edit_item_path(item), class: 'btn btn-primary btn-md' %>
     <% end %>

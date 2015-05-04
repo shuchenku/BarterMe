@@ -13,8 +13,8 @@ class ItemsController < ApplicationController
         @items = Item.order(params[:order])
       end
     else
-      if params[:order].present?
-        @items = Item.order(params[:order]).page(params[:page])
+      if params[:order].present? && params[:order]!="name"
+        @items = Item.order(params[:order] + ' desc').page(params[:page])
       else
         @items = Item.order("name").page(params[:page])
       end

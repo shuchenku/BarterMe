@@ -27,15 +27,22 @@ Filter offer by status:
         <% item2 = Item.find(item2_ids) %>
         <tr>
 
-          <% item1_names = [] %>
-          <% item2_names = [] %>
-          <% item1.each { |i| item1_names << i.name } %>
-          <% item2.each { |i| item2_names << i.name } %>
-
-          <td><%= user1.user_name %></td>
-          <td><%= user2.user_name %></td>
-          <td><%= item1_names.join(", ") %></td>
-          <td><%= item2_names.join(", ") %></td>
+          <td><b><%= link_to user1.user_name, "/profile/#{user1.id}"%></td>
+          <td><b><%= link_to user2.user_name, "/profile/#{user2.id}"%></td>
+          <%count = 0%>
+          <td><% item1.each do |i|%>
+              <b><%= link_to i.name, "items/#{i.id}"%>
+              <%if count < item1.length - 1%> 
+              <%=", "%>
+              <%end%> 
+              <%end%></td>
+          <%count = 0%>
+          <td><% item2.each do |i|%>
+            <b><%= link_to i.name, "items/#{i.id}"%>
+            <%if count < item2.length - 1%> 
+              <%=", "%>
+              <%end%> 
+              <%end%></td>
 
           <% if offer.pending %>
             <td><h4><span class="label label-default label-lg">Pending</span></h4></td>

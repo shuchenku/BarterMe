@@ -13,6 +13,7 @@ Location.delete_all
 Rating.delete_all
 Comment.delete_all
 Cart.delete_all
+Offer.delete_all
 
 
 

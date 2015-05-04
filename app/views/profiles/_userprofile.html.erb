@@ -17,9 +17,7 @@
   <p><%= "Hi, I'm " + user.user_name %> </p>
   <h3> <u>Public Information</u> </h3>
   <p> <b>Email</b>: <%= user.email %> </p>
-  <p> <b>Reliability</b>: <%count1 = Offer.find(:all, :conditions => { :user1_id => user.id, :accepted => true})%>
-  <%count2 = Offer.find(:all, :conditions => { :user2_id => user.id, :accepted => true})%>
-  <%= count1.length + count2.length %> </p>
+  <p> <b>Reliability</b>: <%=reliability_score(user.id)%> </p>
   <%l = Location.find_by user_id: user.id%>
   <p> <b>Address</b>: <%if !l.nil? %> 
     <%=l.address%>
