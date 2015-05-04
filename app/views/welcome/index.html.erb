@@ -33,21 +33,21 @@
     <div class="carousel-inner" role="listbox">
       <div class="item active">
        <div class="container">
-        <%= link_to @recommendations[0].name, item_path(@recommendations[0]) %>
-        <%=image_tag @recommendations[0].image_url, :size => "500x500" %>
+        <h3><%=@recommendations[0].name%></h3>
+        <%= link_to image_tag(@recommendations[0].image_url), item_path(@recommendations[0]) %>
        </div>
      </div>
      <div class="item">
        <div class="container">
-         <%= link_to @recommendations[1].name, item_path(@recommendations[1]) %>
-         <%=image_tag @recommendations[1].image_url, :size => "500x500" %>
+         <h3><%=@recommendations[1].name%></h3>
+         <%= link_to image_tag(@recommendations[1].image_url), item_path(@recommendations[1]) %>
        </div>
      </div>
      
      <div class="item">
        <div class="container">
-          <%= link_to @recommendations[2].name, item_path(@recommendations[2]) %>
-          <%=image_tag @recommendations[2].image_url, :size => "500x500" %>
+          <h3><%=@recommendations[2].name%></h3>
+          <%= link_to image_tag(@recommendations[1].image_url), item_path(@recommendations[1]) %>
          </div>
        </div>
      </div>
