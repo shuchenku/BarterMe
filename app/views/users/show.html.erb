@@ -36,8 +36,8 @@
 
 <p>
   <strong>Looking for:</strong>
-  <%= (@user.looking_for[0..-2].map {|i| Category.find(i.to_i).name}).map {|s| s[0..-1]}.join(", ") %>
 </p>
+  <%= (@user.looking_for[0..-2].map {|i| Category.find(i.to_i).name}).map {|s| s[0..-1]}.join(", ") %>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
