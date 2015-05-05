@@ -3,8 +3,8 @@
 <td>
 <table class="table table-striped">
   <% @items.each do |item| %>
-  <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-    <td>
+  <tr class="<%= cycle('list_line_odd', 'list_line_even') %>" style="border-bottom: 5px solid #ccc; border-top: 5px solid #ccc">
+        <td style="width=200px" align="left" width="20%">
       <%= image_tag item.image_url, :size => "100x100" %>
   </td>
   <td class="list_description">
