@@ -13,16 +13,17 @@
         <td class="list_description" style="padding-left: 0px" align="left" width="50%">
 
           <dl>
-	   <% if logged_in? %>
+
+           <dt><h3><%= link_to item.name, item_path(item) %></h3></dt>
+
+           <dd><%= truncate(strip_tags(item.description), length: 100) %></dd><br>
+	   
+	   <% if logged_in? && item.user != @current_user %>
            <% matching = matching_items(@current_user, item) %>
            <% if !matching.empty? %>
            <a id="popoverData" href="#" data-content=<%=matching.sample.name%> data-toggle="popover" rel="popover" data-placement="bottom" data-original-title="User May Want To Trade This Item for your:" data-trigger="hover"><b>This User may want your...</b></a>
            <% end %>
 	   <% end %>
-
-           <dt><h3><%= link_to item.name, item_path(item) %></h3></dt>
-
-           <dd><%= truncate(strip_tags(item.description), length: 100) %></dd>
          </dl>
        </td>
        <td>
