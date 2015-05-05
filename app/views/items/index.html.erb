@@ -1,4 +1,10 @@
 <h1>Listing products</h1>
+
+<script>
+$(function () {
+  $('[data-toggle="popover"]').popover();
+});
+</script>
 <div class="row" style="padding-top:10px">
    <div class="col-md-3" style="padding-top:10px">
     <td class="form-group">
@@ -22,12 +28,15 @@
        <% end %>
       </div>
 
-   <div class="col-md-2" style="padding-left:78px; padding-top: 50px">
+   <div class="col-md-2" style="padding-left:110px; padding-top: 50px">
     <%if logged_in? %>
-      <h4><%= "Can I get it?" %></h4>
+    <div>
+      <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-content="The Can I Get it? score is determined by the items you own, what this user is looking for, and both of your reliability indexes.  It is out of 100, and a higher score means you have a better chance to get the item." id="popover">Can I get it?</button>
+</div>
+      
    </div>
    <div class="col-md-2">
-    <td class="form-group">
+     <td class="form-group">
 
       <%if has_location?(current_user.id)%>
       <%= form_tag items_path, class: "form-inline", method: :get do %>
@@ -42,8 +51,18 @@
 
   </div>
 </div>
-
 <%= render 'items' %>
 
-<%= link_to 'New Item', new_item_path %>
-<%= paginate @items %>
+<div class="col-md-2" style="padding-left:10px; padding-right:10px; text-shadow: 2px 2px black; ">
+     <div class="jumbotron" style="padding-top:10px; padding-left:10px; padding-right:10px;">
+       <div class="container-fluid">
+	 <h2>Our Listings</h2>
+	 <div style="font-size:15px">
+             <% @categories.each do |k, v| %>
+             <%= link_to k, items_path(:query => k) %>
+             <%= "(" + "#{v}" + ")" %><br>
+             <% end %> 
+	 </div>
+       </div>
+     </div>
+   </div>

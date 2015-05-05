@@ -1,5 +1,3 @@
-
-
 <div class="row">
   <div class="col-md-10" style="padding-top:2px; border-bottom: 1px solid #ccc">
     <td>
@@ -60,10 +58,20 @@
         </tr>
         <% end %>
       </table>
-      <br/>
+      </br>
+      <div style="font-size:20px">
+	<div class="row">
+	<div class="col-md-3">
+      <%= link_to 'New Item', new_item_path, class: 'btn btn-primary btn-md btn-block' %> </div></div>
+      <%unless !@items.nil?%>
+       <%= paginate @items %>
+      <% end %>
+      </div>
+ 
     </div>
   </div>
 </div>
 
 </div>
+
 

@@ -22,6 +22,9 @@
     <%= link_to 'Show', item, class: 'btn btn-primary btn-md btn-block' %>
     <% if item.user_id == @current_user.id %>
     <%= link_to 'Edit', edit_item_path(item), class: 'btn btn-primary btn-md btn-block' %>
+    <%= link_to 'Remove', item, method: :delete,
+	data: {confirm: 'Are you usre?' }, 
+	class: 'btn btn-primary btn-md btn-block' %>
     <% end %>
 
   </td>
