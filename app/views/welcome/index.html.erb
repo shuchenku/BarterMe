@@ -10,6 +10,15 @@
  height:400px;
 }
 
+.carousel-caption {
+  margin-left: 40px;
+    background: rgba(0, 0, 0, 0.35);
+}
+
+h3 {
+  margin-top: 0px;
+}
+
 </style>
 
 
@@ -48,30 +57,37 @@
       <div class="carousel-container">
         <div class="carousel-inner" role="listbox">
           <div class="item active">
+                        <div class="col-md-12">
            <div class="container">
-            <%= link_to image_tag(@recommendations[0].image_url, :align => 'absmiddle'), item_path(@recommendations[0]) %>
+            <%= link_to image_tag(@recommendations[0].image_url, size: "500x400"), item_path(@recommendations[0]) %>
             <div class="carousel-caption" style="text-shadow: 3px 3px black;">
               <h3><%=@recommendations[0].name%></h3>
               <p><%=truncate(strip_tags(@recommendations[0].description), length:40)%></p>
+               </div>
             </div>
           </div>
         </div>
         <div class="item">
+            <div class="col-md-12">
          <div class="container">
-           <%= link_to image_tag(@recommendations[1].image_url, :align => 'absmiddle'), item_path(@recommendations[1]) %>
+           <%= link_to image_tag(@recommendations[1].image_url, size: "500x400"), item_path(@recommendations[1]) %>
            <div class="carousel-caption" style="text-shadow: 3px 3px black;">
             <h3><%=@recommendations[1].name%></h3>
             <p><%=truncate(strip_tags(@recommendations[1].description), length:40)%></p>
+             </div>
             </div>
           </div>
         </div>
 
         <div class="item">
+      <div class="col-md-12">
          <div class="container">
-          <%= link_to image_tag(@recommendations[2].image_url, :align => 'absmiddle'), item_path(@recommendations[2]) %>
+  
+          <%= link_to image_tag(@recommendations[2].image_url, size: "500x400"), item_path(@recommendations[2]) %>
           <div class="carousel-caption" style="text-shadow: 3px 3px black;">
             <h3><%=@recommendations[2].name%></h3>
             <p><%=truncate(strip_tags(@recommendations[2].description), length:40)%></p>
+             </div>
           </div>
           </div>
         </div>
@@ -94,10 +110,10 @@
 
      <p><b>Check out what other users have been able to trade with our site:</b></p>
      <% if @recommended_barter != nil %>
-     <p style="font-size:20px">Users:<br><a href=<%= "/profile/#{@recommended_barter[4]}" %>> <%= @recommended_barter[0] %></a> and <a href=<%= "/profile/#{@recommended_barter[5]}" %>> <%= @recommended_barter[1] %></a><br> were able to trade:<br><%= @recommended_barter[2] %> and  <%= @recommended_barter[3] %>! </p>
+     <p style="font-size:20px">Users:<br><a href=<%= "/profile/#{@recommended_barter[4]}" %>> <%= @recommended_barter[0] %></a> and <a href=<%= "/profile/#{@recommended_barter[5]}" %>> <%= @recommended_barter[1] %></a><br> were able to trade:<br><%= @recommended_barter[2] %> and  <%= @recommended_barter[3] %>! </p></br>
      <% end %>
 
- <%= link_to "Feeling Lucky?", item_path(Item.all.sample) %>
+ <h2><%= link_to "Feeling Lucky?", item_path(Item.all.sample) %></h2>
 </div>
 
     </div>

@@ -1,3 +1,11 @@
+<style>
+h2 {
+	margin-top:0px;
+} 
+
+
+</style>
+
 <%= stylesheet_link_tag "welcome" %>
 
 <% if notice %>
@@ -5,16 +13,21 @@
 <% end %>
 
 <div class="row">
-  <div class="container-fluid" style="margin-bottom: 1px">
-      <div class="col-md-6" style="padding-left:10px; padding-right:10px; padding-top:20px; text-shadow: 2px 2px black; ">
-        <div class="jumbotron">
-	  <h2> Our Listings </h2>
-	   <p><font size="5">
-	     <% @all_categories.sort.each do |k, v| %>
-	     <%= link_to k, items_path(:query => k) %>
-	     <%= "(" + "#{v}" + ")" %><br>
-	     <% end %>
+	<div class="container-fluid" style="margin-bottom: 1px">
+		<div class="jumbotron" style = "margin-top: 10px;">
+			<div class="col-md-12" style="padding-left:10px; padding-right:10px; text-shadow: 2px 2px black; ">
+				<h2> Our Listings </h2>
+				<% @all_categories.sort.in_groups(3,false) do |group| %>
+				<div class="col-md-4" style="padding-left:10px; padding-right:10px; padding-top:20px; text-shadow: 2px 2px black; ">
+					<p><font size="5">
+						<% group.each do |k, v| %>
+						<%= link_to k, items_path(:query => k) %>
+						<%= "(" + "#{v}" + ")" %><br>
+						<% end %>
+					</p>
+				</div>
+				<% end %>
+			</div>
+		</div>
 	</div>
-      </div>
-  </div>
 </div>
