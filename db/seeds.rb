@@ -1,9 +1,9 @@
 require 'fileutils'
 require 'faker'
 
-# def random_category
-#   return Category.all[rand(Category.all.size-1)].id
-# end
+def random_category
+  return Category.all[rand(Category.all.size-1)].id
+end
 
 
 # Category.delete_all
