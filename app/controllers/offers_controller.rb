@@ -76,6 +76,8 @@ class OffersController < ApplicationController
 
   def accept
     set_offer
+    update_accepted(@offer.item1_id)
+    update_accepted(@offer.item2_id)
     @offer.update_attributes(:accepted => true, :pending => false)
     Pusher['private-'+@offer.user2_id.to_s].trigger('offer_update', {:offer => @current_user.user_name})
     redirect_to offers_url
@@ -98,4 +100,13 @@ class OffersController < ApplicationController
     def offer_params
       params.require(:offer).permit(:user1_id, :user2_id, :item1_id, :item2_id, :accepted, :pending, :rating)
     end
-  end
+
+    def update_accepted(items_list)
+      ids = items_list.split(",").map(&:to_i)
+      ids.each do |id|
+        this_item = Item.find(id)
+        this_item.update_attributes(quantity: this_item.quantity-1)
+      end
+    end
+  
+end

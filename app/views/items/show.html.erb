@@ -1,4 +1,44 @@
-<p id="notice"><h3><%= notice %></h3></p>
+
+<style>
+h3 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+</style>
+
+
+<% if flash[:notice] %>
+<div class = "alert alert-success alert-dismissible"  role="alert" style="margin-top:10px">
+<button type="button" class="close" data-dismiss="alert" aria-label="Close" style="top:-13px"><span aria-hidden="true">&times;</span></button>
+<h3><%= flash[:notice] %></h3>
+</div>
+<% end %>
+
+  <p>
+    <h1><%= @item.name %></h1>
+  </p>
+
+  <p> 
+  <%=image_tag @item.image_url, :size => "200x200" %>
+</p>
+ 
+    <h1><strong>Owner:</strong></h1>
+  <p style="font-size:20px"><a href=<%= "/profile/#{@item.user.id}" %>> <%= "#{@item.user.user_name}" %></a></li></p>
+<p>
+  <h1><strong>Description:</strong></h1>
+  <%= @item.description %>
+</p>
+
+<p>
+  <h1><strong>Category:</strong></h1>
+  <%= Category.find(@item.category_id).name%>
+</p>
+
+<p>
+ <h1><strong>Location:</strong></h1>
+  <%= @item.location %>
+</p>
+
 <p>
   <h1><%= @item.name %></h1>
 </p>

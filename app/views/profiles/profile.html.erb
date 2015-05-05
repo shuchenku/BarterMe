@@ -1,7 +1,17 @@
 <% user = @user %>
-<% if notice %>
-<p id = "notice"><%= notice%>
-  </p>
+<style>
+h3 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+</style>
+
+
+<% if flash[:notice] %>
+<div class = "alert alert-success alert-dismissible"  role="alert" style="margin-top:10px">
+<button type="button" class="close" data-dismiss="alert" aria-label="Close" style="top:-13px"><span aria-hidden="true">&times;</span></button>
+<h3><%= flash[:notice] %></h3>
+</div>
 <% end %>
 
 <%= render 'userprofile', :user => user %>
