@@ -20,7 +20,9 @@ h3 {
 	<ul>
 		<table class="table table-striped">
 			<% @cart.line_items.each do |item| %>
+			<%if item_available?(item.item.id)%>
 			<tr class="<%= cycle('list_line_odd', 'list_line_even') %>" align="left" width="20%" style="border-bottom: 5px solid #ccc; border-top: 5px solid #ccc">
+				
 				<td>
 					<%= image_tag item.item.image_url, :size => "100x100"  %>
 				</td>
@@ -36,6 +38,7 @@ h3 {
 					class: 'btn btn-primary btn-md btn-block' %>
 				</td>
 			</tr>
+			<% end %> 
 			<% end %> 
 		</table>
 	</ul>

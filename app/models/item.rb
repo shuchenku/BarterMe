@@ -4,7 +4,7 @@ class Item < ActiveRecord::Base
   before_destroy :ensure_not_referenced_by_any_line_item
 
   validates :name, :description, :quantity, presence: true
-  validates :quantity, numericality: {greater_than: 0}
+  validates :quantity, numericality: {greater_than: -1}
   validates_uniqueness_of :name, scope: :user_id
   belongs_to :user, foreign_key: "user_id",inverse_of: :items
   validates_presence_of :user

@@ -105,7 +105,7 @@ class OffersController < ApplicationController
       ids = items_list.split(",").map(&:to_i)
       ids.each do |id|
         this_item = Item.find(id)
-        this_item.update_attributes(quantity: this_item.quantity-1)
+        this_item.update_attributes(:quantity => this_item.quantity-1)
       end
     end
   
