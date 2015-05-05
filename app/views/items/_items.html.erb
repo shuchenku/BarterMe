@@ -14,7 +14,7 @@
             </dl>
           </td>
           <td>
-           <% if @similarity_score != nil %>
+           <% if @similarity_score[index] != nil %>
 	   <% if @similarity_score[index] < 30 %>
            <p class = "small" style="font-size:30px; color:red; padding-bottom:64px; padding-right:64px;">
 	     <% elsif @similarity_score[index] >= 30 && @similarity_score[index] < 70 %>
