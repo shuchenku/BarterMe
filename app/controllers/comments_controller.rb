@@ -17,6 +17,8 @@ class CommentsController < ApplicationController
   def create
     @offer = Offer.find(params.require(:offer_id))
     clean_params = params.require(:comment).permit(:from, :message)
+    Pusher['private-'+@offer.user2_id.to_s].trigger('offer_update', {:offer => @current_user.user_name})
+
     @comment = @offer.comments.new(clean_params)
     if @comment.save
         # push_count(@offer.id, @offer.comments.count)

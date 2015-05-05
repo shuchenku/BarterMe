@@ -77,12 +77,14 @@ class OffersController < ApplicationController
   def accept
     set_offer
     @offer.update_attributes(:accepted => true, :pending => false)
+    Pusher['private-'+@offer.user2_id.to_s].trigger('offer_update', {:offer => @current_user.user_name})
     redirect_to offers_url
   end
 
   def reject
     set_offer
     @offer.update_attributes(:accepted => false, :pending => false)
+    Pusher['private-'+@offer.user2_id.to_s].trigger('offer_update', {:offer => @current_user.user_name})
     redirect_to offers_url
   end
 

@@ -4,7 +4,7 @@ class WelcomeController < ApplicationController
     @top_categories = Item.listing
     @total_items = Item.count
     recommended_barters = Offer.where(accepted: true)
-    if recommended_barters != nil
+    if !recommended_barters.empty?
       @recommended_barter = barter_spotlight(recommended_barters.sample)
     else
       @recommended_barter = recommended_barters.sample
