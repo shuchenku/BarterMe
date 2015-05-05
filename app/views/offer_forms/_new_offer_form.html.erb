@@ -12,7 +12,7 @@
       <%= f.fields_for :item1_ids do |cb| %>
       <% @cart.line_items.each do |item| %>
       <%if item_available?(item.item.id)%>
-      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>" style="border-bottom: 5px solid #ccc; border-top: 5px solid #ccc">
         <td class="form-group">
           <%= cb.check_box(item.item.id) %>
           <td>
@@ -44,13 +44,13 @@
       <%= f.fields_for :item2_ids do |cb| %>
       <% @items.each do |item| %>
       <%if item_available?(item.id)%>
-      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
+      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>" style="border-bottom: 5px solid #ccc; border-top: 5px solid #ccc">
         <td class="form-group">
           <%= cb.check_box(item.id) %>
           <td>
             <%= image_tag item.image_url, :size => "100x100" %>
           </td>
-          <td class="list_description">
+          <td class="list_description" align="left" width="80%">
             <dl>
               <dt><%= link_to item.name, item_path(item) %></dt>
               <dd><%= truncate(strip_tags(item.description), length: 80) %></dd>
