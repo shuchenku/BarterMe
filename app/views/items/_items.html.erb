@@ -36,7 +36,12 @@
            <% else %>
            <p class = "small" style="font-size:30px; color:green; padding-bottom:64px; padding-right:64px;">
              <% end %>
-             <%= @similarity_score[index].to_s + "%" %>
+	     <% if @current_user.id == item.user_id %>
+	     <p class = "small" style="font-size:30px; color:black; padding-bottom:64px; padding-right:64px;">
+	       <%= "- - -" %>
+	       <% else %>
+               <%= @similarity_score[index].to_s + "%" %>
+	       <% end %>
              <style> p.small {
               line-height: 148.55%;
               }</style>
