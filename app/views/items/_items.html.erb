@@ -27,9 +27,10 @@
             <% elsif @similarity_score[index] >= 30 && @similarity_score[index] < 70 %>
             <p class = "small" style="font-size:30px; color:yellow; padding-bottom:64px; padding-right:64px;">
              <% else %>
-             <p class = "small" style="font-size:30px; color:green; padding-bottom:64px; padding-right:64px;">
+             <p class="small" style="font-size:30px; color:green; padding-bottom:64px; padding-right:64px;">
                <% end %>
-               <%= @similarity_score[index] %>
+	       <%= "Can I get it? score:" %>
+               <%= @similarity_score[index].to_s + "%"%>
                <style> p.small {
                 line-height: 148.55%;
                 }</style>
@@ -66,38 +67,9 @@
           <% end %>
         </table>
       </br>
-<<<<<<< HEAD
- 
-=======
 
-       <div class="col-md-2" style="padding-left:10px; padding-right:10px; text-shadow: 2px 2px black; ">
-     <div class="jumbotron" style="padding-top:10px; padding-left:10px; padding-right:10px;">
-       <div class="container-fluid">
-   <h2>Our Listings</h2>
-   <div style="font-size:15px">
-             <% @categories.each do |k, v| %>
-             <%= link_to k, items_path(:query => k) %>
-             <%= "(" + "#{v}" + ")" %><br>
-             <% end %> 
-   </div>
-       </div>
-     </div>
-   </div>
-
-      <div style="font-size:20px">
-       <div class="row">
-         <div class="col-md-3">
-          <%= link_to 'New Item', new_item_path, class: 'btn btn-primary btn-md btn-block' %> </div></div>
-          <%unless !@items.nil?%>
-          <%= paginate @items %>
-          <% end %>
-        </div>
-
-      </div>
->>>>>>> 5e8fe17d960c51f3419943e064f9783b1f7d43b9
-    </div>
   </div>
-
 </div>
+
 
 
