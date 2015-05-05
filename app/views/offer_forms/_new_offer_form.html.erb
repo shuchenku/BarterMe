@@ -11,7 +11,7 @@
       <%else %>
       <%= f.fields_for :item1_ids do |cb| %>
       <% @cart.line_items.each do |item| %>
-      <%if item_available?(item.id)%>
+      <%if item_available?(item.item.id)%>
       <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
         <td class="form-group">
           <%= cb.check_box(item.item.id) %>

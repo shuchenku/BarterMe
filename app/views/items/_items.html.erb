@@ -34,7 +34,7 @@
           <td class="list_actions">
             <% if logged_in? && admin? %>
 
-            <%if !belongs_to_current_user(item.id)%>
+           <%if item_available?(item.id)%>
               <%= button_to 'Add to Watchlist', line_items_path(item_id: item), class: 'btn btn-primary btn-md btn-block' %><br/>
             <%end%>            
             <%= link_to 'Show', item %>
