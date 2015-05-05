@@ -1,4 +1,22 @@
 module ItemsHelper
+
+  def user_looking_for(item)
+    return User.looking_for?(item.user)
+  end
+  
+  def matching_items(user, item)
+   @possible_trades = Array.new
+    user_wants = user_looking_for(item)
+    my_items = Item.mine?(user)
+    my_items.each do |my_item|
+      @possible_trades.push(my_item) if user_wants[my_item] == 0
+    end
+    return @possible_trades
+  end
+
+
+
+
 	def item_available?(id)
 		
 		q = Item.find(id).quantity

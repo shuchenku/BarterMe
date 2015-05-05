@@ -1,5 +1,4 @@
-<div class="row">
-  <div class="col-md-12" style="padding-top:2px; border-bottom: 1px solid #ccc">
+ <div class="col-md-12" style="padding-top:2px; border-bottom: 1px solid #ccc">
     <td>
       <table class="table table-striped">
         <% @items.each_with_index do |item, index| %>
@@ -13,7 +12,14 @@
           </td>
           <td class="list_description">
             <dl>
+
+	      <% matching = matching_items(@current_user, item) %>
+	      <% if !matching.empty? %>
+	      <a id="popoverData" href="#" data-content= data-toggle="popover" rel="popover" data-placement="bottom" data-original-title="User May Want..." data-trigger="hover">User may want your...</a>
+	      <% end %>
+	   
               <dt><%= link_to item.name, item_path(item) %></dt>
+	 
               <dd><%= truncate(strip_tags(item.description), length: 100) %></dd>
             </dl>
           </td>
@@ -62,18 +68,4 @@
           <% end %>
         </table>
       </br>
-    </div>
-  </div>
-
-  <div style="font-size:20px">
-   <div class="row" style="margin-bottom: 20px">
-     <div class="col-md-3">
-      <%unless @items.empty? || @items.nil?%>
-      <%= paginate @items %>
-      <% end %>
-    </div>
-  </div>
 </div>
-
-
-

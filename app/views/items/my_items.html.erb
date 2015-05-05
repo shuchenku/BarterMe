@@ -1,4 +1,11 @@
-<h1>My Items</h1>
+<div class="row" style="padding-bottom:25px">
+<div class="col-md-4" >
+<h1>My Available Items</h1>
+</div>
+<div class="col-md-2" style="padding-top:25px">
+<%= link_to 'New Item', new_item_path, class: 'btn btn-success btn-lg btn-block pull-left' %>
+</div>
+</div>
 
 <%= render 'items' %>
 

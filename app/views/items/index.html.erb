@@ -5,12 +5,12 @@ $(function () {
 </script>
 
 <div class="row">
-<div class="col-md-4" >
-<h1>Listing products</h1>
-</div>
-<div class="col-md-2" style="padding-top:25px">
-<%= link_to 'New Item', new_item_path, class: 'btn btn-success btn-lg btn-block pull-left' %>
-</div>
+  <div class="col-md-4" >
+    <h1>Listing products</h1>
+  </div>
+  <div class="col-md-2" style="padding-top:25px">
+    <%= link_to 'New Item', new_item_path, class: 'btn btn-success btn-lg btn-block pull-left' %>
+  </div>
 </div>
 
 <div class="row" style="padding-top:10px">
@@ -26,7 +26,7 @@ $(function () {
    <%= link_to 'Advanced Search', search_items_path %>
  </td>
 </div>
-  <div class="col-md-3" style="padding-top:10px">
+<div class="col-md-3" style="padding-top:10px">
  <td class="form-group">
    <%= form_tag items_path, class: "form-inline", method: :get do %>
    <% options = options_for_select([['name', "name"], ['recently added', "created_at"], ['recently updated', "updated_at"]]) %>
@@ -35,10 +35,10 @@ $(function () {
    <% end %>
  </td>
 
- </div>
- <div class="col-md-2" style="padding-left:100px; padding-top: 10px">
+</div>
+<div class="col-md-2" style="padding-left:90px; padding-top: 10px">
   <%if logged_in? %>
-    <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-content="The Can I Get it? score is determined by the items you own, what this user is looking for, and both of your reliability indexes.  It is out of 100, and a higher score means you have a better chance to get the item." id="popover">Can I get it?</button>
+  <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-content="The Can I Get it? score is determined by the items you own, what this user is looking for, and both of your reliability indexes.  It is out of 100, and a higher score means you have a better chance to get the item." id="popover">Can I get it?</button>
 </div>
 <div class="col-md-3">
  <td class="form-group">
@@ -56,14 +56,14 @@ $(function () {
 
 </div>
 
- </div>
 </div>
-</div>
-<div class="row" style="padding-left:120px">
-  <div class="col-md-9" style="padding-left:10px; padding-top: 10px">
+
+<div class="row">
+  <div class="col-md-10" style="padding-left:10px; padding-top: 10px">
     <%= render 'items' %>
   </div>
-  <div class="col-md-2" style="padding-left:10px; padding-right:10px; padding-bottom: 10px; border-bottom: 1px solid #ccc; border-top: 1px solid #ccc; border-left: 1px solid #ccc; border-right: 1px solid #ccc">
+
+  <div class="col-md-2" style="padding-left:5px; padding-right:10px; padding-bottom: 10px; border-bottom: 1px solid #ccc; border-top: 1px solid #ccc; border-left: 1px solid #ccc; border-right: 1px solid #ccc">
    <div class="container-fluid">
      <h2>Our Listings</h2>
      <div style="font-size:15px">
@@ -74,6 +74,13 @@ $(function () {
      </div>
    </div>
  </div>
+</div>
+<div style="font-size:20px">
+  <div class="row">
+    <div class="col-md-3">
+      <%= paginate @items %>
+    </div>
+  </div>
 </div>
 
 

@@ -23,7 +23,12 @@ button {
 	<%= javascript_include_tag "application", "data-turbolinks-track" => true %>
 	<%= csrf_meta_tags %>
 
-	 <script src="http://js.pusher.com/2.2/pusher.min.js"></script>
+	<script src="http://js.pusher.com/2.2/pusher.min.js"></script>
+	 <script>
+	   $(function () {
+	   $('[data-toggle="popover"]').popover();
+	   });
+	 </script>
 	 <script type="text/javascript" charset="utf-8">
 	   <% if logged_in? %>
 	   Pusher.log = function(message) {
