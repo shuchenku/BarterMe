@@ -15,7 +15,7 @@ $(function () {
   <p><%= user.user_name + "'s profile"%> </p>
   <% end %></h3>
     <% if user.image.present? %>
-      <img src= <%=user.image %> height="100" width="100"> 
+      <img src= <%=user.image %> class="img-circle"  height="100" width="100"> 
     <% else %>
      <%= image_tag 'person.png', :size => "100x100" %>
     <% end %>
@@ -24,7 +24,7 @@ $(function () {
   <h3> <u>Public Information</u> </h3>
 
   <p> <b>Email</b>: <%= user.email %> </p>
-  <p style="font-size:20px"><a id="popoverData" href="#" data-content="Your Reliability score is an aggregate value of all ratings you have been given (max 5.0)" data-toggle="popover" rel="popover" data-placement="top" data-original-title="Reliability Score" data-trigger="hover">Reliability Score:   </a><%=reliability_score(user.id)%> <%= "Out of: " +  </p>
+
   <%l = Location.find_by user_id: user.id%>
   <p> <b>Address</b>: <%if !l.nil? %> 
     <%=l.address%>
