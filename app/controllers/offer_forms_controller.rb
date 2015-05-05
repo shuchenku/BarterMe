@@ -10,7 +10,7 @@ class OfferFormsController < ApplicationController
 		@offer_form = OfferForm.new(params[:offer_form])
 		respond_to do |format|
 			if @offer_form.valid?
-				format.html { redirect_to new_offer_path(@offer_form.transform), notice: 'Offer valid.' }
+				format.html { redirect_to new_offer_path(@offer_form.transform)}
 				format.json { head :no_content }
 			else
 				format.html { redirect_to new_offer_form_path, notice: @offer_form.errors.messages.values.join(', ') }

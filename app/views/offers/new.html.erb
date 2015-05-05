@@ -51,6 +51,5 @@
 </div>
 <%= button_to "Confirm Offer", {action: "create", offer: {:user1_id=>params[:user1_id], :item1_id=>params[:item1_ids].join(","), :user2_id=>params[:user2_id], :item2_id=>params[:item2_ids].join(","), :accepted=>false, :pending=>true} }, :class => 'myButton' %>
 
-<div class="col-md-3">
-  <%= button_to 'Back', items_path, :class => 'myButton' %>
-</div>
+<%= button_to 'back', new_offer_form_path, :method => :get, class: 'btn btn-primary btn-md' %>
+
