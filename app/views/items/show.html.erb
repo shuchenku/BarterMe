@@ -22,17 +22,17 @@ h3 {
             <%= image_tag "http://placehold.it/400&text="+@item.name %>
             <% end %>
     <div class="row">
-      <div class="col-md-5" style="padding-top:5px">
+      <div class="col-md-5">
 	<% if logged_in? && @item.user_id != @current_user.id %>
 	<%= button_to 'Add to Watchlist', line_items_path(item_id: @item), class: 'btn btn-primary btn-md btn-block' %>
 	<% end %>
 	
 	<% if logged_in? && @item.user_id == @current_user.id %>
-	<%= button_to 'Edit', edit_item_path(@item) %>
+	<%= button_to 'Edit', edit_item_path(@item), class: 'btn btn-primary btn-md btn-block'  %>
 	<% end %>
       </div>
-	<div class="col-md-5" style="padding-top:10px">
-	     <%= button_to 'Back', items_path, class: 'btn btn-primary btn-md btn-block' %>
+	<div class="col-md-5">
+	     <%= link_to 'Back', items_path, class: 'btn btn-primary btn-md btn-block' %>
 	</div>
     </div>
   </div>

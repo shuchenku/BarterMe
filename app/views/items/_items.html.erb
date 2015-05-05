@@ -3,8 +3,8 @@
     <td>
       <table class="table table-striped">
         <% @items.each_with_index do |item, index| %>
-        <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-          <td>
+        <tr class="<%= cycle('list_line_odd', 'list_line_even') %>" style="border-bottom: 2px solid #ccc; border-top: 2px solid #ccc">
+          <td style="width=200px">
             <% if item.image_url.present? %>
             <%= image_tag item.image_url, :size => "150x150" %>
             <% else %>
@@ -68,10 +68,9 @@
   <div style="font-size:20px">
    <div class="row" style="margin-bottom: 20px">
      <div class="col-md-3">
-      <%unless @items.nil? || @items.empty?%>
+      <%unless @items.empty? || @items.nil?%>
       <%= paginate @items %>
       <% end %>
-      <%= link_to 'New Item', new_item_path, class: 'btn btn-primary btn-md btn-block' %>
     </div>
   </div>
 </div>
