@@ -5,52 +5,68 @@ $(function () {
   $('[data-toggle="popover"]').popover();
 });
 </script>
+
 <div class="row" style="padding-top:10px">
-   <div class="col-md-3" style="padding-top:10px">
-    <td class="form-group">
-     <%= form_tag items_path, class: "form-inline", method: :get do %>
-     <%= text_field_tag :query, params[:query], class: "form-control", :style => "width:170px"%>    
-     <%= submit_tag "Search", class: "btn btn-primary" %></br>
-     <% if params[:query].present? %>    
-     <%= link_to "clear", items_path%>
-     <% end %>
-     <% end %>
-    <%= link_to 'Advanced Search', search_items_path %>
-   </div>
+ <div class="col-md-3" style="padding-top:10px">
+  <td class="form-group">
+   <%= form_tag items_path, class: "form-inline", method: :get do %>
+   <%= text_field_tag :query, params[:query], class: "form-control", :style => "width:170px"%>    
+   <%= submit_tag "Search", class: "btn btn-primary" %></br>
+   <% if params[:query].present? %>    
+   <%= link_to "clear", items_path%>
+   <% end %>
+   <% end %>
+   <%= link_to 'Advanced Search', search_items_path %>
+ </div>
 
-      <td class="form-group">
-       <%= form_tag items_path, class: "form-inline", method: :get do %>
-       <% options = options_for_select([['name', "name"], ['recently added', "created_at"], ['recently updated', "updated_at"]]) %>
-     </td>
-     <div class="col-md-3" style="padding-top:10px">
-       <%= select_tag(:order, options, class: "form-control", :style => "width:170px") %>
-       <%= submit_tag "Order By", class: "btn btn-primary" %>
-       <% end %>
-      </div>
+ <td class="form-group">
+   <%= form_tag items_path, class: "form-inline", method: :get do %>
+   <% options = options_for_select([['name', "name"], ['recently added', "created_at"], ['recently updated', "updated_at"]]) %>
+ </td>
+ <div class="col-md-3" style="padding-top:10px">
+   <%= select_tag(:order, options, class: "form-control", :style => "width:170px") %>
+   <%= submit_tag "Order By", class: "btn btn-primary" %>
+   <% end %>
+ </div>
 
-   <div class="col-md-2" style="padding-left:110px; padding-top: 50px">
-    <%if logged_in? %>
-    <div>
-      <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-content="The Can I Get it? score is determined by the items you own, what this user is looking for, and both of your reliability indexes.  It is out of 100, and a higher score means you have a better chance to get the item." id="popover">Can I get it?</button>
-</div>
-      
-   </div>
-   <div class="col-md-2">
-     <td class="form-group">
-
-      <%if has_location?(current_user.id)%>
-      <%= form_tag items_path, class: "form-inline", method: :get do %>
-      <%= label(:location, :"How far you're willing to travel?")%>
-      <% options = options_for_select([['All miles', 24901],['10 miles', 10], ['20 miles', 20], ['50 miles', 50], ['100 miles', 100]]) %>
-      <%= select_tag(:location, options, class: "form-control") %>
-      <%= submit_tag "Apply", class: "btn btn-primary " %>
-      <%end%>
-      <%end%>
-    <%end%>
-    </td>
-
+ <div class="col-md-2" style="padding-left:110px; padding-top: 50px">
+  <%if logged_in? %>
+  <div>
+    <button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-content="The Can I Get it? score is determined by the items you own, what this user is looking for, and both of your reliability indexes.  It is out of 100, and a higher score means you have a better chance to get the item." id="popover">Can I get it?</button>
   </div>
 
-   <%= render 'items' %>
 </div>
+<div class="col-md-2">
+ <td class="form-group">
+
+  <%if has_location?(current_user.id)%>
+  <%= form_tag items_path, class: "form-inline", method: :get do %>
+  <%= label(:location, :"How far you're willing to travel?")%>
+  <% options = options_for_select([['All miles', 24901],['10 miles', 10], ['20 miles', 20], ['50 miles', 50], ['100 miles', 100]]) %>
+  <%= select_tag(:location, options, class: "form-control") %>
+  <%= submit_tag "Apply", class: "btn btn-primary " %>
+  <%end%>
+  <%end%>
+  <%end%>
+</td>
+
+</div>
+</div>
+<div class="row" style="padding-top:10px">
+  <div class="col-md-10" style="padding-left:10px; padding-top: 10px">
+    <%= render 'items' %>
+  </div>
+  <div class="col-md-2" style="padding-left:10px; padding-right:10px; padding-bottom: 10px; border-bottom: 1px solid #ccc; border-top: 1px solid #ccc; border-left: 1px solid #ccc; border-right: 1px solid #ccc">
+   <div class="container-fluid">
+     <h2>Our Listings</h2>
+     <div style="font-size:15px">
+       <% @categories.each do |k, v| %>
+       <%= link_to k, items_path(:query => k) %>
+       <%= "(" + "#{v}" + ")" %><br>
+       <% end %> 
+     </div>
+   </div>
+ </div>
+</div>
+
 
