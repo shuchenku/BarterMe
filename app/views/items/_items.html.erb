@@ -2,7 +2,7 @@
   <td>
     <table class="table table-striped">
       <% @items.each_with_index do |item, index| %>
-      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>" style="border-bottom: 2px solid #ccc; border-top: 2px solid #ccc">
+      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>" style="border-bottom: 5px solid #ccc; border-top: 5px solid #ccc">
         <td style="width=200px" align="left" width="20%">
           <% if item.image_url.present? %>
           <%= image_tag item.image_url, :size => "150x150" %>
@@ -13,11 +13,12 @@
         <td class="list_description" style="padding-left: 0px" align="left" width="50%">
 
           <dl>
-
+	    <% if logged_in? %>
            <% matching = matching_items(@current_user, item) %>
            <% if !matching.empty? %>
            <a id="popoverData" href="#" data-content= data-toggle="popover" rel="popover" data-placement="bottom" data-original-title="User May Want..." data-trigger="hover">User may want your...</a>
            <% end %>
+	   <% end %>
 
            <dt><h3><%= link_to item.name, item_path(item) %></h3></dt>
 
