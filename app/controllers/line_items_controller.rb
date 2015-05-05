@@ -44,7 +44,7 @@ class LineItemsController < ApplicationController
           end
           format.html { 
             redirect_to redirect_path,
-            notice: 'Item added to your cart.' }
+            notice: 'Item added to your watchlist.' }
           format.json { render action: 'show', status: :created, location: @line_item }
         else
           format.html { render action: 'new' }

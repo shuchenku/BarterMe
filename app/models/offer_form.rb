@@ -30,7 +30,7 @@
  		unless items.empty?
  			uid = items[0].user_id
  			items.each do |it|
- 				if it.user_id != uid
+ 				if it.user_id != uid && errors[:item1_ids].empty?
  					errors.add(:item1_ids, "Items must belong to the same user")
  					break
  				end
