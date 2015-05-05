@@ -33,8 +33,12 @@ $(function () {
   <p><b>Distance</b>: <%= l.distance_to(tmp).round(2)%> miles </p>
   <% end %>
     <%end%></p>
+<p><b>This User is interested in:</b><% User.looking_for?(@current_user).keys.each do |category| %>
+  <%= category + "," %>
+  <% end %>
+					
   </div>
-    </div>
+  </div>
   <div class="col-md-8" style="border-left: 1px solid #ccc">
     <h1 style="padding-left:100px"><%= user.user_name %>'s Items</h1>
     <%= render 'items' %>
