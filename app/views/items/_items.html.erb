@@ -57,25 +57,24 @@
               <% else %>
               <%= link_to 'Show', item, class: 'btn btn-primary btn-md btn-block' %><br/>
               <% end %>
-
             </td>
           </tr>
           <% end %>
         </table>
       </br>
+    </div>
+  </div>
 
-      </div>
-
-   </div>
-
-      <div style="font-size:20px">
-       <div class="row">
-         <div class="col-md-3">
-          <%= link_to 'New Item', new_item_path, class: 'btn btn-primary btn-md btn-block' %> </div></div>
-          <%unless !@items.nil?%>
-          <%= paginate @items %>
-          <% end %>
-        </div>
+  <div style="font-size:20px">
+   <div class="row" style="margin-bottom: 20px">
+     <div class="col-md-3">
+      <%unless @items.nil?%>
+      <%= paginate @items %>
+      <% end %>
+      <%= link_to 'New Item', new_item_path, class: 'btn btn-primary btn-md btn-block' %>
+    </div>
+  </div>
+</div>
 
 
 
