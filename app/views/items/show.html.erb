@@ -1,36 +1,46 @@
 <p id="notice"><h3><%= notice %></h3></p>
-
-  <p>
-    <h1><%= @item.name %></h1>
-  </p>
-
-  <p> 
-  <%=image_tag @item.image_url, :size => "200x200" %>
-</p>
- 
-    <h1><strong>Owner:</strong></h1>
-  <p style="font-size:20px"><a href=<%= "/profile/#{@item.user.id}" %>> <%= "#{@item.user.user_name}" %></a></li></p>
 <p>
-  <h1><strong>Description:</strong></h1>
-  <%= @item.description %>
+  <h1><%= @item.name %></h1>
 </p>
-
-<p>
-  <h1><strong>Category:</strong></h1>
-  <%= Category.find(@item.category_id).name%>
-</p>
-
-<p>
- <h1><strong>Location:</strong></h1>
-  <%= @item.location %>
-</p>
-
-<p>
-  <h1><strong>Quantity:</strong></h1>
-  <%= @item.quantity %>
-</p>
-
-<% if logged_in? && @item.user_id == @current_user.id %>
-<%= link_to 'Edit', edit_item_path(@item) %>
-<% end %>
-<%= link_to 'Back', items_path %>
+<div class="row">
+  <div class="col-md-5" style="padding-top:2px">
+    <%=image_tag @item.image_url, :size => "400x400" %>
+    <div class="row">
+      <div class="col-md-5" style="padding-top:5px">
+	<% if logged_in? && @item.user_id != @current_user.id %>
+	<%= button_to 'Add to Watchlist', line_items_path(item_id: @item), class: 'btn btn-primary btn-md btn-block' %>
+	<% end %>
+	
+	<% if logged_in? && @item.user_id == @current_user.id %>
+	<%= button_to 'Edit', edit_item_path(@item) %>
+	<% end %>
+      </div>
+	<div class="col-md-5" style="padding-top:5px">
+	     <%= button_to 'Back', items_path, class: 'btn btn-primary btn-md btn-block' %>
+	</div>
+    </div>
+  </div>
+<div class="col-md-6">
+   <div class="jumbotron" style="padding-top:2px">
+     <div class="row" style="padding-bottom:5px">
+       <div style="font-size:35px"><b>Owner:</b></div>
+       <div style="font-size:20px; padding-top:5px"><a href=<%= "/profile/#{@item.user.id}" %>> <%= "#{@item.user.user_name}" %></a></div>
+     </div>
+      <div class="row">
+      <div style="font-size:35px"><b>Description:</b></div>
+      <div style="font-size:20px"><%= @item.description %></div>
+    </div>
+    <div class="row">
+	<div style="font-size:35px"><b>Category:</b></div>
+	<div style="font-size:20px"><%= Category.find(@item.category_id).name%></div>
+    </div>
+    <div class="row">
+	<div style="font-size:35px"><b>Location:</b></div>
+	<div style="font-size:20px"><%= @item.location %></div>
+    </div>
+    <div class="row">
+      <div style="font-size:35px"><b>Quantity:</b></div>
+      <div style="font-size:20px"><%= @item.quantity %></div>
+    </div>
+  </div>
+</div>

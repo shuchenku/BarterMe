@@ -14,4 +14,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require tooltip.js
+//= require titlealert.js
 //= require_tree .
