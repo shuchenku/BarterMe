@@ -5,7 +5,6 @@ $(function () {
   $('[data-toggle="popover"]').popover();
 });
 </script>
-
 <div class="row" style="padding-top:10px">
    <div class="col-md-3" style="padding-top:10px">
     <td class="form-group">
@@ -52,8 +51,18 @@ $(function () {
 
   </div>
 </div>
-
 <%= render 'items' %>
 
-<%= link_to 'New Item', new_item_path %>
-<%= paginate @items %>
+<div class="col-md-2" style="padding-left:10px; padding-right:10px; text-shadow: 2px 2px black; ">
+     <div class="jumbotron" style="padding-top:10px; padding-left:10px; padding-right:10px;">
+       <div class="container-fluid">
+	 <h2>Our Listings</h2>
+	 <div style="font-size:15px">
+             <% @categories.each do |k, v| %>
+             <%= link_to k, items_path(:query => k) %>
+             <%= "(" + "#{v}" + ")" %><br>
+             <% end %> 
+	 </div>
+       </div>
+     </div>
+   </div>

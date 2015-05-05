@@ -6,7 +6,7 @@ class ItemsController < ApplicationController
 
  def index
    @similarity_score = Array.new
-
+   @categories = Item.listing
     if params[:query].present?
       @items = Item.search(params[:query], operator: :or,  page: params[:page], per_page: 10)
       if params[:order].present?
