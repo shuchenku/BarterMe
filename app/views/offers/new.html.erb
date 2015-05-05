@@ -7,7 +7,7 @@
       <p>
         <% proposer = User.find(params[:user1_id])%>
         <% proposee = User.find(params[:user2_id])%>
-        <h4><%= "You are is offering items:"%></h4>
+        <h4><%= "You are offering items:"%></h4>
         <table class="table table-striped">
           <% params[:item1_ids].each do |id|%>
           <% item = Item.find(id) %>
@@ -28,7 +28,7 @@
     </div>
     <div class="span4">
       <div class="row" style="padding-left:20px;">
-        <h4><%= " for "%><%= link_to proposee.user_name, "/profile/#{proposee.id}"%><%=" items:" %></h4>
+        <h4><%= " for "%><%= link_to proposee.user_name, "/profile/#{proposee.id}"%><%="'s items:" %></h4>
       </p>
       <table class="table table-striped">
         <% params[:item2_ids].each do |id|%>
@@ -51,4 +51,6 @@
 </div>
 <%= button_to "Confirm Offer", {action: "create", offer: {:user1_id=>params[:user1_id], :item1_id=>params[:item1_ids].join(","), :user2_id=>params[:user2_id], :item2_id=>params[:item2_ids].join(","), :accepted=>false, :pending=>true} }, :class => 'myButton' %>
 
-<%= link_to 'Back', '/'%>
+<div class="col-md-3">
+  <%= button_to 'Back', items_path, :class => 'myButton' %>
+</div>

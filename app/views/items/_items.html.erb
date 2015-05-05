@@ -21,7 +21,8 @@
 	   <% if logged_in? && item.user != @current_user %>
            <% matching = matching_items(@current_user, item) %>
            <% if !matching.empty? %>
-           <a id="popoverData" href="#" data-content=<%=matching.sample.name%> data-toggle="popover" rel="popover" data-placement="bottom" data-original-title="User May Want To Trade This Item for your:" data-trigger="hover"><b>This User may want your...</b></a>
+	   <% wanted_item = matching.sample.name %>
+           <a id="popoverData" href="#" data-content="<%=wanted_item%>" data-toggle="popover" rel="popover" data-placement="bottom" data-original-title="User May Want To Trade This Item for your:" data-trigger="hover"><b>This User may want your...</b></a>
            <% end %>
 	   <% end %>
          </dl>
