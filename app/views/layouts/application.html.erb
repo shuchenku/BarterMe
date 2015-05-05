@@ -40,12 +40,18 @@ button {
 	   var channel = pusher.subscribe('private-'+<%= @current_user.id %>);
 	   
 	   channel.bind('offer_update', function(data) {
-	   msg = 'There has been an update on your offer with user' + data.offer; 
+	   msg = 'There has been an update on your offer with user' + data.offer;
+	   $("#update").show();
 	   $.titleAlert(msg);
 	   });
 	   
 	   <% end %>
 	 </script>
+
+<script>
+  $("#offerlink").click(function() {
+  $("#update").hide();});
+</script>
 	 
 </head>
 <style type="button/css">
@@ -66,7 +72,8 @@ ul li:hover ul {
 				<li><a href="/admin">Admin</a></li>
 				<% end %>
 				<li><a href="/items">Items</a></li> 
-				<li><a href="/offers">Offers</a></li>
+				<li><img id="update" src="/assets/update.jpg" alt= "Update"></img><a id="offerlink" href="/offers">Offers</a></li>
+								 
 				<li><%= link_to "My Watchlist", cart_path(@cart) %></li>
 			</ul>
 

@@ -24,7 +24,11 @@ $(function () {
   <h3> <u>Public Information</u> </h3>
 
   <p> <b>Email</b>: <%= user.email %> </p>
+<<<<<<< HEAD
 
+=======
+  <p style="font-size:20px"><a id="popoverData" href="#" data-content="Your Reliability score is an aggregate value of all ratings you have been given (max 5.0)" data-toggle="popover" rel="popover" data-placement="top" data-original-title="Reliability Score" data-trigger="hover">Reliability Score:   </a><%=reliability_score(user.id)%> <%= "Out of: " + barter_amount(user).to_s + " successful barters" %> </p> 
+>>>>>>> 32bb588c4364d4819b97ae6749092b5ba0db0011
   <%l = Location.find_by user_id: user.id%>
   <p> <b>Address</b>: <%if !l.nil? %> 
     <%=l.address%>
@@ -41,7 +45,7 @@ $(function () {
   </div>
   <div class="col-md-8" style="border-left: 1px solid #ccc">
     <h1 style="padding-left:70px"><%= user.user_name %>'s Available Items</h1>
-    <%= render 'items' %>
+    <%= render '/items/items' %>
   </div>
 </div>
 

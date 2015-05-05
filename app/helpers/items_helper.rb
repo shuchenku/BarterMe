@@ -9,7 +9,9 @@ module ItemsHelper
     user_wants = user_looking_for(item)
     my_items = Item.mine?(user)
     my_items.each do |my_item|
-      @possible_trades.push(my_item) if user_wants[my_item] == 0
+      if user_wants[my_item.category.name] == 0
+        @possible_trades.push(my_item)
+      end
     end
     return @possible_trades
   end
