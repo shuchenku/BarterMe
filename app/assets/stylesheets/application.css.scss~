@@ -25,7 +25,7 @@ text-align: center;
 }
 
 #update {
-       //display: none;
+       display: none;
        float: right;
        }
 
