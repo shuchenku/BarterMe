@@ -15,7 +15,7 @@ $(function () {
   <p><%= user.user_name + "'s profile"%> </p>
   <% end %></h3>
     <% if user.image.present? %>
-      <img src= <%=user.image %> class="img-circle"  height="100" width="100"> 
+      <img src= <%=user.image %> class="img-circle"  height="200" width="200"> 
     <% else %>
      <%= image_tag 'person.png', :size => "100x100" %>
     <% end %>
