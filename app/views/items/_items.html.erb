@@ -1,72 +1,72 @@
- <div class="col-md-12" style="padding-top:2px; border-bottom: 1px solid #ccc">
-    <td>
-      <table class="table table-striped">
-        <% @items.each_with_index do |item, index| %>
-        <tr class="<%= cycle('list_line_odd', 'list_line_even') %>" style="border-bottom: 2px solid #ccc; border-top: 2px solid #ccc">
-          <td style="width=200px">
-            <% if item.image_url.present? %>
-            <%= image_tag item.image_url, :size => "150x150" %>
-            <% else %>
-            <%= image_tag "http://placehold.it/150&text="+item.name %>
-            <% end %>
-          </td>
-          <td class="list_description" style="padding-left: 5px">
-            <dl>
+ <div class="col-md-12" style="padding-top:2px; border-bottom: 2px solid #ccc">
+  <td>
+    <table class="table table-striped">
+      <% @items.each_with_index do |item, index| %>
+      <tr class="<%= cycle('list_line_odd', 'list_line_even') %>" style="border-bottom: 2px solid #ccc; border-top: 2px solid #ccc">
+        <td style="width=200px" align="left" width="20%">
+          <% if item.image_url.present? %>
+          <%= image_tag item.image_url, :size => "150x150" %>
+          <% else %>
+          <%= image_tag "http://placehold.it/150&text="+item.name %>
+          <% end %>
+        </td>
+        <td class="list_description" style="padding-left: 0px" align="left" width="50%">
 
-	      <% matching = matching_items(@current_user, item) %>
-	      <% if !matching.empty? %>
-	      <a id="popoverData" href="#" data-content= data-toggle="popover" rel="popover" data-placement="bottom" data-original-title="User May Want..." data-trigger="hover">User may want your...</a>
-	      <% end %>
-	   
-              <dt><%= link_to item.name, item_path(item) %></dt>
-	 
-              <dd><%= truncate(strip_tags(item.description), length: 100) %></dd>
-            </dl>
-          </td>
-          <td>
-           <% if !@similarity_score.nil? && !@similarity_score.empty?%>
-           <% if @similarity_score[index] < 30 %>
-           <p class = "small" style="font-size:30px; color:red; padding-bottom:64px; padding-right:10px;">
-            <% elsif @similarity_score[index] >= 30 && @similarity_score[index] < 70 %>
-            <p class = "small" style="font-size:30px; color:yellow; padding-bottom:64px; padding-right:10px;">
-             <% else %>
-             <p class="small" style="font-size:30px; color:green; padding-bottom:64px; padding-right:10px;">
-               <% end %>
-	       <%= "Can I get it? Score: " %>
-               <%= @similarity_score[index].to_s + "%"%>
-               <style> p.small {
-                line-height: 148.55%;
-                }</style>
-                <% end %>
-              </td>
-            </td>
-            <td class="list_actions">
-              <% if logged_in? && admin? %>
+          <dl>
 
-              <%if item_available?(item.id)%>
-              <%= button_to 'Add to Watchlist', line_items_path(item_id: item), class: 'btn btn-primary btn-md btn-block' %><br/>
-              <%end%>            
-              <%= link_to 'Show', item %>
-              <%= link_to 'Edit', edit_item_path(item) %>
-              <%= link_to 'Remove', item, method: :delete,
-              data: { confirm: 'Are you sure?' } %> <br/>
+           <% matching = matching_items(@current_user, item) %>
+           <% if !matching.empty? %>
+           <a id="popoverData" href="#" data-content= data-toggle="popover" rel="popover" data-placement="bottom" data-original-title="User May Want..." data-trigger="hover">User may want your...</a>
+           <% end %>
 
-              <% elsif logged_in? && item.user_id != @current_user.id %>
-              <%if item_available?(item.id) && !belongs_to_current_user(item.id)%>
-              <%= button_to 'Add to Watchlist', line_items_path(item_id: item), class: 'btn btn-primary btn-md btn-block' %><br/>
-              <%end%>            
-              <%= link_to 'Show', item, class: 'btn btn-primary btn-md btn-block' %>
-              <% elsif logged_in? %>
-              <%= link_to 'Show', item, class: 'btn btn-primary btn-md btn-block' %>
-              <%= link_to 'Edit', edit_item_path(item), class: 'btn btn-primary btn-md btn-block' %>
-              <%= link_to 'Remove', item, method: :delete,
-              data: { confirm: 'Are you sure?' }, class: 'btn btn-primary btn-md btn-block' %> 
-              <% else %>
-              <%= link_to 'Show', item, class: 'btn btn-primary btn-md btn-block' %><br/>
+           <dt><h3><%= link_to item.name, item_path(item) %></h3></dt>
+
+           <dd><%= truncate(strip_tags(item.description), length: 100) %></dd>
+         </dl>
+       </td>
+       <td>
+         <% if !@similarity_score.nil? && !@similarity_score.empty?%>
+         <% if @similarity_score[index] < 30 %>
+         <p class = "small" style="font-size:30px; color:red; padding-bottom:64px; padding-right:64px;">
+          <% elsif @similarity_score[index] >= 30 && @similarity_score[index] < 70 %>
+          <p class = "small" style="font-size:30px; color:yellow; padding-bottom:64px; padding-right:64px;">
+           <% else %>
+           <p class = "small" style="font-size:30px; color:green; padding-bottom:64px; padding-right:64px;">
+             <% end %>
+             <%= @similarity_score[index] %>
+             <style> p.small {
+              line-height: 148.55%;
+              }</style>
               <% end %>
             </td>
-          </tr>
-          <% end %>
-        </table>
-      </br>
-</div>
+          </td>
+          <td class="list_actions">
+            <% if logged_in? && admin? %>
+
+            <%if item_available?(item.id)%>
+            <%= button_to 'Add to Watchlist', line_items_path(item_id: item), class: 'btn btn-primary btn-md btn-block' %><br/>
+            <%end%>            
+            <%= link_to 'Show', item %>
+            <%= link_to 'Edit', edit_item_path(item) %>
+            <%= link_to 'Remove', item, method: :delete,
+            data: { confirm: 'Are you sure?' } %> <br/>
+
+            <% elsif logged_in? && item.user_id != @current_user.id %>
+            <%if item_available?(item.id) && !belongs_to_current_user(item.id)%>
+            <%= button_to 'Add to Watchlist', line_items_path(item_id: item), class: 'btn btn-primary btn-md btn-block' %><br/>
+            <%end%>            
+            <%= link_to 'Show', item, class: 'btn btn-primary btn-md btn-block' %>
+            <% elsif logged_in? %>
+            <%= link_to 'Show', item, class: 'btn btn-primary btn-md btn-block' %>
+            <%= link_to 'Edit', edit_item_path(item), class: 'btn btn-primary btn-md btn-block' %>
+            <%= link_to 'Remove', item, method: :delete,
+            data: { confirm: 'Are you sure?' }, class: 'btn btn-primary btn-md btn-block' %> 
+            <% else %>
+            <%= link_to 'Show', item, class: 'btn btn-primary btn-md btn-block' %><br/>
+            <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </br>
+  </div>
