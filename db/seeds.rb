@@ -1,26 +1,26 @@
 require 'fileutils'
 require 'faker'
 
-def random_category
-  return Category.all[rand(Category.all.size-1)].id
-end
+# def random_category
+#   return Category.all[rand(Category.all.size-1)].id
+# end
 
 
-Category.delete_all
-User.delete_all
-Item.delete_all
-Location.delete_all
-Rating.delete_all
-Comment.delete_all
-Cart.delete_all
-Offer.delete_all
+# Category.delete_all
+# User.delete_all
+# Item.delete_all
+# Location.delete_all
+# Rating.delete_all
+# Comment.delete_all
+# Cart.delete_all
+# Offer.delete_all
 
 
 
 #create categories
-File.open("db/category.txt").each_line do |line|
-  Category.create(name: line.delete("\n"), description: "This is the category " + line)
-end
+# File.open("db/category.txt").each_line do |line|
+#   Category.create(name: line.delete("\n"), description: "This is the category " + line)
+# end
 
 tmp_location = Hash.new
 password = 123
@@ -61,13 +61,13 @@ password = 123
   end
 end
 
-admin = User.create(user_name: "admin",
-            password: "123",
-            password_confirmation: "123",
-            email: "admin",
-            phone: Faker::PhoneNumber.cell_phone,
-            reliability: rand(10),
-            admin: true)
-cur_location = Location.create(user_id: admin.id, address: "Brandeis University, Waltham, MA, USA")
+# admin = User.create(user_name: "admin",
+#             password: "123",
+#             password_confirmation: "123",
+#             email: "admin",
+#             phone: Faker::PhoneNumber.cell_phone,
+#             reliability: rand(10),
+#             admin: true)
+# cur_location = Location.create(user_id: admin.id, address: "Brandeis University, Waltham, MA, USA")
 
 
