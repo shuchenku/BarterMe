@@ -37,7 +37,6 @@ a {
         };
 }
 
-
 .jumbotron {
    background: rgba(0, 0, 0, 0.4); 
 }
@@ -86,8 +85,4 @@ a {
 .myButton:active {
   position:relative;
   top:1px;
-}
-
-.notice {
-  background: rgba(0, 0, 0, 0.4); 
 }
