@@ -1,13 +1,16 @@
-<div class="row">
-  <div class="col-md-10" style="padding-top:2px; border-bottom: 1px solid #ccc">
+ <div class="col-md-12" style="padding-top:2px; border-bottom: 1px solid #ccc">
     <td>
       <table class="table table-striped">
         <% @items.each_with_index do |item, index| %>
-        <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-          <td>
-            <%= image_tag item.image_url, :size => "100x100" %>
+        <tr class="<%= cycle('list_line_odd', 'list_line_even') %>" style="border-bottom: 2px solid #ccc; border-top: 2px solid #ccc">
+          <td style="width=200px">
+            <% if item.image_url.present? %>
+            <%= image_tag item.image_url, :size => "150x150" %>
+            <% else %>
+            <%= image_tag "http://placehold.it/150&text="+item.name %>
+            <% end %>
           </td>
-          <td class="list_description">
+          <td class="list_description" style="padding-left: 5px">
             <dl>
 
 	      <% matching = matching_items(@current_user, item) %>
@@ -21,15 +24,15 @@
             </dl>
           </td>
           <td>
-           <% if @similarity_score != nil %>
+           <% if !@similarity_score.nil? && !@similarity_score.empty?%>
            <% if @similarity_score[index] < 30 %>
-           <p class = "small" style="font-size:30px; color:red; padding-bottom:64px; padding-right:64px;">
+           <p class = "small" style="font-size:30px; color:red; padding-bottom:64px; padding-right:10px;">
             <% elsif @similarity_score[index] >= 30 && @similarity_score[index] < 70 %>
-            <p class = "small" style="font-size:30px; color:yellow; padding-bottom:64px; padding-right:64px;">
+            <p class = "small" style="font-size:30px; color:yellow; padding-bottom:64px; padding-right:10px;">
              <% else %>
-             <p class="small" style="font-size:30px; color:green; padding-bottom:64px; padding-right:64px;">
+             <p class="small" style="font-size:30px; color:green; padding-bottom:64px; padding-right:10px;">
                <% end %>
-	       <%= "Can I get it? score:" %>
+	       <%= "Can I get it? Score: " %>
                <%= @similarity_score[index].to_s + "%"%>
                <style> p.small {
                 line-height: 148.55%;
@@ -61,15 +64,9 @@
               <% else %>
               <%= link_to 'Show', item, class: 'btn btn-primary btn-md btn-block' %><br/>
               <% end %>
-
             </td>
           </tr>
           <% end %>
         </table>
       </br>
-
-  </div>
 </div>
-
-
-
