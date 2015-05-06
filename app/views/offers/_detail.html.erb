@@ -19,10 +19,10 @@
           <% @offer.item2_id.split(",").each do |id|%>
           <% item = Item.find(id.to_i) %>
           <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-            <td>
-              <%= image_tag item.image_url, :size => "100x100" %>
+            <td align="left" width="20%">
+              <%= image_tag item.image_url, :size => "200x200" %>
             </td>
-            <td class="list_description">
+            <td class="list_description" align="left" width="80%">
               <dl>
                 <h5><b><%= link_to item.name, "/items/#{item.id}" %><b></h5>
                 <dd><%= truncate(strip_tags(item.description), length: 100) %></dd>
@@ -41,10 +41,10 @@
         <% @offer.item1_id.split(",").each do |id|%>
         <% item = Item.find(id.to_i) %>
         <tr class="<%= cycle('list_line_odd', 'list_line_even') %>">
-          <td>
-            <%= image_tag item.image_url, :size => "100x100" %>
+          <td align="left" width="20%">
+            <%= image_tag item.image_url, :size => "200x200" %>
           </td>
-          <td class="list_description">
+          <td class="list_description" align="left" width="80%">
             <dl>
               <h5><b><%= link_to item.name, "/items/#{item.id}" %><b></h5>
               <dd><%= truncate(strip_tags(item.description), length: 100) %></dd>

@@ -113,8 +113,7 @@ h3 {
 
      <p><b>Check out what other users have been able to trade with our site:</b></p>
      <% if @recommended_barter != nil %>
-     <p style="font-size:20px">Users:<br><%= link_to @recommended_barter[0].user_name, user_path(@recommended_barter[0]) %> and <%= link_to @recommended_barter[1].user_name, user_path(@recommended_barter[1]) %><br><br>
-      were able to trade:<br>
+     <p style="font-size:20px">Users:<br><a href=<%= "/profile/#{@recommended_barter[0].id}" %>> <%= "#{@recommended_barter[0].user_name}" %></a> and <a href=<%= "/profile/#{@recommended_barter[1].id}" %>> <%= "#{@recommended_barter[1].user_name}" %></a><br><br>
       <table>
         <% @recommended_barter[2].each do |item| %>
         <p style="font-size:20px"><%= link_to item.name, item_path(item) %></p></li>
