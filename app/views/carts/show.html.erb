@@ -9,37 +9,37 @@ h3 {
 
 <% if flash[:notice] %>
 <div class = "alert alert-danger alert-dismissible"  role="alert" style="margin-top:10px">
-<button type="button" class="close" data-dismiss="alert" aria-label="Close" style="top:-13px"><span aria-hidden="true">&times;</span></button>
-<h3><%= flash[:notice] %></h3>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="top:-13px"><span aria-hidden="true">&times;</span></button>
+  <h3><%= flash[:notice] %></h3>
 </div>
 <% end %>
 
 <h2>Your Watchlist</h2>
 <div class="row">
-	<div class="col-md-10" style="padding-top:10px">
-	<ul>
-		<table class="table table-striped">
-			<% @cart.line_items.each do |item| %>
-			<tr class="<%= cycle('list_line_odd', 'list_line_even') %>" align="left" width="20%" style="border-bottom: 5px solid #ccc; border-top: 5px solid #ccc">
-				<td>
-					<%= image_tag item.item.image_url, :size => "100x100"  %>
-				</td>
-				<td class="list_description" align="left" width="50%">
-					<dl>
-						<dt><%= link_to item.item.name, item_path(item.item) %></dt>
-						<dd><%= truncate(strip_tags(item.item.description), length: 80) %></dd>
-					</dl>
-				</td>
-				<td>
-					<%= link_to 'Show', item_path(item.item),class: 'btn btn-primary btn-md btn-block'  %>
-					<%= link_to 'Remove', item, method: :delete, data: { confirm: 'Are you sure?' },
-					class: 'btn btn-primary btn-md btn-block' %>
-				</td>
-			</tr>
-			<% end %> 
-		</table>
-	</ul>
-	</div>
+  <div class="col-md-10" style="padding-top:10px">
+    <ul>
+      <table class="table table-striped">
+	<% @cart.line_items.each do |item| %>
+	<tr class="<%= cycle('list_line_odd', 'list_line_even') %>" align="left" width="20%" style="border-bottom: 5px solid #ccc; border-top: 5px solid #ccc">
+	  <td style="width=200px" align="left" width="20%">
+	    <%= image_tag item.item.image_url, :size => "100x100"  %>
+	  </td>
+	  <td class="list_description" align="left" width="50%">
+	    <dl>
+	      <dt><%= link_to item.item.name, item_path(item.item) %></dt>
+	      <dd><%= truncate(strip_tags(item.item.description), length: 80) %></dd>
+	    </dl>
+	  </td>
+	  <td class="list-actions">
+	    <%= link_to 'Show', item_path(item.item),class: 'btn btn-primary btn-md btn-block'  %>
+	    <%= link_to 'Remove', item, method: :delete, data: { confirm: 'Are you sure?' },
+		class: 'btn btn-primary btn-md btn-block' %>
+	  </td>
+	</tr>
+	<% end %> 
+      </table>
+    </ul>
+  </div>
 </div>
 
 <!--<%= link_to 'Edit', edit_cart_path(@cart) %> -->
@@ -48,7 +48,7 @@ h3 {
 </div>
 <div class="col-md-6"></div>
 <div class="col-md-2">
-	<%= button_to 'Remove All', @cart, method: :delete,
-data: { confirm: 'Are you sure?' }, class: 'btn btn-danger pull-right btn-lg ', type: 'button' %>
+  <%= button_to 'Remove All', @cart, method: :delete,
+      data: { confirm: 'Are you sure?' }, class: 'btn btn-danger pull-right btn-lg ', type: 'button' %>
 </div>
 
