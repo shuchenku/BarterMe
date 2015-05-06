@@ -56,6 +56,9 @@ class ItemsController < ApplicationController
  # GET /items/1.json
  def show  
  end
+
+ def delete
+ end
  
  # GET /items/new
  def new
@@ -110,13 +113,10 @@ class ItemsController < ApplicationController
  # DELETE /items/1
  # DELETE /items/1.json
  def destroy
-   begin
-     @item.destroy
-     flash[:notice] = "Item #{@item.name} deleted"
-    end
+  notice_str = "Item #{@item.name} deleted"
    @item.destroy
    respond_to do |format|
-     format.html { redirect_to items_url }
+     format.html { redirect_to items_url, notice: notice_str}
      format.json { head :no_content }
    end
  end
