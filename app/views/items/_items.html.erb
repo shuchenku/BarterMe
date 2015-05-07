@@ -36,7 +36,12 @@
            <% else %>
            <p class = "small" style="font-size:30px; color:green; padding-bottom:64px; padding-right:64px;">
              <% end %>
-             <%= @similarity_score[index].to_s + "%" %>
+	     <% if @current_user.id == item.user_id %>
+	     <p class = "small" style="font-size:30px; color:black; padding-bottom:64px; padding-right:64px;">
+	       <%= "- - -" %>
+	       <% else %>
+               <%= @similarity_score[index].to_s + "%" %>
+	       <% end %>
              <style> p.small {
               line-height: 148.55%;
               }</style>
@@ -45,15 +50,12 @@
           </td>
           <td class="list_actions">
             <% if logged_in? && admin? %>
-
-            <%if item_available?(item.id)%>
-            <%= button_to 'Add to Watchlist', line_items_path(item_id: item), class: 'btn btn-primary btn-md btn-block' %><br/>
-            <%end%>            
-            <%= link_to 'Show', item %>
-            <%= link_to 'Edit', edit_item_path(item) %>
+            
+            <%= link_to 'Show', item, class: 'btn btn-primary btn-md btn-block' %>
+            <%= link_to 'Edit', edit_item_path(item), class: 'btn btn-primary btn-md btn-block' %>
             <%= link_to 'Remove', item, method: :delete,
-            data: { confirm: 'Are you sure?' } %> <br/>
-
+		data: { confirm: 'Are you sure?' }, class: 'btn btn-primary btn-md btn-block' %> 
+	    
             <% elsif logged_in? && item.user_id != @current_user.id %>
             <%if item_available?(item.id) && !belongs_to_current_user(item.id)%>
             <%= button_to 'Add to Watchlist', line_items_path(item_id: item), class: 'btn btn-primary btn-md btn-block' %><br/>

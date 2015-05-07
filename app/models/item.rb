@@ -1,7 +1,7 @@
 class Item < ActiveRecord::Base
 
   has_many :line_items
-  before_destroy :ensure_not_referenced_by_any_line_item
+ # before_destroy :ensure_not_referenced_by_any_line_item
 
   validates :name, :description, :quantity, presence: true
   validates :quantity, numericality: {greater_than: -1}
